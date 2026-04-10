@@ -6,10 +6,10 @@ A suite of Android developer tooling libraries distributed via JitPack.
 
 | Library | Plugin ID | Artifact |
 |---|---|---|
-| StyleGuide | `com.yourtools.styleguide` | `com.yourtools:styleguide:1.0.0` |
-| File Templates | `com.yourtools.file-templates` | `com.yourtools:file-templates:1.0.0` |
-| Live Templates | `com.yourtools.live-templates` | `com.yourtools:live-templates:1.0.0` |
-| Lint Rules | `com.yourtools.lint` | `com.yourtools:lint:1.0.0` |
+| StyleGuide | `de.yanodev.styleguide` | `de.yanodev:styleguide:1.0.0` |
+| File Templates | `de.yanodev.file-templates` | `de.yanodev:file-templates:1.0.0` |
+| Live Templates | `de.yanodev.live-templates` | `de.yanodev:live-templates:1.0.0` |
+| Lint Rules | `de.yanodev.lint` | `de.yanodev:lint:1.0.0` |
 
 ---
 
@@ -36,10 +36,10 @@ dependencyResolutionManagement {
 ### 2. Apply individual plugins in your module's `build.gradle.kts`
 ```kotlin
 plugins {
-    id("com.yourtools.styleguide")     version "1.0.0"
-    id("com.yourtools.lint")           version "1.0.0"
-    id("com.yourtools.file-templates") version "1.0.0"
-    id("com.yourtools.live-templates") version "1.0.0"
+    id("de.yanodev.styleguide")     version "1.0.0"
+    id("de.yanodev.lint")           version "1.0.0"
+    id("de.yanodev.file-templates") version "1.0.0"
+    id("de.yanodev.live-templates") version "1.0.0"
 }
 // Each plugin automatically adds its library dependency – nothing else needed.
 ```
