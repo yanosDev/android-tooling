@@ -1,0 +1,8 @@
+# Project exclude paths
+/.gradle/
+/build/
+/file-templates-library/
+/gradle/
+/lint-library/
+/live-templates-library/
+/styleguide-library/
