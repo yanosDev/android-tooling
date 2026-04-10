@@ -84,7 +84,7 @@ Run manually: `./gradlew lint`
 
 ## Adding a new Lint rule
 
-1. Create `YourDetector.kt` in `lint-library/src/main/kotlin/com/yourtools/lint/`
-2. Register the `Issue` in `YourToolsIssueRegistry.issues`
-3. Add a test in `lint-library/src/test/kotlin/com/yourtools/lint/`
+1. Create `YourDetector.kt` in `lint-library/src/main/kotlin/de/yanosdev/lint/`
+2. Register the `Issue` in `YanosDevIssueRegistry.issues`
+3. Add a test in `lint-library/src/test/kotlin/de/yanosdev/lint/`
 4. Bump `VERSION_NAME` in `gradle.properties` and tag a new release
