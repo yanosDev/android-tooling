@@ -14,26 +14,22 @@ import java.io.File
 class FileTemplatesPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         val task = target.tasks.register("installFileTemplates") {
-            group = "YanosDev"
-            description = "Copies YanosDev file templates into .idea/fileTemplates"
+            group = "YD"
+            description = "Copies YD file templates into .idea/fileTemplates"
 
             doLast {
-                val destDir = File(target.rootDir, ".idea/fileTemplates/internal")
+                val destDir = File(target.rootDir, ".idea/fileTemplates/internal/yd")
                 destDir.mkdirs()
 
                 // Unpack templates bundled in the JAR
                 val loader = FileTemplatesPlugin::class.java.classLoader
-                val templates = listOf(
-                    "YanosDev Composable Screen.kt",
-                    "YanosDev ViewModel.kt",
-                    "YanosDev UseCase.kt",
-                    "YanosDev Repository.kt",
-                )
-                templates.forEach { name ->
+
+                val templatesDir = projectDir.resolve("src/main/resources/fileTemplates/internal")
+                templatesDir.listFiles()?.forEach { name ->
                     val resource = loader.getResourceAsStream("fileTemplates/internal/$name")
                     if (resource != null) {
                         File(destDir, name).writeBytes(resource.readBytes())
-                        target.logger.lifecycle("[YanosDev] Installed template: $name")
+                        target.logger.lifecycle("[YD] Installed template: $name")
                     }
                 }
             }
