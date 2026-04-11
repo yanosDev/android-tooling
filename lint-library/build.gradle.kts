@@ -1,5 +1,12 @@
+import de.yanosdev.buildsrc.dependency.YDVersion
+
 plugins {
     id("android-tooling-base")
+}
+
+publishingConfig {
+    artifactId = "lint"
+    version = YDVersion.LintVersion
 }
 
 dependencies {
@@ -14,8 +21,4 @@ tasks.withType<Jar>().configureEach {
     manifest {
         attributes["Lint-Registry-v2"] = "de.yanosdev.lint.YanosDevIssueRegistry"
     }
-}
-publishingConfig {
-    artifactId = "lint"
-    version = "1.0.0"
 }

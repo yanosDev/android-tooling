@@ -49,9 +49,10 @@ plugins {
 ## Publishing to JitPack
 
 JitPack builds directly from GitHub. Steps:
-1. Push this repo to GitHub (e.g. `github.com/yourname/android-tooling`)
+
+1. Push this repo to GitHub (e.g. `github.com/yanosdev/android-tooling`)
 2. Create a Git tag: `git tag 1.0.0 && git push origin 1.0.0`
-3. Open `https://jitpack.io/#yourname/android-tooling` – JitPack auto-builds on first request
+3. Open `https://jitpack.io/#yanosdev/android-tooling` – JitPack auto-builds on first request
 4. Consumers use the artifact as shown above
 
 No CI configuration is needed for JitPack; it uses your `build.gradle.kts` directly.

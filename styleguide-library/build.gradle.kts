@@ -1,3 +1,5 @@
+import de.yanosdev.buildsrc.dependency.YDVersion
+
 plugins {
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.compose.compiler.get().pluginId)
@@ -6,10 +8,10 @@ plugins {
 
 android {
     namespace = "de.yanosdev.styleguide"
-    compileSdk = 36
+    compileSdk = YDVersion.AndroidTargetSdk
 
     defaultConfig {
-        minSdk = 21
+        minSdk = YDVersion.AndroidMinSdk
     }
 
     publishing {
@@ -20,9 +22,6 @@ android {
     }
 
     buildFeatures { compose = true }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.8"
-    }
 }
 
 dependencies {

@@ -17,8 +17,8 @@ class YDIssueRegistry : IssueRegistry() {
 
     override val vendor: Vendor = Vendor(
         vendorName = "YanosDev",
-        feedbackUrl = "https://github.com/yourname/android-tooling/issues",
-        contact = "yourname@example.com"
+        feedbackUrl = "https://github.com/yanosdev/android-tooling/issues",
+        contact = "yanosdev@example.com"
     )
 
     override val issues: List<Issue>

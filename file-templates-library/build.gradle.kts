@@ -1,8 +1,10 @@
+import de.yanosdev.buildsrc.dependency.YDVersion
+
 plugins {
     id("android-tooling-base")
 }
 
 publishingConfig {
     artifactId = "file-templates"
-    version = "1.0.0"
+    version = YDVersion.FileTemplatesVersion
 }
