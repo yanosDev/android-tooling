@@ -4,7 +4,8 @@ include(
     ":styleguide-library",
     ":file-templates-library",
     ":live-templates-library",
-    ":lint-library"
+    ":lint-library",
+    ":lint-library:annotation"
 )
 
 pluginManagement {

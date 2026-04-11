@@ -1,5 +1,4 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm")
     `maven-publish`
 }
 
@@ -12,7 +11,7 @@ afterEvaluate {
                 groupId = "de.yanosdev"
                 artifactId = publishingConfig.artifactId
                 version = publishingConfig.version
-                from(components["java"])
+                from(components[publishingConfig.component])
             }
         }
     }

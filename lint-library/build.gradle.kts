@@ -3,7 +3,7 @@ import de.yanosdev.buildsrc.util.allWarningsAsErrorsConfig
 import de.yanosdev.buildsrc.util.configureWarnings
 
 plugins {
-    id("android-tooling-base")
+    id("yd-kotlin")
 }
 
 publishingConfig {
