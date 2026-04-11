@@ -5,6 +5,6 @@ plugins {
 }
 
 publishingConfig {
-    artifactId = "live-templates"
+    artifactId = "live-templates-library"
     version = YDVersion.LiveTemplatesVersion
 }

@@ -3,11 +3,13 @@ import de.yanosdev.buildsrc.util.allWarningsAsErrorsConfig
 import de.yanosdev.buildsrc.util.configureWarnings
 
 plugins {
-    id("yd-kotlin")
+    id("kotlin")
+    id("com.android.lint")
+    id("yd-publisher")
 }
 
 publishingConfig {
-    artifactId = "lint"
+    artifactId = "lint-library"
     version = YDVersion.LintVersion
 }
 

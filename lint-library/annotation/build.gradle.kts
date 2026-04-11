@@ -1,30 +1,36 @@
 import de.yanosdev.buildsrc.dependency.YDVersion
+import de.yanosdev.buildsrc.util.allWarningsAsErrorsConfig
+import de.yanosdev.buildsrc.util.configureWarnings
+
 
 plugins {
-    id("yd-android-library")
-}
-
-publishingConfig {
-    artifactId = "annotation"
-    version = YDVersion.AnnotationVersion
-    component = "release"
+    id("com.android.library")
 }
 
 android {
     namespace = "de.yanosdev.annotation"
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
+
+    compileSdk = YDVersion.AndroidTargetSdk
+
+    defaultConfig {
+        minSdk = YDVersion.AndroidMinSdk
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
         }
     }
 }
 
-dependencies {
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+java {
+    toolchain {
+        languageVersion = YDVersion.Java
+    }
+}
+
+kotlin {
+    compilerOptions {
+        configureWarnings(strict = allWarningsAsErrorsConfig)
+    }
 }

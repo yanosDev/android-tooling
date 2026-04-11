@@ -6,7 +6,7 @@ plugins {
 }
 
 publishingConfig {
-    artifactId = "styleguide"
+    artifactId = "styleguide-library"
     version = YDVersion.StyleGuideVersion
     component = "release"
 }
@@ -22,8 +22,18 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.compose.bom))
-    implementation(libs.compose.ui)
-    implementation(libs.compose.material3)
-    debugImplementation(libs.compose.ui.tooling)
+    // AndroidX
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.appcompat)
+
+    // Compose
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
+    // Material
+    api(libs.androidx.compose.material3.wsc)
+    implementation(libs.androidx.compose.material3)
+
 }

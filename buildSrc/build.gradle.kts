@@ -18,12 +18,6 @@ kotlin {
     }
 }
 
-sourceSets {
-    java.sourceSets["main"].java {
-        srcDir("src/main/kotlin")
-    }
-}
-
 dependencies {
     implementation(libs.compose.compiler.plugin)
     implementation(libs.android.gradle.plugin)
