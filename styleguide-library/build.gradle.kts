@@ -1,5 +1,6 @@
 plugins {
     id(libs.plugins.android.library.get().pluginId)
+    id(libs.plugins.compose.compiler.get().pluginId)
     `maven-publish`
 }
 
