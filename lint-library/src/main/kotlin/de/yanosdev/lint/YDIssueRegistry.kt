@@ -4,6 +4,8 @@ import com.android.tools.lint.client.api.IssueRegistry
 import com.android.tools.lint.client.api.Vendor
 import com.android.tools.lint.detector.api.CURRENT_API
 import com.android.tools.lint.detector.api.Issue
+import de.yanosdev.lint.model.modelIssues
+import de.yanosdev.lint.techdebt.techDebtIssues
 
 /**
  * Registers all custom lint rules.
@@ -18,12 +20,12 @@ class YDIssueRegistry : IssueRegistry() {
     override val vendor: Vendor = Vendor(
         vendorName = "YanosDev",
         feedbackUrl = "https://github.com/yanosdev/android-tooling/issues",
-        contact = "yanosdev@example.com"
+        contact = "sonaysenguen@gmail.com"
     )
 
     override val issues: List<Issue>
-        get() = listOf(
-            HardcodedColorDetector.ISSUE,
-            MissingContentDescriptionDetector.ISSUE,
-        )
+        get() = buildList {
+            addAll(techDebtIssues)
+            addAll(modelIssues)
+        }
 }
