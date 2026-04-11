@@ -11,4 +11,6 @@ object YDVersion {
     const val LiveTemplatesVersion = "1.0.0"
     const val FileTemplatesVersion = "1.0.0"
     const val LintVersion = "1.0.0"
+
+    const val AnnotationVersion = "1.0.0"
 }
