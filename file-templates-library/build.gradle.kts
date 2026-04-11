@@ -5,6 +5,6 @@ plugins {
 }
 
 publishingConfig {
-    artifactId = "file-templates"
+    artifactId = "file-templates-library"
     version = YDVersion.FileTemplatesVersion
 }

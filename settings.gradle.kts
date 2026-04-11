@@ -1,11 +1,13 @@
 rootProject.name = "android-tooling"
 
+include(":toolingapp")
+
 include(
     ":styleguide-library",
     ":file-templates-library",
     ":live-templates-library",
     ":lint-library",
-    ":lint-library:annotation"
+    ":lint-library:annotation",
 )
 
 pluginManagement {

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/file-templates-library/android-tooling.file-templates-library.main.iml" filepath="$PROJECT_DIR$/.idea/modules/file-templates-library/android-tooling.file-templates-library.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lint-library/android-tooling.lint-library.main.iml" filepath="$PROJECT_DIR$/.idea/modules/lint-library/android-tooling.lint-library.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/styleguide-library/android-tooling.styleguide-library.main.iml" filepath="$PROJECT_DIR$/.idea/modules/styleguide-library/android-tooling.styleguide-library.main.iml" />
     </modules>
   </component>
 </project>
