@@ -1,34 +1,29 @@
 plugins {
-    id("yd-android-application")
+    id(libs.plugins.android.application.get().pluginId)
+    id(libs.plugins.compose.compiler.get().pluginId)
 }
 
 android {
     namespace = "de.yanosdev.tooling"
+    compileSdk = libs.versions.yd.targetSdk.get().toInt()
 
     defaultConfig {
         applicationId = "de.yanosdev.tooling"
+        minSdk = libs.versions.yd.minSdk.get().toInt()
         versionName = "1.0.0"
 
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+    buildFeatures {
+        buildConfig = true
+        compose = true
     }
 }
 
 dependencies {
-    implementation(project(":lint-library"))
-    implementation(project(":styleguide-library"))
+    implementation(project(":lint-annotation"))
+    lintChecks(project(":lint"))
+    implementation(project(":styleguide"))
 
     // AndroidX
     implementation(libs.bundles.androidx.app)

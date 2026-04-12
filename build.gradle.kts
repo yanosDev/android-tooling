@@ -1,6 +1,9 @@
 plugins {
     id(libs.plugins.android.library.get().pluginId) apply false
-//    id("de.yanosdev.file-templates") version "1.0.0"
+    id("de.yanosdev.FileTemplatesPlugin")
+    id("de.yanosdev.LintPlugin")
+
+//    id("de.yanosdev.file-templates") version "1.0.0" // How to automatically import file templates
 }
 
 // Root-level tasks
@@ -8,14 +11,9 @@ tasks.register("publishAll") {
     group = "publishing"
     description = "Publishes all libraries"
     dependsOn(
-        ":styleguide-library:publish",
-        ":file-templates-library:publish",
-        ":live-templates-library:publish",
-        ":lint-library:publish"
+        ":styleguide:publish",
+        ":file-templates:publish",
+        ":live-templates:publish",
+        ":lint:publish"
     )
-}
-
-// For local purpose since file templates are not yet in jitpack
-tasks.named("prepareKotlinBuildScriptModel") {
-    dependsOn(":file-templates-library:installFileTemplates")
 }
