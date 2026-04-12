@@ -12,16 +12,6 @@
                   <project path="$PROJECT_DIR$/buildSrc" />
                 </projects>
               </build>
-              <build path="$PROJECT_DIR$/file-templates" name="file-templates-plugin">
-                <projects>
-                  <project path="$PROJECT_DIR$/file-templates" />
-                </projects>
-              </build>
-              <build path="$PROJECT_DIR$/lint" name="lint-plugin">
-                <projects>
-                  <project path="$PROJECT_DIR$/lint" />
-                </projects>
-              </build>
             </builds>
           </compositeBuild>
         </compositeConfiguration>

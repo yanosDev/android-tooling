@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.lint)
+    id(libs.plugins.lint.get().pluginId)
     `maven-publish`
     `kotlin-dsl`
 }

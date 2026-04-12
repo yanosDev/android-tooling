@@ -1,10 +1,8 @@
 plugins {
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.compose.compiler.get().pluginId)
+    `maven-publish`
 }
-
-
-val artifactId = "styleguide"
 
 group = "de.yanosdev"
 version = libs.versions.yd.styleguide.get()
@@ -22,10 +20,25 @@ android {
         compose = true
     }
 
+    buildTypes {
+        debug {
+            isMinifyEnabled = false
+        }
+        release {
+            isMinifyEnabled = true
+        }
+    }
+
     lint {
         abortOnError = false
         if (project.hasProperty("disableCheckReleaseBuilds")) {
             checkReleaseBuilds = false
+        }
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
         }
     }
 }
@@ -37,22 +50,30 @@ java {
 }
 
 dependencies {
-    // Lint
     implementation(project(":lint-annotation"))
     lintChecks(project(":lint"))
 
-    // AndroidX
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
 
-    // Compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
-    // Material
     api(libs.androidx.compose.material3.wsc)
     implementation(libs.androidx.compose.material3)
+}
 
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                groupId = "de.yanosdev"
+                artifactId = "styleguide"
+                version = libs.versions.yd.styleguide.get()
+                from(components["release"])
+            }
+        }
+    }
 }
