@@ -1,5 +1,4 @@
 plugins {
-
     id(libs.plugins.lint.get().pluginId)
     `kotlin-dsl`
     `maven-publish`
@@ -24,7 +23,7 @@ dependencies {
 gradlePlugin {
     plugins {
         create("LintPlugin") {
-            id = "io.github.yanosdev.lint"
+            id = "de.yanosdev.LintPlugin"
             implementationClass = "de.yanosdev.lint.plugin.LintPlugin"
         }
     }

@@ -4,38 +4,51 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import java.io.File
 
-/**
- * Copies the YanosDev.xml live templates into the project-scoped
- * .idea/templates directory so Android Studio loads them without
- * any manual import step.
- *
- * Usage:
- *   plugins { id("de.yanosdev.live-templates") version "1.0.0" }
- */
 class LiveTemplatesPlugin : Plugin<Project> {
     override fun apply(target: Project) {
+        val rootDir = target.rootDir
+        val logger = target.logger
+
         val task = target.tasks.register("installLiveTemplates") {
-            group = "YanosDev"
-            description = "Copies YanosDev live templates into .idea/templates"
+            group = "YD"
+            description = "Copies YD live templates into .idea/templates"
 
             doLast {
-                val destDir = File(target.rootDir, ".idea/templates")
+                logger.lifecycle("╔══════════════════════════════════════╗")
+                logger.lifecycle("║      YD Live Templates Installer     ║")
+                logger.lifecycle("╚══════════════════════════════════════╝")
+
+                val destDir = File(rootDir, ".idea/templates")
+                logger.lifecycle("📁 Destination: ${destDir.absolutePath}")
                 destDir.mkdirs()
 
+                logger.lifecycle("──────────────────────────────────────")
+
                 val resource = LiveTemplatesPlugin::class.java.classLoader
-                    .getResourceAsStream("liveTemplates/YanosDev.xml")
+                    .getResourceAsStream("liveTemplates/YD.xml")
 
                 if (resource != null) {
-                    File(destDir, "YanosDev.xml").writeBytes(resource.readBytes())
-                    target.logger.lifecycle("[YanosDev] Live templates installed in ${destDir.path}")
+                    File(destDir, "YD.xml").writeBytes(resource.readBytes())
+                    logger.lifecycle("  ✅ Installed: YD.xml")
+                    logger.lifecycle("──────────────────────────────────────")
+                    logger.lifecycle("✅ Installed: 1  ❌ Failed: 0")
                 } else {
-                    target.logger.warn("[YanosDev] Live template resource not found in JAR")
+                    logger.error("  ❌ YD.xml not found in JAR resources!")
+                    logger.error("   Make sure YD.xml exists at: src/main/resources/liveTemplates/YD.xml")
+                    logger.lifecycle("──────────────────────────────────────")
+                    logger.lifecycle("✅ Installed: 0  ❌ Failed: 1")
                 }
+
+                logger.lifecycle("══════════════════════════════════════")
             }
         }
 
         target.afterEvaluate {
-            target.tasks.findByName("preBuild")?.dependsOn(task)
+            target.tasks.matching {
+                it.name.startsWith("prepareKotlinBuildScriptModel")
+            }.configureEach {
+                dependsOn(task)
+            }
         }
     }
 }
