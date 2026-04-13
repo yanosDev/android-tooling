@@ -1,0 +1,105 @@
+[versions]
+# SDK
+yd-java = "21"
+yd-minSdk = "28"
+yd-targetSdk = "36"
+
+# YD Libraries
+yd-lint = "1.0.2"
+yd-file-templates = "1.0.2"
+yd-live-templates = "1.0.2"
+yd-styleguide = "1.0.2"
+
+# Android
+agp = "9.1.0"
+lint = "9.1.0"
+android-tools = "32.1.0"
+
+# Kotlin
+kotlin = "2.1.20"
+
+# AndroidX
+androidx-core = "1.18.0"
+androidx-appcompat = "1.7.1"
+androidx-activity = "1.13.0"
+androidx-lifecycle = "2.10.0"
+androidx-navigation3 = "1.1.0"
+androidx-compose-bom = "2026.03.01"
+
+# Test
+junit = "4.13.2"
+mockk = "1.14.9"
+assertk = "0.28.1"
+
+# Others
+vanniktech = "0.36.0"
+
+[libraries]
+# Gradle Plugins
+compose-compiler-plugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
+android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin" }
+
+# YD
+yd-lint = { group = "com.github.yanosDev.android-tooling", name = "lint", version.ref = "yd-lint" }
+yd-lint-annotation = { group = "com.github.yanosDev.android-tooling", name = "lint-annotation", version.ref = "yd-lint" }
+yd-styleguide = { group = "com.github.yanosDev.android-tooling", name = "styleguide", version.ref = "yd-styleguide" }
+
+# Android Lint
+android-lint-api = { group = "com.android.tools.lint", name = "lint-api", version.ref = "android-tools" }
+android-lint-checks = { group = "com.android.tools.lint", name = "lint-checks", version.ref = "android-tools" }
+android-lint-tests = { group = "com.android.tools.lint", name = "lint-tests", version.ref = "android-tools" }
+
+# AndroidX
+androidx-core = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
+androidx-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-navigation3-runtime = { group = "androidx.navigation3", name = "navigation3-runtime", version.ref = "androidx-navigation3" }
+androidx-navigation3-ui = { group = "androidx.navigation3", name = "navigation3-ui", version.ref = "androidx-navigation3" }
+
+# Compose
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-animation = { group = "androidx.compose.animation", name = "animation" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-material3-wsc = { group = "androidx.compose.material3", name = "material3-window-size-class" }
+
+# Kotlin
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
+kotlin-test-junit = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlin" }
+
+# Test
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+assertk = { group = "com.willowtreeapps.assertk", name = "assertk", version.ref = "assertk" }
+
+[bundles]
+# Android
+android-lint = ["android-lint-api", "android-lint-checks"]
+
+# AndroidX
+androidx-app = ["androidx-core", "androidx-appcompat", "androidx-activity-compose", "androidx-lifecycle-runtime"]
+androidx-navigation3 = ["androidx-navigation3-runtime", "androidx-navigation3-ui"]
+
+# Compose
+compose-app = ["androidx-compose-foundation", "androidx-compose-ui", "androidx-compose-ui-tooling-preview", "androidx-compose-animation"]
+compose-ui = ["androidx-compose-ui", "androidx-compose-ui-tooling-preview", "androidx-compose-ui-util"]
+
+# Test
+test-core = ["kotlin-test", "kotlin-test-junit", "junit", "mockk", "assertk"]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+lint = { id = "com.android.lint", version.ref = "lint" }
+maven-vanniktech = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech" }
