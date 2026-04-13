@@ -1,4 +1,4 @@
-# Android Tooling – Monorepo
+# Android Tooling – Monorepo [![](https://jitpack.io/v/yanosDev/android-tooling.svg)](https://jitpack.io/#yanosDev/android-tooling)
 
 A suite of Android developer tooling libraries distributed via JitPack.
 

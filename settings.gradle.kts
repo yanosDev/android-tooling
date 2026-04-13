@@ -22,6 +22,9 @@ pluginManagement {
                 "de.yanosdev.FileTemplatesPlugin" -> useModule(
                     "com.github.yanosDev.android-tooling:file-templates:${requested.version}"
                 )
+                "de.yanosdev.LiveTemplatesPlugin" -> useModule(
+                    "com.github.yanosDev.android-tooling:live-templates:${requested.version}"
+                )
             }
         }
     }

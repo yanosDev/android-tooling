@@ -5,10 +5,10 @@ yd-minSdk = "28"
 yd-targetSdk = "36"
 
 # YD Libraries
-yd-lint = "1.0.2"
-yd-file-templates = "1.0.2"
-yd-live-templates = "1.0.2"
-yd-styleguide = "1.0.2"
+yd-lint = "1.0.4"
+yd-file-templates = "1.0.4"
+yd-live-templates = "1.0.4"
+yd-styleguide = "1.0.4"
 
 # Android
 agp = "9.1.0"
@@ -99,3 +99,7 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 lint = { id = "com.android.lint", version.ref = "lint" }
+
+yd-lint = { id = "de.yanosdev.LintPlugin", version.ref = "yd-lint" }
+yd-live-templates = { id = "de.yanosdev.LiveTemplatesPlugin", version.ref = "yd-live-templates" }
+yd-file-templates = { id = "de.yanosdev.FileTemplatesPlugin", version.ref = "yd-file-templates" }
