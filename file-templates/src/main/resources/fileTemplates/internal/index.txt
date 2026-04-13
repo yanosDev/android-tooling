@@ -1,4 +1,1 @@
-YD ViewModel.kt
-YD UseCase.kt
-YD Repository.kt
 YD Composable Screen.kt

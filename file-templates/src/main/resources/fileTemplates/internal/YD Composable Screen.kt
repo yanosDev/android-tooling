@@ -5,19 +5,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import de.yanosdev.styleguide.YanosDevTheme
 
+#parse("File Header.java")
 @Composable
 fun $ {
     NAME
-}Screen() {
-    // TODO: Implement screen content
+}(
+modifier: Modifier = Modifier
+) {
+
 }
 
-@Preview(showBackground = true)
+@PhonePreview
 @Composable
-private fun $ {
-    NAME
-}ScreenPreview() {
-    YanosDevTheme {
-        ${ NAME } Screen ()
-    }
+private fun Preview() = Preview {
+    ${ NAME }()
 }
