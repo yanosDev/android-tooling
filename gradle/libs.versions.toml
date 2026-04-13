@@ -31,9 +31,6 @@ junit = "4.13.2"
 mockk = "1.14.9"
 assertk = "0.28.1"
 
-# Others
-vanniktech = "0.36.0"
-
 [libraries]
 # Gradle Plugins
 compose-compiler-plugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
@@ -102,4 +99,3 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 lint = { id = "com.android.lint", version.ref = "lint" }
-maven-vanniktech = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech" }
