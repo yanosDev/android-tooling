@@ -5,14 +5,10 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.yanosdev.annotation.YDRevisionIn
 
-/**
- * Grid dimensions
- *
- * Dimensions should always work with an 8dp grid.
- * The only exceptions to this rule are b2, b4 and b12.
- */
 @Immutable
+@YDRevisionIn(implementedAt = "2026", revisionAfterInDays = 365)
 data class YDSpacing(
     val b0: Dp,
     val b1: Dp,

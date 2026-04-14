@@ -1,6 +1,8 @@
 package de.yanosdev.lint.techdebt
 
-import com.android.tools.lint.detector.api.Issue
+import de.yanosdev.lint.codestyle.DataClassParameterSortingCodeStyleDetector
 
-internal val techDebtIssues = buildList<Issue> {
+internal val techDebtIssues = buildList {
+    add(DataClassParameterSortingCodeStyleDetector.issue)
+
 }
