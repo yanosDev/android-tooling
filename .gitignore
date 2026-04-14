@@ -1,7 +1,41 @@
-# Project exclude paths
-/.gradle/
-/.kotlin/
-/build/
+# MacOS config
+.DS_Store
 
+# Gradle
+.gradle/
+build/
+
+# Local configuration
 local.properties
-keyring.gpg
+build.properties
+
+# Logs
+*.log
+
+# Android Studio
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+output.json
+
+# IntelliJ
+*.iml
+.idea/*
+!.idea/codeStyles
+!.idea/dictionaries
+!.idea/inspectionProfiles
+!.idea/scopes
+!.idea/fileTemplates
+!.idea/file.template.settings.xml
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
+
+# Credentials
+credentials.gradle
+credentials.properties
+google-credentials*.json
+
+# Kotlin
+.kotlin/
