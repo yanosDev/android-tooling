@@ -11,7 +11,7 @@ class LiveTemplatesPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         val logger = target.logger
 
-        target.tasks.register("installLiveTemplates") {
+        val task = target.tasks.register("installLiveTemplates") {
             group = "YD"
             description = "Copies YD live templates into Android Studio system directory"
 
@@ -48,6 +48,14 @@ class LiveTemplatesPlugin : Plugin<Project> {
                     logger.error("  ❌ Resource 'liveTemplates/YD.xml' not found in JAR!")
                 }
                 logger.lifecycle("══════════════════════════════════════")
+            }
+        }
+
+        target.afterEvaluate {
+            target.tasks.matching {
+                it.name.startsWith("prepareKotlinBuildScriptModel")
+            }.configureEach {
+                dependsOn(task)
             }
         }
     }

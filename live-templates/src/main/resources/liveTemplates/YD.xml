@@ -1,70 +1,13 @@
 <templateSet group="YanosDev">
 
     <!-- comp → Composable function scaffold -->
-    <template name="comp"
-        description="YanosDev: Composable function"
-        toReformat="true" toShortenFQNames="true" value="@androidx.compose.runtime.Composable&#10;fun $NAME$() {&#10;    $END$&#10;}">
+    <template name="pcomp"
+        description="YanosDev: Composable function" toReformat="true" toShortenFQNames="true"
+        value="@androidx.compose.runtime.Composable&#10;fun $NAME$(modifier: androidx.compose.ui.Modifier = androidx.compose.ui.Modifier ) {&#10;    $END$&#10;}">
         <variable name="NAME" alwaysStopAt="true"
             defaultValue="MyComposable" expression="capitalize(fileNameWithoutExtension())" />
         <context>
             <option name="KOTLIN" value="true" />
         </context>
     </template>
-
-    <!-- comppreview → Composable + Preview pair -->
-    <template name="comppreview"
-        description="YanosDev: Composable + Preview"
-        toReformat="true" toShortenFQNames="true" value="@androidx.compose.runtime.Composable&#10;fun $NAME$() {&#10;    $END$&#10;}&#10;&#10;@androidx.compose.ui.tooling.preview.Preview(showBackground = true)&#10;@androidx.compose.runtime.Composable&#10;private fun $NAME$Preview() {&#10;    de.yanosdev.styleguide.YanosDevTheme {&#10;        $NAME$()&#10;    }&#10;}">
-        <variable name="NAME" alwaysStopAt="true"
-            defaultValue="MyComposable" expression="capitalize(fileNameWithoutExtension())" />
-        <context>
-            <option name="KOTLIN" value="true" />
-        </context>
-    </template>
-
-    <!-- vm → ViewModel with StateFlow -->
-    <template name="vm"
-        description="YanosDev: ViewModel + UiState"
-        toReformat="true" toShortenFQNames="true" value="class $NAME$ViewModel : androidx.lifecycle.ViewModel() {&#10;&#10;    private val _uiState = kotlinx.coroutines.flow.MutableStateFlow($NAME$UiState())&#10;    val uiState: kotlinx.coroutines.flow.StateFlow&lt;$NAME$UiState&gt; = _uiState.asStateFlow()&#10;&#10;    $END$&#10;}&#10;&#10;data class $NAME$UiState(&#10;    val isLoading: Boolean = false,&#10;    val error: String? = null,&#10;)">
-        <variable name="NAME" alwaysStopAt="true" defaultValue="My"
-            expression="capitalize(fileNameWithoutExtension())" />
-        <context>
-            <option name="KOTLIN" value="true" />
-        </context>
-    </template>
-
-    <!-- repo → Repository interface + implementation -->
-    <template name="repo"
-        description="YanosDev: Repository interface + Impl"
-        toReformat="true" toShortenFQNames="true"
-        value="interface $NAME$Repository {&#10;    $END$&#10;}&#10;&#10;class $NAME$RepositoryImpl @javax.inject.Inject constructor() : $NAME$Repository">
-        <variable name="NAME" alwaysStopAt="true" defaultValue="My"
-            expression="capitalize(fileNameWithoutExtension())" />
-        <context>
-            <option name="KOTLIN" value="true" />
-        </context>
-    </template>
-
-    <!-- usecase → UseCase with runCatching -->
-    <template name="usecase"
-        description="YanosDev: UseCase scaffold"
-        toReformat="true" toShortenFQNames="true" value="class $NAME$UseCase @javax.inject.Inject constructor() {&#10;    suspend operator fun invoke(): Result&lt;Unit&gt; = runCatching {&#10;        $END$&#10;    }&#10;}">
-        <variable name="NAME" alwaysStopAt="true" defaultValue="My"
-            expression="capitalize(fileNameWithoutExtension())" />
-        <context>
-            <option name="KOTLIN" value="true" />
-        </context>
-    </template>
-
-    <!-- flow → collect a Flow safely in a Composable -->
-    <template name="flowstate" description="YanosDev: collectAsStateWithLifecycle"
-        toReformat="true" toShortenFQNames="true"
-        value="val $VAR$ by $FLOW$.collectAsStateWithLifecycle()">
-        <variable name="VAR" alwaysStopAt="true" defaultValue="uiState" />
-        <variable name="FLOW" alwaysStopAt="true" defaultValue="viewModel.uiState" />
-        <context>
-            <option name="KOTLIN" value="true" />
-        </context>
-    </template>
-
 </templateSet>

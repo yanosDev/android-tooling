@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.Modifier
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         }
         super.onCreate(savedInstanceState)
         setContent {
-
+            Modifier
         }
     }
 }
