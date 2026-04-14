@@ -12,4 +12,8 @@ package de.yanosdev.annotation
     AnnotationTarget.TYPEALIAS
 )
 @Retention(AnnotationRetention.SOURCE)
-annotation class YDDeprecated(val message: String, val removeAfter: String = "")
+annotation class YDDocumentation(
+    val message: String,
+    val webUrl: String = "",
+    val readMe: String = ""
+)

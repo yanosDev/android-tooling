@@ -12,4 +12,4 @@ package de.yanosdev.annotation
     AnnotationTarget.TYPEALIAS
 )
 @Retention(AnnotationRetention.SOURCE)
-annotation class YDDeprecated(val message: String, val removeAfter: String = "")
+annotation class YDRevisionIn(val implementedAt: String = "", val revisionAfterInSeconds: Long = 0L)
