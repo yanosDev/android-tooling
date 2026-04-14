@@ -4,50 +4,50 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import java.io.File
 
+/**
+ * Mac only for now.
+ */
 class LiveTemplatesPlugin : Plugin<Project> {
     override fun apply(target: Project) {
-        val rootDir = target.rootDir
         val logger = target.logger
 
-        val task = target.tasks.register("installLiveTemplates") {
+        target.tasks.register("installLiveTemplates") {
             group = "YD"
-            description = "Copies YD live templates into .idea/templates"
+            description = "Copies YD live templates into Android Studio system directory"
 
             doLast {
-                logger.lifecycle("╔══════════════════════════════════════╗")
-                logger.lifecycle("║      YD Live Templates Installer     ║")
-                logger.lifecycle("╚══════════════════════════════════════╝")
+                val userHome = System.getProperty("user.home")
+                val googleSupportDir = File("$userHome/Library/Application Support/Google")
 
-                val destDir = File(rootDir, ".idea/templates")
-                logger.lifecycle("📁 Destination: ${destDir.absolutePath}")
-                destDir.mkdirs()
+                val studioDir = googleSupportDir.listFiles()
+                    ?.filter { it.isDirectory && it.name.startsWith("AndroidStudio") }
+                    ?.maxByOrNull { it.name }
 
-                logger.lifecycle("──────────────────────────────────────")
+                if (studioDir == null) {
+                    logger.error("❌ Android Studio configuration directory not found in $googleSupportDir")
+                    return@doLast
+                }
+
+                val destDir = File(studioDir, "templates")
+                if (!destDir.exists()) destDir.mkdirs()
 
                 val resource = LiveTemplatesPlugin::class.java.classLoader
                     .getResourceAsStream("liveTemplates/YD.xml")
 
+                logger.lifecycle("╔══════════════════════════════════════╗")
+                logger.lifecycle("║      YD Global Template Installer    ║")
+                logger.lifecycle("╚══════════════════════════════════════╝")
+                logger.lifecycle("📁 Target Studio: ${studioDir.name}")
+                logger.lifecycle("📁 Path: ${destDir.absolutePath}")
+
                 if (resource != null) {
                     File(destDir, "YD.xml").writeBytes(resource.readBytes())
                     logger.lifecycle("  ✅ Installed: YD.xml")
-                    logger.lifecycle("──────────────────────────────────────")
-                    logger.lifecycle("✅ Installed: 1  ❌ Failed: 0")
+                    logger.lifecycle("  💡 Note: Restart Android Studio to see changes.")
                 } else {
-                    logger.error("  ❌ YD.xml not found in JAR resources!")
-                    logger.error("   Make sure YD.xml exists at: src/main/resources/liveTemplates/YD.xml")
-                    logger.lifecycle("──────────────────────────────────────")
-                    logger.lifecycle("✅ Installed: 0  ❌ Failed: 1")
+                    logger.error("  ❌ Resource 'liveTemplates/YD.xml' not found in JAR!")
                 }
-
                 logger.lifecycle("══════════════════════════════════════")
-            }
-        }
-
-        target.afterEvaluate {
-            target.tasks.matching {
-                it.name.startsWith("prepareKotlinBuildScriptModel")
-            }.configureEach {
-                dependsOn(task)
             }
         }
     }
