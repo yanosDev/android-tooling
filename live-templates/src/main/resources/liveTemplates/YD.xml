@@ -1,0 +1,13 @@
+<templateSet group="YanosDev">
+
+    <!-- comp → Composable function scaffold -->
+    <template name="pcomp"
+        description="YanosDev: Composable function" toReformat="true" toShortenFQNames="true"
+        value="@androidx.compose.runtime.Composable&#10;fun $NAME$(modifier: androidx.compose.ui.Modifier = androidx.compose.ui.Modifier ) {&#10;    $END$&#10;}">
+        <variable name="NAME" alwaysStopAt="true"
+            defaultValue="MyComposable" expression="capitalize(fileNameWithoutExtension())" />
+        <context>
+            <option name="KOTLIN" value="true" />
+        </context>
+    </template>
+</templateSet>
