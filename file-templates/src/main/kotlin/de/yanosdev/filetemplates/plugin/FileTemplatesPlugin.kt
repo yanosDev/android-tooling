@@ -22,21 +22,11 @@ class FileTemplatesPlugin : Plugin<Project> {
                 target.logger.lifecycle("║     YD File Templates Installer      ║")
                 target.logger.lifecycle("╚══════════════════════════════════════╝")
 
-                val destDir = File(target.rootDir, ".idea/fileTemplates/")
-                target.logger.lifecycle("📁 Destination: ${destDir.absolutePath}")
-                destDir.mkdirs()
-
                 val loader = FileTemplatesPlugin::class.java.classLoader
-
-                val (successCount, failCount) = installLintFiles(
-                    loader = loader,
-                    target = target,
-                    destDir = destDir
-                ) ?: return@doLast
-
-                target.logger.lifecycle("──────────────────────────────────────")
-                target.logger.lifecycle("✅ Installed: $successCount  ❌ Failed: $failCount")
-                target.logger.lifecycle("══════════════════════════════════════")
+                provide(loader = loader, target = target) {
+                    install(destDir = ".idea/", fileName = "base.txt")
+                    install(destDir = ".idea/fileTemplates/", fileName = "lint.txt")
+                }
             }
         }
 
@@ -49,19 +39,28 @@ class FileTemplatesPlugin : Plugin<Project> {
         }
     }
 
-    private fun installLintFiles(
+    private fun provide(
         loader: ClassLoader,
         target: Project,
-        destDir: File
-    ): Pair<Int, Int>? {
-        // Read index file
-        val indexStream = loader.getResourceAsStream("fileTemplates/internal/lint.txt")
+        block: InstallScope.() -> Unit
+    ) =
+        InstallScopeImpl(
+            loader = loader,
+            target = target,
+        ).block()
+
+    private fun InstallScope.install(destDir: String, fileName: String) {
+        val destDir = File(target.rootDir, destDir)
+        target.logger.lifecycle("📁 Destination: ${destDir.absolutePath}")
+        destDir.mkdirs()
+
+        val indexStream = loader.getResourceAsStream("fileTemplates/internal/$fileName")
         if (indexStream == null) {
-            target.logger.error("❌ lint.txt not found in JAR resources!")
-            target.logger.error("   Make sure lint.txt exists at: src/main/resources/fileTemplates/internal/lint.txt")
-            return null
+            target.logger.error("❌ $fileName not found in JAR resources!")
+            target.logger.error("   Make sure $fileName exists at: src/main/resources/fileTemplates/internal/$fileName")
+            return
         }
-        target.logger.lifecycle("✅ Found lint.txt")
+        target.logger.lifecycle("✅ Found $fileName")
 
         val templates = indexStream.bufferedReader().readLines()
             .map { it.trim() }
@@ -86,6 +85,21 @@ class FileTemplatesPlugin : Plugin<Project> {
                 failCount++
             }
         }
-        return successCount to failCount
+
+        target.logger.lifecycle("──────────────────────────────────────")
+        target.logger.lifecycle("✅ Installed: $successCount  ❌ Failed: $failCount")
+        target.logger.lifecycle("══════════════════════════════════════")
+
+        successCount to failCount
     }
 }
+
+interface InstallScope {
+    val loader: ClassLoader
+    val target: Project
+}
+
+data class InstallScopeImpl(
+    override val loader: ClassLoader,
+    override val target: Project,
+) : InstallScope

@@ -31,6 +31,6 @@ gradlePlugin {
 
 tasks.withType<Jar>().configureEach {
     manifest {
-        attributes["Lint-Registry-v2"] = "de.yanosdev.lint.YanosDevIssueRegistry"
+        attributes["Lint-Registry-v2"] = "de.yanosdev.lint.YDIssueRegistry"
     }
 }
