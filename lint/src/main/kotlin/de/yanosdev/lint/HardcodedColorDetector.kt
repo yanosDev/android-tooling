@@ -10,6 +10,7 @@ import com.android.tools.lint.detector.api.XmlContext
 import org.w3c.dom.Attr
 
 /**
+ *
  * Detects hardcoded colors in XML layout files. *
  * Why: Hardcoded colors bypass the StyleGuide token system, making
  * dark-mode and rebranding support harder to maintain.

@@ -1,3 +1,5 @@
+@file:YDRevisionIn(implementedAt = "2026-04-14", revisionAfterInDays = 365)
+
 package de.yanosdev.styleguide.theme.foundations.spacing
 
 import androidx.compose.runtime.Immutable
@@ -8,7 +10,6 @@ import androidx.compose.ui.unit.dp
 import de.yanosdev.annotation.YDRevisionIn
 
 @Immutable
-@YDRevisionIn(implementedAt = "2026", revisionAfterInDays = 365)
 data class YDSpacing(
     val b0: Dp,
     val b1: Dp,

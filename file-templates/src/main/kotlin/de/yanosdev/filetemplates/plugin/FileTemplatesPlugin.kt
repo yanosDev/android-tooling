@@ -28,38 +28,11 @@ class FileTemplatesPlugin : Plugin<Project> {
 
                 val loader = FileTemplatesPlugin::class.java.classLoader
 
-                // Read index file
-                val indexStream = loader.getResourceAsStream("fileTemplates/internal/index.txt")
-                if (indexStream == null) {
-                    target.logger.error("❌ index.txt not found in JAR resources!")
-                    target.logger.error("   Make sure index.txt exists at: src/main/resources/fileTemplates/internal/index.txt")
-                    return@doLast
-                }
-                target.logger.lifecycle("✅ Found index.txt")
-
-                val templates = indexStream.bufferedReader().readLines()
-                    .map { it.trim() }
-                    .filter { it.isNotEmpty() && !it.startsWith("//") }
-
-                target.logger.lifecycle("📋 Found ${templates.size} template(s) in index.txt")
-                target.logger.lifecycle("──────────────────────────────────────")
-
-                var successCount = 0
-                var failCount = 0
-
-                templates.forEach { name ->
-                    val resource = loader.getResourceAsStream("fileTemplates/internal/$name")
-                    val nameWithoutFTExtension = name.removeSuffix(".ft")
-                    if (resource != null) {
-                        val file = File(destDir, nameWithoutFTExtension)
-                        file.writeBytes(resource.readBytes())
-                        target.logger.lifecycle("  ✅ Installed: $nameWithoutFTExtension")
-                        successCount++
-                    } else {
-                        target.logger.error("  ❌ Not found in JAR: $nameWithoutFTExtension")
-                        failCount++
-                    }
-                }
+                val (successCount, failCount) = installLintFiles(
+                    loader = loader,
+                    target = target,
+                    destDir = destDir
+                ) ?: return@doLast
 
                 target.logger.lifecycle("──────────────────────────────────────")
                 target.logger.lifecycle("✅ Installed: $successCount  ❌ Failed: $failCount")
@@ -74,5 +47,45 @@ class FileTemplatesPlugin : Plugin<Project> {
                 dependsOn(task)
             }
         }
+    }
+
+    private fun installLintFiles(
+        loader: ClassLoader,
+        target: Project,
+        destDir: File
+    ): Pair<Int, Int>? {
+        // Read index file
+        val indexStream = loader.getResourceAsStream("fileTemplates/internal/lint.txt")
+        if (indexStream == null) {
+            target.logger.error("❌ lint.txt not found in JAR resources!")
+            target.logger.error("   Make sure lint.txt exists at: src/main/resources/fileTemplates/internal/lint.txt")
+            return null
+        }
+        target.logger.lifecycle("✅ Found lint.txt")
+
+        val templates = indexStream.bufferedReader().readLines()
+            .map { it.trim() }
+            .filter { it.isNotEmpty() && !it.startsWith("//") }
+
+        target.logger.lifecycle("📋 Found ${templates.size} template(s) in lint.txt")
+        target.logger.lifecycle("──────────────────────────────────────")
+
+        var successCount = 0
+        var failCount = 0
+
+        templates.forEach { name ->
+            val resource = loader.getResourceAsStream("fileTemplates/internal/$name")
+            val nameWithoutFTExtension = name.removeSuffix(".ft")
+            if (resource != null) {
+                val file = File(destDir, nameWithoutFTExtension)
+                file.writeBytes(resource.readBytes())
+                target.logger.lifecycle("  ✅ Installed: $nameWithoutFTExtension")
+                successCount++
+            } else {
+                target.logger.error("  ❌ Not found in JAR: $nameWithoutFTExtension")
+                failCount++
+            }
+        }
+        return successCount to failCount
     }
 }

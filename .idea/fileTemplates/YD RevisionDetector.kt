@@ -14,14 +14,14 @@ import com.android.tools.lint.detector.api.SourceCodeScanner
 /**
  * TODO: Add Documentation here.
  *
- * For further information on usage See [../documentation/CodeStyleReadMe.md]
+ * For further information on usage See [../documentation/RevisionReadMe.md]
  */
-class ${NAME}CodeStyleDetector : Detector(), SourceCodeScanner {
+class ${NAME}RevisionDetector : Detector(), SourceCodeScanner {
 
     companion object {
-        val issue: Issue = Issue.create( /** copy this to `add(${NAME}CodeStyleDetector.issue)` [de.yanosdev.lint.techdebt.techDebtIssues] */
+        val issue: Issue = Issue.create( /** copy this to `add(${NAME}RevisionDetector.issue)` [de.yanosdev.lint.techdebt.techDebtIssues] */
             id = "${NAME}",
-            briefDescription = "CodeStyle: ${NAME.replaceAll('([A-Z])', ' $1').trim()}",
+            briefDescription = "Revision: ${NAME.replaceAll('([A-Z])', ' $1').trim()}",
             explanation =
             /** TODO: Add a detailed explanation here */
             ,
@@ -29,7 +29,7 @@ class ${NAME}CodeStyleDetector : Detector(), SourceCodeScanner {
             priority = 3,
             severity = Severity.WARNING,
             implementation = Implementation(
-                ${NAME}CodeStyleDetector ::class.java,
+                ${NAME}RevisionDetector ::class.java,
                 Scope.JAVA_FILE_SCOPE
             )
         )

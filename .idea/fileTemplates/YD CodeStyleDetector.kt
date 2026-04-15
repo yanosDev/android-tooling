@@ -19,7 +19,7 @@ import com.android.tools.lint.detector.api.SourceCodeScanner
 class ${NAME}CodeStyleDetector : Detector(), SourceCodeScanner {
 
     companion object {
-        val issue: Issue = Issue.create( /** copy this to `add(${NAME}CodeStyleDetector.issue)` [de.yanosdev.lint.techdebt.techDebtIssues] */
+        val issue: Issue = Issue.create(
             id = "${NAME}",
             briefDescription = "CodeStyle: ${NAME.replaceAll('([A-Z])', ' $1').trim()}",
             explanation =

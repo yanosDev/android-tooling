@@ -1,4 +1,4 @@
-package de.yanosdev.lint.codestyle
+package de.yanosdev.lint.techdebt.codestyle
 
 import com.android.tools.lint.client.api.UElementHandler
 import com.android.tools.lint.detector.api.Category

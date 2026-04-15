@@ -10,8 +10,8 @@ version = libs.versions.yd.file.templates.get()
 
 gradlePlugin {
     plugins {
-        create("FileTemplatesPlugin") {
-            id = "de.yanosdev.FileTemplatesPlugin"
+        create("LintFileTemplatesPlugin") {
+            id = "de.yanosdev.LintFileTemplatesPlugin"
             implementationClass = "de.yanosdev.filetemplates.plugin.FileTemplatesPlugin"
         }
     }
