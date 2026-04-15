@@ -49,13 +49,14 @@ class FileTemplatesPlugin : Plugin<Project> {
 
                 templates.forEach { name ->
                     val resource = loader.getResourceAsStream("fileTemplates/internal/$name")
+                    val nameWithoutFTExtension = name.removeSuffix(".ft")
                     if (resource != null) {
-                        val file = File(destDir, name)
+                        val file = File(destDir, nameWithoutFTExtension)
                         file.writeBytes(resource.readBytes())
-                        target.logger.lifecycle("  ✅ Installed: $name")
+                        target.logger.lifecycle("  ✅ Installed: $nameWithoutFTExtension")
                         successCount++
                     } else {
-                        target.logger.error("  ❌ Not found in JAR: $name")
+                        target.logger.error("  ❌ Not found in JAR: $nameWithoutFTExtension")
                         failCount++
                     }
                 }
