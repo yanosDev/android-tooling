@@ -1,6 +1,9 @@
+@file:YDRevisionIn(implementedAt = "2026-04-16", revisionAfterInDays = -1)
+
 package de.yanosdev.styleguide.theme.foundations.colors
 
 import androidx.compose.ui.graphics.Color
+import de.yanosdev.annotation.YDRevisionIn
 
 internal object YDColor {
     // Deep Brown

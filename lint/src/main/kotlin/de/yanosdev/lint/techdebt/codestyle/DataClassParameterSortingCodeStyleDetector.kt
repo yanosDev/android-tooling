@@ -11,7 +11,7 @@ import com.android.tools.lint.detector.api.Severity
 import com.android.tools.lint.detector.api.SourceCodeScanner
 import com.android.tools.lint.detector.api.isDuplicatedOverload
 import com.intellij.psi.PsiParameter
-import de.yanosdev.lint.util.isDataClass
+import de.yanosdev.lint.util.uast.isDataClass
 import org.jetbrains.uast.UClass
 import org.jetbrains.uast.UElement
 import org.jetbrains.uast.UMethod

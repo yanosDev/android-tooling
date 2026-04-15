@@ -1,4 +1,4 @@
-package de.yanosdev.lint.util
+package de.yanosdev.lint.util.uast
 
 import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.uast.UClass
