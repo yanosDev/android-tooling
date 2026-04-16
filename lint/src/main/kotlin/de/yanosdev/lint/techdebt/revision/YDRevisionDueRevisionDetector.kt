@@ -15,6 +15,7 @@ import de.yanosdev.lint.util.paramValue
 import de.yanosdev.lint.util.reference.ClassNameReference
 import org.jetbrains.kotlin.incremental.createDirectory
 import org.jetbrains.uast.UElement
+import org.jetbrains.uast.UFile
 import org.jetbrains.uast.getContainingUFile
 import org.jetbrains.uast.getIoFile
 import org.jetbrains.uast.namePsiElement
@@ -28,10 +29,74 @@ import java.time.LocalDate
  */
 class YDRevisionDueRevisionDetector : Detector(), SourceCodeScanner {
 
-    override fun getApplicableUastTypes(): List<Class<out UElement>> = listOf(UElement::class.java)
+    override fun getApplicableUastTypes(): List<Class<out UElement>> = listOf(UFile::class.java)
 
     override fun createUastHandler(context: JavaContext): UElementHandler =
         object : UElementHandler() {
+
+            override fun visitFile(node: UFile) {
+                val file = context.uastFile
+                file
+                    ?.uAnnotations
+                    ?.find { it.namePsiElement?.text == ClassNameReference.YDRevisionIn }
+                    ?.run {
+                        val implementedAt = file.sourcePsi.text.paramValue("implementedAt")
+                        val revisionAfterInDays =
+                            file.sourcePsi.text.paramValue("revisionAfterInDays").toLong()
+
+                        val implementedAtDate = implementedAt.localDate()
+                        val today = LocalDate.now()
+                        if (implementedAtDate.plusDays(revisionAfterInDays) < today) {
+                            val resetDay = today.format()
+                            val resetFix = fix()
+                                .replace()
+                                .text(implementedAt)
+                                .with(resetDay)
+                                .name("✅ Revised File")
+                                .autoFix()
+                                .build()
+
+                            val root = (context.project.dir.parentFile ?: context.project.dir)
+                            val techDirectory = File(root, "automation/techdebt")
+                            techDirectory.mkdirs()
+                            techDirectory.createDirectory()
+                            val relativePath = node.getContainingUFile()
+                                ?.getIoFile()
+                                ?.path
+                                ?.replace(
+                                    root.path,
+                                    ""
+                                )
+                            val techDebtTicket = fix()
+                                .newFile(
+                                    File(
+                                        techDirectory,
+                                        context.file.name.replace(".kt", ".md")
+                                    ),
+
+                                    revisionMD
+                                        .replace(
+                                            "%name", context.file.name
+                                        )
+                                        .replace("%date", implementedAt)
+                                        .replace("%path", relativePath!!)
+                                )
+                                .open()
+                                .name("🎟️ File in a Ticket")
+                                .build()
+
+                            context.report(
+                                issue,
+                                context.getLocation(context.uastFile),
+                                "This file needs revision.",
+                                fix().alternatives(
+                                    resetFix,
+                                    techDebtTicket
+                                )
+                            )
+                        }
+                    }
+            }
             override fun visitElement(node: UElement) {
                 val file = context.uastFile
                 file
@@ -55,7 +120,8 @@ class YDRevisionDueRevisionDetector : Detector(), SourceCodeScanner {
                                 .build()
 
                             val root = (context.project.dir.parentFile ?: context.project.dir)
-                            val techDirectory = File(root, "techdebt")
+                            val techDirectory = File(root, "automation/techdebt")
+                            techDirectory.mkdirs()
                             techDirectory.createDirectory()
                             val relativePath = node.getContainingUFile()
                                 ?.getIoFile()
@@ -68,7 +134,7 @@ class YDRevisionDueRevisionDetector : Detector(), SourceCodeScanner {
                                 .newFile(
                                     File(
                                         techDirectory,
-                                        "TECH_" + context.file.name.replace(".kt", ".md")
+                                        context.file.name.replace(".kt", ".md")
                                     ),
 
                                     revisionMD
@@ -99,16 +165,18 @@ class YDRevisionDueRevisionDetector : Detector(), SourceCodeScanner {
     companion object {
         const val revisionMD = """
 ## %name Revision
---- 
 
-###     
+---      
 
 **Description:**
 
 The `%name` file needs revision. The last time this file was revision was at `%date`.
 
 **Link:**
-[%name](..%path)
+
+[Local %name](..%path)
+
+[GitHub %name](../blob/main%path)
 
         """
         val issue: Issue = Issue.create(

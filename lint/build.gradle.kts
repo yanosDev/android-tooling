@@ -29,6 +29,16 @@ gradlePlugin {
     }
 }
 
+tasks.register<Exec>("createTechDebtIssues") {
+    group = "maintenance"
+    description = "Creates GitHub issues from markdown files in the techdebt directory"
+    commandLine("sh", "${rootProject.projectDir}/automation/scripts/create-tech-debt-issues.sh")
+}
+
+tasks.named("build") {
+    dependsOn("createTechDebtIssues")
+}
+
 tasks.withType<Jar>().configureEach {
     manifest {
         attributes["Lint-Registry-v2"] = "de.yanosdev.lint.YDIssueRegistry"
