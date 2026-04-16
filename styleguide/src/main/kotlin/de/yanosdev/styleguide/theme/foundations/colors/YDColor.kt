@@ -1,4 +1,4 @@
-@file:YDRevisionIn(implementedAt = "2026-04-16", revisionAfterInDays = -1)
+@file:YDRevisionIn(implementedAt = "2026-04-16", revisionAfterInDays = 365)
 
 package de.yanosdev.styleguide.theme.foundations.colors
 

@@ -1,7 +1,6 @@
 package de.yanosdev.lint.techdebt.revision
 
-import com.android.tools.lint.detector.api.AnnotationInfo
-import com.android.tools.lint.detector.api.AnnotationUsageInfo
+import com.android.tools.lint.client.api.UElementHandler
 import com.android.tools.lint.detector.api.Category
 import com.android.tools.lint.detector.api.Detector
 import com.android.tools.lint.detector.api.Implementation
@@ -12,9 +11,14 @@ import com.android.tools.lint.detector.api.Severity
 import com.android.tools.lint.detector.api.SourceCodeScanner
 import de.yanosdev.lint.util.format
 import de.yanosdev.lint.util.localDate
-import de.yanosdev.lint.util.reference.QualifiedNameReference
-import de.yanosdev.lint.util.uast.get
+import de.yanosdev.lint.util.paramValue
+import de.yanosdev.lint.util.reference.ClassNameReference
+import org.jetbrains.kotlin.incremental.createDirectory
 import org.jetbrains.uast.UElement
+import org.jetbrains.uast.getContainingUFile
+import org.jetbrains.uast.getIoFile
+import org.jetbrains.uast.namePsiElement
+import java.io.File
 import java.time.LocalDate
 
 /**
@@ -24,42 +28,89 @@ import java.time.LocalDate
  */
 class YDRevisionDueRevisionDetector : Detector(), SourceCodeScanner {
 
-    override fun applicableAnnotations(): List<String> = listOf(QualifiedNameReference.YDRevisionIn)
+    override fun getApplicableUastTypes(): List<Class<out UElement>> = listOf(UElement::class.java)
 
-    override fun visitAnnotationUsage(
-        context: JavaContext,
-        element: UElement,
-        annotationInfo: AnnotationInfo,
-        usageInfo: AnnotationUsageInfo
-    ) {
-        val implementedAt = annotationInfo
-            .annotation
-            .get<String>("implementedAt")
+    override fun createUastHandler(context: JavaContext): UElementHandler =
+        object : UElementHandler() {
+            override fun visitElement(node: UElement) {
+                val file = context.uastFile
+                file
+                    ?.uAnnotations
+                    ?.find { it.namePsiElement?.text == ClassNameReference.YDRevisionIn }
+                    ?.run {
+                        val implementedAt = file.sourcePsi.text.paramValue("implementedAt")
+                        val revisionAfterInDays =
+                            file.sourcePsi.text.paramValue("revisionAfterInDays").toLong()
 
-        val implementedAtDate = implementedAt.localDate()
-        val today = LocalDate.now()
+                        val implementedAtDate = implementedAt.localDate()
+                        val today = LocalDate.now()
+                        if (implementedAtDate.plusDays(revisionAfterInDays) < today) {
+                            val resetDay = today.format()
+                            val resetFix = fix()
+                                .replace()
+                                .text(implementedAt)
+                                .with(resetDay)
+                                .name("✅ Revised File")
+                                .autoFix()
+                                .build()
 
-        val revisionAfterInDays = annotationInfo.annotation.get<Long>("revisionAfterInDays")
+                            val root = (context.project.dir.parentFile ?: context.project.dir)
+                            val techDirectory = File(root, "techdebt")
+                            techDirectory.createDirectory()
+                            val relativePath = node.getContainingUFile()
+                                ?.getIoFile()
+                                ?.path
+                                ?.replace(
+                                    root.path,
+                                    ""
+                                )
+                            val techDebtTicket = fix()
+                                .newFile(
+                                    File(
+                                        techDirectory,
+                                        "TECH_" + context.file.name.replace(".kt", ".md")
+                                    ),
 
-        if (implementedAtDate.plusDays(revisionAfterInDays) < today) {
-            val resetDay = today.format()
-            val fix = fix()
-                .replace()
-                .text(implementedAt)
-                .with(resetDay)
-                .autoFix()
-                .build()
+                                    revisionMD
+                                        .replace(
+                                            "%name", context.file.name
+                                        )
+                                        .replace("%date", implementedAt)
+                                        .replace("%path", relativePath!!)
+                                )
+                                .open()
+                                .name("🎟️ File in a Ticket")
+                                .build()
 
-            context.report(
-                issue,
-                context.getLocation(element),
-                "This file needs revision.",
-                fix
-            )
+                            context.report(
+                                issue,
+                                context.getLocation(context.uastFile),
+                                "This file needs revision.",
+                                fix().alternatives(
+                                    resetFix,
+                                    techDebtTicket
+                                )
+                            )
+                        }
+                    }
+            }
         }
-    }
 
     companion object {
+        const val revisionMD = """
+## %name Revision
+--- 
+
+###     
+
+**Description:**
+
+The `%name` file needs revision. The last time this file was revision was at `%date`.
+
+**Link:**
+[%name](..%path)
+
+        """
         val issue: Issue = Issue.create(
             id = "YDRevisionDue",
             briefDescription = "Revision: Y D Revision Due",
