@@ -1,11 +1,11 @@
 @file:YDRevisionIn(implementedAt = "2026-04-16", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.foundations.colors
+package de.yanosdev.styleguide.theme.foundations.token
 
 import androidx.compose.ui.graphics.Color
 import de.yanosdev.annotation.YDRevisionIn
 
-internal object YDColor {
+internal object YDColorTokens {
     // Deep Brown
     val DeepBrown10 = Color(0xFF3E2723)
     val DeepBrown20 = Color(0xFF4E342E)

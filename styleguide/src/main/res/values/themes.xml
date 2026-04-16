@@ -14,7 +14,6 @@
         <item name="android:windowLightNavigationBar">true</item>
     </style>
 
-    <!-- Styles for C24BottomSheetDialogWrapper -->
     <style name="Theme.YD.EdgeToEdgeFloatingDialog" parent="android:Theme.DeviceDefault.Dialog">
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
         <item name="android:windowClipToOutline">false</item>
@@ -26,7 +25,6 @@
         <item name="android:windowElevation">0dp</item>
     </style>
 
-    <!-- Theme for C24BottomSheetDialogWrapper -->
     <style name="Theme.YD.EdgeToEdgeFloatingDialogWindow">
         <item name="android:dialogTheme">@style/Theme.YD.EdgeToEdgeFloatingDialog</item>
     </style>

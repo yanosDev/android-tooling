@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-14", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.foundations.spacing
+package de.yanosdev.styleguide.theme.foundations.semantics
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import de.yanosdev.annotation.YDRevisionIn
 
 @Immutable
-data class YDSpacing(
+internal data class YDSpacing(
     val b0: Dp,
     val b1: Dp,
     val b2: Dp,
@@ -37,7 +37,7 @@ data class YDSpacing(
 )
 
 @Stable
-internal val DefaultC24Grid = YDSpacing(
+internal val DefaultYDSpacings = YDSpacing(
     b0 = 0.dp,
     b1 = 1.dp,
     b2 = 2.dp,
@@ -63,4 +63,4 @@ internal val DefaultC24Grid = YDSpacing(
     b144 = 144.dp
 )
 
-internal val LocalC24Grid = staticCompositionLocalOf { DefaultC24Grid }
+internal val LocalYDSpacings = staticCompositionLocalOf { DefaultYDSpacings }
