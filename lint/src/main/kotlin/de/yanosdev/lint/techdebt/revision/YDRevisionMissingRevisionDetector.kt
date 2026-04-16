@@ -30,7 +30,7 @@ class YDRevisionMissingRevisionDetector : Detector(), SourceCodeScanner {
             context.report(
                 issue,
                 context.getLocation(file),
-                "Ungültige Konfiguration gefunden!"
+                "Please make sure, any code you develop has this annotation as we want to revision files which were untouched for a long time."
             )
     }
 

@@ -44,18 +44,25 @@ class DataClassParameterSortingCodeStyleDetector : Detector(), SourceCodeScanner
             private fun checkConstructorParameters(context: JavaContext, constructor: UMethod) {
                 val parameters = constructor.parameterList.parameters.toList()
                 val outOfOrderParams = mutableListOf<PsiParameter>()
+                val groupedParameters =
+                    parameters.groupBy { it.text.contains("=") }
 
-                for (i in 1 until parameters.size) {
-                    val prevName = parameters[i - 1].name
-                    val currName = parameters[i].name
-                    if (currName < prevName) {
-                        outOfOrderParams.add(parameters[i])
+                groupedParameters.forEach { (_, params) ->
+                    for (i in 1 until params.size) {
+                        val prevName = params[i - 1].name
+                        val currName = params[i].name
+                        if (currName < prevName) {
+                            outOfOrderParams.add(params[i])
+                        }
                     }
                 }
 
+
                 if (outOfOrderParams.isNotEmpty()) {
                     val parameterList = constructor.parameterList
-                    val sortedParameters = parameters.sortedBy { it.name }
+                    val sortedParameters = parameters
+                        .sortedWith(compareBy({ it.text.contains("=") }, { it.name }))
+
                     val sortedParamsText = sortedParameters.joinToString(", \n") { "\t" + it.text }
                     val replacementText = "(\n$sortedParamsText\n)"
 
