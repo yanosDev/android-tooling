@@ -51,7 +51,13 @@ class DataClassParameterSortingCodeStyleDetector : Detector(), SourceCodeScanner
                     for (i in 1 until params.size) {
                         val prevName = params[i - 1].name
                         val currName = params[i].name
-                        if (currName < prevName) {
+
+                        val numberPrev = Regex("\\d+").find(prevName)?.value?.toLongOrNull()
+                        val numberCurr = Regex("\\d+").find(currName)?.value?.toLongOrNull()
+                        if (numberPrev != null && numberCurr != null) {
+                            if (numberCurr < numberPrev)
+                                outOfOrderParams.add(params[i])
+                        } else if (currName < prevName) {
                             outOfOrderParams.add(params[i])
                         }
                     }
@@ -61,7 +67,15 @@ class DataClassParameterSortingCodeStyleDetector : Detector(), SourceCodeScanner
                 if (outOfOrderParams.isNotEmpty()) {
                     val parameterList = constructor.parameterList
                     val sortedParameters = parameters
-                        .sortedWith(compareBy({ it.text.contains("=") }, { it.name }))
+                        .sortedWith(compareBy<PsiParameter> { it.text.contains("=") }
+                            .thenBy {
+                                val number = Regex("\\d+").find(it.name)?.value?.toLongOrNull()
+                                number ?: Long.MAX_VALUE // Sort numbers first, then non-numbers
+                            }
+                            .thenBy {
+                                it.name // Fallback to alphabetical sort
+                            }
+                        )
 
                     val sortedParamsText = sortedParameters.joinToString(", \n") { "\t" + it.text }
                     val replacementText = "(\n$sortedParamsText\n)"
