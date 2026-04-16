@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import de.yanosdev.annotation.YDRevisionIn
 
 @Immutable
-internal data class YDSpacing(
+data class YDSpacings(
     val b0: Dp,
     val b1: Dp,
     val b2: Dp,
@@ -37,7 +37,7 @@ internal data class YDSpacing(
 )
 
 @Stable
-internal val DefaultYDSpacings = YDSpacing(
+private val DefaultYDSpacings = YDSpacings(
     b0 = 0.dp,
     b1 = 1.dp,
     b2 = 2.dp,

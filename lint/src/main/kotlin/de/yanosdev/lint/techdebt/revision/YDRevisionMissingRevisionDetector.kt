@@ -11,6 +11,7 @@ import com.android.tools.lint.detector.api.Severity
 import com.android.tools.lint.detector.api.SourceCodeScanner
 import de.yanosdev.lint.util.format
 import de.yanosdev.lint.util.reference.ClassNameReference
+import de.yanosdev.lint.util.reference.QualifiedNameReference
 import org.jetbrains.uast.UElement
 import org.jetbrains.uast.getContainingUFile
 import java.time.LocalDate
@@ -35,6 +36,7 @@ class YDRevisionMissingRevisionDetector : Detector(), SourceCodeScanner {
                         .replace()
                         .text("package")
                         .with("@file:${ClassNameReference.YDRevisionIn}(implementedAt = \"$today\", revisionAfterInDays = 365)\npackage")
+                        .imports(QualifiedNameReference.YDRevisionIn)
                         .autoFix()
                         .reformat(true)
                         .name("Add Automatic Revision Annotation")

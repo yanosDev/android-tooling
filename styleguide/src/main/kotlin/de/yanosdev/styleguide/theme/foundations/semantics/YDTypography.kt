@@ -2,15 +2,18 @@
 
 package de.yanosdev.styleguide.theme.foundations.semantics
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.foundations.token.YDTypographyTokens
 
 @Immutable
-internal data class YDTypography(
+data class YDTypography(
     val h1: TextStyle,
     val h2: TextStyle,
     val h3: TextStyle,
@@ -50,3 +53,13 @@ private fun defaultYDTypography(isCompact: Boolean) = YDTypography(
 )
 
 internal val LocalYDTypography = staticCompositionLocalOf { CompactYDTypography }
+
+internal val LocalYDTextStyle = compositionLocalOf {
+    YDTypographyTokens.mdRegular.textStyle(isCompact = true)
+}
+
+@Composable
+fun ProvideMergedYDTextStyle(value: TextStyle, content: @Composable () -> Unit) {
+    val mergedStyle = LocalYDTextStyle.current.merge(value)
+    CompositionLocalProvider(LocalYDTextStyle provides mergedStyle, content = content)
+}

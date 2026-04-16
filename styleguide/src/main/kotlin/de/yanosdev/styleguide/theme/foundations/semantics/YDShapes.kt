@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import de.yanosdev.annotation.YDRevisionIn
 
 @Immutable
-internal data class YDShapes(
+data class YDShapes(
     val extraLarge: CornerBasedShape,
     val large: CornerBasedShape,
     val medium: CornerBasedShape,
@@ -19,7 +19,7 @@ internal data class YDShapes(
 )
 
 @Stable
-internal val DefaultYDShapes = YDShapes(
+private val DefaultYDShapes = YDShapes(
     small = RoundedCornerShape(2.dp),
     medium = RoundedCornerShape(6.dp),
     large = RoundedCornerShape(8.dp),

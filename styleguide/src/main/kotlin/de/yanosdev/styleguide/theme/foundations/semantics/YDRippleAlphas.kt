@@ -2,22 +2,26 @@
 
 package de.yanosdev.styleguide.theme.foundations.semantics
 
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.styleguide.theme.foundations.token.YDAlphas
+import de.yanosdev.styleguide.theme.foundations.token.YDAlphaTokens
 
-internal data class YDRippleAlpha(
+@Immutable
+data class YDRippleAlpha(
     val draggedAlpha: Float,
     val focusedAlpha: Float,
     val hoveredAlpha: Float,
     val pressedAlpha: Float
 )
 
+@Stable
 private val DefaultYDRippleAlpha = YDRippleAlpha(
-    draggedAlpha = YDAlphas.Drag,
-    focusedAlpha = YDAlphas.Focus,
-    hoveredAlpha = YDAlphas.Hover,
-    pressedAlpha = YDAlphas.Press
+    draggedAlpha = YDAlphaTokens.Drag,
+    focusedAlpha = YDAlphaTokens.Focus,
+    hoveredAlpha = YDAlphaTokens.Hover,
+    pressedAlpha = YDAlphaTokens.Press
 )
 
 internal val LocalYDRippleAlpha = staticCompositionLocalOf { DefaultYDRippleAlpha }

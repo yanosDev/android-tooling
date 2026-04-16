@@ -3,12 +3,14 @@
 package de.yanosdev.styleguide.theme.foundations.token
 
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.styleguide.R
 
 internal object YDTypographyTokens {
     val h1 = HeadlineToken(
@@ -112,10 +114,11 @@ private fun TextToken(
 )
 
 private val defaultFontFamily = FontFamily(
-    YDFontTokens.jakartaSemibold,
-    YDFontTokens.jakartaMedium,
-    YDFontTokens.jakartaRegular,
-    YDFontTokens.robotoSemibold,
-    YDFontTokens.robotoMedium,
-    YDFontTokens.robotoRegular,
+    Font(resId = R.font.jakarta_semibold, FontWeight.SemiBold),
+    Font(resId = R.font.jakarta_medium, FontWeight.Medium),
+    Font(resId = R.font.jakarta_regular, FontWeight.Normal),
+    Font(resId = R.font.roboto_semibold, FontWeight.SemiBold),
+    Font(resId = R.font.roboto_medium, FontWeight.Medium),
+    Font(resId = R.font.roboto_regular, FontWeight.Normal)
 )
+

@@ -3,16 +3,21 @@
 package de.yanosdev.styleguide.theme.foundations.semantics
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.text.selection.TextSelectionColors
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.styleguide.BuildConfig
 import de.yanosdev.styleguide.theme.foundations.token.YDColorTokens
 
 @SuppressLint("DataClassParameterSorting")
 @Immutable
-internal data class YDColors(
+data class YDColors(
     val primary: Color,
     val onPrimary: Color,
     val secondary: Color,
@@ -201,8 +206,23 @@ internal val DarkTonalElevationColorSchemes = listOf(
     DarkYDColorSchemeLevel2,
 )
 
-internal val LocalTonalElevationYDColorSchemes = staticCompositionLocalOf {
+internal val LocalTonalYDColors = staticCompositionLocalOf {
     listOf(LightYDColors)
 }
 
 internal val LocalYDColors = staticCompositionLocalOf { LightYDColors }
+
+val LocalYDContentColor = compositionLocalOf {
+    if (BuildConfig.DEBUG) LightYDColors.warning else LightYDColors.onSurface
+}
+
+@Composable
+internal fun rememberYDTextSelectionColors(colorScheme: YDColors): TextSelectionColors {
+    val defaultColor = colorScheme.primary
+    return remember(defaultColor) {
+        TextSelectionColors(
+            handleColor = defaultColor,
+            backgroundColor = defaultColor.copy(alpha = 0.4f)
+        )
+    }
+}

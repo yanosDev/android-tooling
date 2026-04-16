@@ -5,7 +5,7 @@ package de.yanosdev.styleguide.theme.foundations.token
 import de.yanosdev.annotation.YDRevisionIn
 
 @Suppress("ConstPropertyName")
-internal object YDAlphas {
+internal object YDAlphaTokens {
     const val Loading = .65f
     const val Half = .5f
     const val Third = .33f

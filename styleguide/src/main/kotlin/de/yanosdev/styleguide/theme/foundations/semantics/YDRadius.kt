@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import de.yanosdev.annotation.YDRevisionIn
 
 @Immutable
-internal data class YDRadius(
+data class YDRadius(
     val r0: Dp,
     val r1: Dp,
     val r2: Dp,

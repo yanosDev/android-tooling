@@ -3,13 +3,14 @@
 package de.yanosdev.styleguide.theme.foundations.semantics
 
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.yanosdev.annotation.YDRevisionIn
 
 @Immutable
-internal data class YDFontSizes(
+data class YDFontSizes(
     val s16: Dp,
     val s24: Dp,
     val s32: Dp,
@@ -23,7 +24,8 @@ internal data class YDFontSizes(
     val s256: Dp
 )
 
-internal val DefaultYDFontSizes = YDFontSizes(
+@Stable
+private val DefaultYDFontSizes = YDFontSizes(
     s16 = 16.dp,
     s24 = 24.dp,
     s32 = 32.dp,

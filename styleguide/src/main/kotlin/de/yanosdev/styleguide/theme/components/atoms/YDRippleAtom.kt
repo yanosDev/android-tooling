@@ -7,10 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.styleguide.theme.foundations.locals.LocalYDContentColor
+import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
 
 @Composable
-fun rememberC24Ripple(
+fun rememberYDRipple(
     bounded: Boolean = true,
     radius: Dp = Dp.Unspecified,
     color: Color = LocalYDContentColor.current
