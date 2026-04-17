@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="surface">#FFFFFF</color>
+    <color name="notification">#58855C</color>
+    <color name="splashBackground">#58855C</color>
+</resources>
