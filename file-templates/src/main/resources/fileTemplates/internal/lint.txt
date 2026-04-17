@@ -1,2 +1,3 @@
 YD CodeStyleDetector.kt.ft
 YD RevisionDetector.kt.ft
+YD HomeScreen.kt.ft

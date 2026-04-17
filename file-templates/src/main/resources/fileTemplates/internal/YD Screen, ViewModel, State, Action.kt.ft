@@ -1,0 +1,19 @@
+#set(${ACTION_PACKAGE_NAME}="${PACKAGE_NAME}.model")
+
+#set(${PACKAGE_NAME}="${PACKAGE_NAME}.ui")
+
+#set(${PACKAGE_NAME}="${PACKAGE_NAME}.viewmodel")
+
+#set(${STATE}="${NAME}State")
+
+#set(${ACTION}="${NAME}Action")
+
+#parse("YD Screen.kt")
+
+#parse("YD ViewModel.kt")
+
+#parse("YD ViewModelImpl.kt")
+
+#parse("YD Action.kt")
+
+#parse("YD State.kt")
