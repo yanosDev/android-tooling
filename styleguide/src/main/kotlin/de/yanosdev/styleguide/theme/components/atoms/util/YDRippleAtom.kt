@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-16", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.components.atoms
+package de.yanosdev.styleguide.theme.components.atoms.util
 
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable

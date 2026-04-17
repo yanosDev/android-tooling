@@ -8,8 +8,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.styleguide.theme.themes.YDRootTheme
+import de.yanosdev.tooling.ui.YDStyleGuideApp
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 class MainActivity : AppCompatActivity() {
@@ -21,8 +22,7 @@ class MainActivity : AppCompatActivity() {
         }
         super.onCreate(savedInstanceState)
         setContent {
-            YDRootTheme {
-            }
+            YDStyleGuideApp(modifier = Modifier)
         }
     }
 }
