@@ -15,7 +15,6 @@ import de.yanosdev.lint.util.uast.isComposable
 import de.yanosdev.lint.util.uast.isFunctionType
 import de.yanosdev.lint.util.uast.isOfType
 import de.yanosdev.lint.util.uast.isRequired
-import org.jetbrains.kotlin.psi.psiUtil.parameterIndex
 import org.jetbrains.uast.UElement
 import org.jetbrains.uast.UMethod
 import org.jetbrains.uast.toUElement
@@ -35,12 +34,13 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                 if (!node.isComposable || node.parameterList.isEmpty) return
 
                 val params = mapParams(node = node)
-                checkModifier(params = params, node = node)
-                checkContentLambda(params = params, node = node)
-                checkLambdaNames(params = params, node = node)
+                val hasModifierIssue = checkModifier(params = params, node = node)
+                val hasContentIssue = checkContentLambda(params = params, node = node)
+                val hasLambdaIssue = checkLambdaNames(params = params, node = node)
+
+                if (hasModifierIssue || hasContentIssue || hasLambdaIssue) return
 
                 val sortedParams = sortParameters(params)
-
                 if (params != sortedParams) {
                     context.report(
                         issue = issue,
@@ -58,7 +58,8 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                 }
             }
 
-            private fun checkLambdaNames(params: List<DetectorParams>, node: UElement) {
+            private fun checkLambdaNames(params: List<DetectorParams>, node: UElement): Boolean {
+                var hasIssue = false
                 val lambdas = params.filter { it.isLambda }
                 lambdas.forEach {
                     if (
@@ -69,26 +70,32 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                         context.report(
                             issue = issue,
                             scope = node,
-                            location = context.getLocation(node = node),
-                            message = "This parameter needs to be renamed or turn it into a Composable parameter",
+                            location = context.getLocation(it.source),
+                            message = "This parameter ${it.source.name} needs to be renamed or turn it into a Composable parameter",
                         )
+                        hasIssue = true
                     }
                 }
+                return hasIssue
             }
 
-            private fun checkContentLambda(params: List<DetectorParams>, node: UElement) {
+            private fun checkContentLambda(params: List<DetectorParams>, node: UElement): Boolean {
+                var hasIssue = false
                 val contentLambda = params.filter { it.isContentLambda }
                 if (contentLambda.isNotEmpty() && contentLambda.firstOrNull()?.index != params.lastIndex) {
                     context.report(
                         issue = issue,
                         scope = node,
-                        location = context.getLocation(node = node),
+                        location = context.getLocation(node),
                         message = "Content Lambda should be last parameter.",
                     )
+                    hasIssue = true
                 }
+                return hasIssue
             }
 
-            private fun checkModifier(params: List<DetectorParams>, node: UElement) {
+            private fun checkModifier(params: List<DetectorParams>, node: UElement): Boolean {
+                var hasIssue = false
                 val modifiers = params.filter { it.isModifier }
                 if (modifiers.size > 1) {
                     context.report(
@@ -97,13 +104,14 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                         location = context.getLocation(node = node),
                         message = "There should be only one Modifier.",
                     )
+                    hasIssue = true
                 }
                 modifiers.forEach {
                     if (it.isRequired) {
                         context.report(
                             issue = issue,
                             scope = node,
-                            location = context.getLocation(node = node),
+                            location = context.getLocation(it.source),
                             message = "Modifier lambda should be optional.",
                             quickfixData = fix()
                                 .replace()
@@ -112,8 +120,11 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                                 .name("Add default value")
                                 .build()
                         )
+                        hasIssue = true
                     }
                 }
+
+                return hasIssue
             }
 
             private fun sortParameters(params: List<DetectorParams>): List<DetectorParams> {
@@ -136,12 +147,12 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                 // Sort within each section: non-lambdas first, then lambdas, then alphabetical
                 val sortedNav = sortSection(navParams)
                 val sortedViewModel = sortSection(viewModelParams)
-                val sortedOptional = sortSection(optionalParams)
                 val sortedRequired = sortSection(requiredParams)
+                val sortedOptional = sortSection(optionalParams)
                 val sortedContent =
                     sortSection(contentLambdaParams) // Content lambda should ideally be only one and last
 
-                return sortedNav + sortedViewModel + sortedOptional + sortedRequired + sortedContent
+                return sortedNav + sortedViewModel + sortedRequired + sortedOptional + sortedContent
             }
 
             private fun sortSection(section: List<DetectorParams>): List<DetectorParams> {
@@ -163,7 +174,7 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                 isContentLambda = parameter.name == "content",
                 isRequired = parameter.isRequired,
                 isModifier = parameter.isOfType(ClassNameReference.Modifier),
-                index = parameter.parameterIndex(),
+                index = index,
                 plainText = parameter.text,
                 source = parameter
             )
@@ -182,11 +193,10 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                     4. Modifier is the first parameter if its optional in that group
                     5. Trailing Lambda must be named `content` and can only be content and nothing else
                     6. There can be only one Modifier.
-            """.trimIndent()
-            ,
+            """.trimIndent(),
             category = Category.CORRECTNESS,
             priority = 3,
-            severity = Severity.WARNING,
+            severity = Severity.ERROR,
             implementation = Implementation(
                 YDComposableParameterCodeStyleDetector::class.java,
                 Scope.JAVA_FILE_SCOPE

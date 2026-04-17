@@ -1,6 +1,7 @@
 package de.yanosdev.lint.util.uast
 
 import com.intellij.psi.PsiClassType
+import de.yanosdev.lint.util.reference.ClassNameReference
 import org.jetbrains.uast.UClass
 import org.jetbrains.uast.UParameter
 import org.jetbrains.uast.UastFacade
@@ -19,13 +20,9 @@ internal fun UParameter.isFunctionType(): Boolean {
 }
 
 internal val UParameter.isComposable
-    get() = uAnnotations.any { it.isComposableAnnotation() }
+    get() = text.contains("@${ClassNameReference.Composable}")
 
 internal val UParameter.isRequired
-    get() = text.contains("=")
+    get() = !text.contains("=")
 
-internal fun UParameter.isOfType(typeName: String) = type
-    .superTypes
-    .any {
-        it.canonicalText.contains(typeName)
-    }
+internal fun UParameter.isOfType(typeName: String) = type.canonicalText.contains(typeName)
