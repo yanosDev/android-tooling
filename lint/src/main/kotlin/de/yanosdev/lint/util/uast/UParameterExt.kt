@@ -20,7 +20,7 @@ internal fun UParameter.isFunctionType(): Boolean {
 }
 
 internal val UParameter.isComposable
-    get() = text.contains("@${ClassNameReference.Composable}")
+    get() = text?.contains("@${ClassNameReference.Composable}") != false
 
 internal val UParameter.isRequired
     get() = !text.contains("=")

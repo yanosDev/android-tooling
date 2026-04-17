@@ -23,7 +23,7 @@ fun ydlint(issue: Issue, vararg files: TestFile) =
         .skipTestModes(
             TestMode.JVM_OVERLOADS,
             TestMode.REORDER_ARGUMENTS,
-            TestMode.WHITESPACE
+            TestMode.WHITESPACE,
         )
         .allowDuplicates()
         .issues(issue)

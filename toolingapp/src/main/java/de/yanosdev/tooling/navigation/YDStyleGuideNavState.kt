@@ -11,15 +11,15 @@ import de.yanosdev.annotation.YDRevisionIn
 internal class YDStyleGuideNavState(private val backStack: NavBackStack<YDStyleNavKey>) {
     val backStackSize by backStack::size
 
-    fun push(key: YDStyleNavKey) = backStack.add(key)
+    fun push(key: YDStyleNavKey) = backStack.add(element = key)
 
-    fun pop() = backStack.removeAt(backStack.lastIndex)
+    fun pop() = backStack.removeAt(index = backStack.lastIndex)
 
     @Composable
     fun YDStyleGuideNavState.entries(
-        entryProvider: (YDStyleNavKey) -> NavEntry<YDStyleNavKey>,
+        onProvideEntry: (YDStyleNavKey) -> NavEntry<YDStyleNavKey>,
     ) = rememberDecoratedNavEntries(
         backStack = backStack,
-        entryProvider = entryProvider
+        entryProvider = onProvideEntry
     ).toMutableList()
 }

@@ -109,7 +109,7 @@ class YDComposableParameterCodeStyleDetectorTest {
             ).indented()
         )
             .run()
-            .expectContains("")
+            .expectContains("Modifier lambda should be optional")
     }
 
     @Test
@@ -158,5 +158,31 @@ class YDComposableParameterCodeStyleDetectorTest {
         )
             .run()
             .expectContains("needs to be renamed or turn it into a Composable parameter")
+    }
+
+    @Test
+    fun `issue with content sort order`() {
+        ydlint(
+            issue = YDComposableParameterCodeStyleDetector.issue,
+            kotlin(
+                """
+                    package de.yanosdev.lint.sample
+                    
+                    import androidx.compose.runtime.Composable
+                    import androidx.compose.ui.Modifier
+                    
+                    @Composable
+                    fun MyComposable(
+                            a: Long,
+                            content: @Composable () -> Unit,
+                            modifier: Modifier = Modifier
+                    ) {
+                        // no-op
+                    }
+                    """.trimIndent()
+            ).indented()
+        )
+            .run()
+            .expectContains("Content Lambda should be last parameter")
     }
 }

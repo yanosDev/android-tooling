@@ -70,7 +70,7 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                         context.report(
                             issue = issue,
                             scope = node,
-                            location = context.getLocation(it.source),
+                            location = context.getLocation(node),
                             message = "This parameter ${it.source.name} needs to be renamed or turn it into a Composable parameter",
                         )
                         hasIssue = true
@@ -111,7 +111,7 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                         context.report(
                             issue = issue,
                             scope = node,
-                            location = context.getLocation(it.source),
+                            location = context.getLocation(node),
                             message = "Modifier lambda should be optional.",
                             quickfixData = fix()
                                 .replace()

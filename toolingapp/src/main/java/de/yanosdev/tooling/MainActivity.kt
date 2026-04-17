@@ -8,6 +8,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.tooling.ui.YDStyleGuideApp
 
@@ -21,7 +23,11 @@ class MainActivity : AppCompatActivity() {
         }
         super.onCreate(savedInstanceState)
         setContent {
-            YDStyleGuideApp()
+            YDStyleGuideApp(0, Modifier, {})
         }
     }
+}
+
+@Composable
+fun Test(modifier: Modifier = Modifier) {
 }
