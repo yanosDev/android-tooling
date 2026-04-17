@@ -1,3 +1,8 @@
+YD Action.kt.ft
 YD CodeStyleDetector.kt.ft
 YD RevisionDetector.kt.ft
-YD HomeScreen.kt.ft
+YD Screen, ViewModel, State, Action.kt.ft
+YD Screen.kt.ft
+YD State.kt.ft
+YD ViewModel.kt.ft
+YD ViewModelImpl.kt.ft
