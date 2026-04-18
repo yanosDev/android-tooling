@@ -19,7 +19,6 @@ internal fun HomeScreen(
 ) = ScreenWithViewModel<HomeViewModelImpl, HomeViewModel>(
     viewModel = viewModel
 ) { viewModel ->
-
     val state by viewModel.state.collectAsStateWithLifecycle()
     Content(
         state = state,

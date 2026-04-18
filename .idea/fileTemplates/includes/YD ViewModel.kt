@@ -4,5 +4,5 @@
 
 #parse("File Header.java")
 interface ${VIEWMODEL} {
-    
+
 }

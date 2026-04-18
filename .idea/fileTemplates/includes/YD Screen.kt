@@ -27,8 +27,8 @@ viewModel: ${VIEWMODEL},
 modifier: Modifier = Modifier,
 )#if (${VIEWMODEL}) = ScreenWithViewModel<${VIEWMODEL}Impl, ${VIEWMODEL}>(
       viewModel = viewModel
-  ) { 
-  viewModel -> 
+  ) {
+  viewModel ->
   #end
     #if (${STATE})
     val state by viewModel.state.collectAsStateWithLifecycle()
