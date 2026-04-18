@@ -9,6 +9,7 @@ import com.android.tools.lint.detector.api.JavaContext
 import com.android.tools.lint.detector.api.Scope
 import com.android.tools.lint.detector.api.Severity
 import com.android.tools.lint.detector.api.SourceCodeScanner
+import com.android.tools.lint.detector.api.isReceiver
 import com.intellij.psi.PsiParameter
 import de.yanosdev.lint.util.reference.ClassNameReference
 import de.yanosdev.lint.util.uast.isComposable
@@ -47,13 +48,13 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                         scope = node.toUElement(),
                         location = context.getLocation(node),
                         message = "The sorting of the parameters is wrong.",
-                        quickfixData = fix()
+                        quickfixData = if (sortedParams.first().plainText != null) fix()
                             .replace()
                             .range(context.getLocation(node.parameterList))
                             .with("(\n" + sortedParams.joinToString(",\n") { "\t" + it.plainText } + "\n)")
-                            .name("Fix Sort Order")
+                            .name("Fix Sort Order to ${sortedParams.map { it.name + "\n" }}")
                             .reformat(true)
-                            .build()
+                            .build() else null
                     )
                 }
             }
@@ -113,12 +114,12 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                             scope = node,
                             location = context.getLocation(node),
                             message = "Modifier lambda should be optional.",
-                            quickfixData = fix()
+                            quickfixData = if (it.plainText != null) fix()
                                 .replace()
                                 .text(it.plainText)
                                 .with(it.plainText + " = Modifier")
                                 .name("Add default value")
-                                .build()
+                                .build() else null
                         )
                         hasIssue = true
                     }
@@ -130,8 +131,9 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
             private fun sortParameters(params: List<DetectorParams>): List<DetectorParams> {
                 val navParams = mutableListOf<DetectorParams>()
                 val viewModelParams = mutableListOf<DetectorParams>()
-                val optionalParams = mutableListOf<DetectorParams>()
                 val requiredParams = mutableListOf<DetectorParams>()
+                val modifierParams = mutableListOf<DetectorParams>()
+                val optionalParams = mutableListOf<DetectorParams>()
                 val contentLambdaParams = mutableListOf<DetectorParams>()
 
                 params.forEach { param ->
@@ -140,6 +142,7 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                         param.isViewModel -> viewModelParams.add(param)
                         param.isContentLambda -> contentLambdaParams.add(param)
                         param.isRequired -> requiredParams.add(param)
+                        param.isModifier -> modifierParams.add(param)
                         else -> optionalParams.add(param) // This includes modifiers and other optional parameters
                     }
                 }
@@ -152,19 +155,19 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                 val sortedContent =
                     sortSection(contentLambdaParams) // Content lambda should ideally be only one and last
 
-                return sortedNav + sortedViewModel + sortedRequired + sortedOptional + sortedContent
+                return sortedNav + sortedViewModel + sortedRequired + modifierParams + sortedOptional + sortedContent
             }
 
             private fun sortSection(section: List<DetectorParams>): List<DetectorParams> {
                 return section.sortedWith(compareBy<DetectorParams> { it.isLambda } // false (non-lambda) comes before true (lambda)
-                    .thenBy { it.plainText } // Then sort alphabetically by plainText
+                    .thenBy { it.name } // Then sort alphabetically by plainText
                 )
             }
         }
     }
 
     private fun mapParams(node: UMethod): List<DetectorParams> {
-        return node.uastParameters.mapIndexed { index, parameter ->
+        return node.uastParameters.filter { !it.isReceiver() }.mapIndexed { index, parameter ->
             DetectorParams(
                 isLambda = parameter.isFunctionType(),
                 isViewModel = parameter.isOfType(ClassNameReference.ViewModel),
@@ -175,6 +178,7 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                 isRequired = parameter.isRequired,
                 isModifier = parameter.isOfType(ClassNameReference.Modifier),
                 index = index,
+                name = parameter.name,
                 plainText = parameter.text,
                 source = parameter
             )
@@ -215,6 +219,7 @@ private data class DetectorParams(
     val isRequired: Boolean,
     val isModifier: Boolean,
     val index: Int,
-    val plainText: String,
+    val name: String,
+    val plainText: String?,
     val source: PsiParameter
 )

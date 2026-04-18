@@ -161,7 +161,7 @@ class YDComposableParameterCodeStyleDetectorTest {
     }
 
     @Test
-    fun `issue with content sort order`() {
+    fun `Ignore Receiver Type`() {
         ydlint(
             issue = YDComposableParameterCodeStyleDetector.issue,
             kotlin(
@@ -184,5 +184,27 @@ class YDComposableParameterCodeStyleDetectorTest {
         )
             .run()
             .expectContains("Content Lambda should be last parameter")
+    }
+
+    @Test
+    fun `issue with content sort order`() {
+        ydlint(
+            issue = YDComposableParameterCodeStyleDetector.issue,
+            kotlin(
+                """
+                    package de.yanosdev.lint.sample
+                    
+                    import androidx.compose.runtime.Composable
+                    import androidx.compose.ui.Modifier
+                    
+                    @Composable
+                    fun Modifier.MyComposable() {
+                        // no-op
+                    }
+                    """.trimIndent()
+            ).indented()
+        )
+            .run()
+            .expectClean()
     }
 }

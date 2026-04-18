@@ -153,20 +153,20 @@ object YDTheme {
  */
 @Composable
 fun YDTheme(
+    alphas: YDRippleAlpha = YDTheme.alphas,
     colorScheme: YDColors = YDTheme.colorScheme,
     fontSizes: YDFontSizes = YDTheme.fontSizes,
     radius: YDRadius = YDTheme.radius,
-    alphas: YDRippleAlpha = YDTheme.alphas,
+    shadowElevationEnabled: Boolean = LocalYDShadowEnabled.current,
     shadows: YDShadows = YDTheme.shadows,
-    tonals: YDTonals = YDTheme.tonals,
     shapes: YDShapes = YDTheme.shapes,
     sizes: YDSizes = YDTheme.sizes,
     spacings: YDSpacings = YDTheme.spacings,
-    typography: YDTypography = YDTheme.typography,
-    tonalElevationEnabled: Boolean = LocalYDTonalEnabled.current,
-    shadowElevationEnabled: Boolean = LocalYDShadowEnabled.current,
     tonalElevationColorSchemes: List<YDColors> = LocalTonalYDColors.current,
-    content: @Composable () -> Unit,
+    tonalElevationEnabled: Boolean = LocalYDTonalEnabled.current,
+    tonals: YDTonals = YDTheme.tonals,
+    typography: YDTypography = YDTheme.typography,
+    content: @Composable () -> Unit
 ) {
     val rippleIndication = rememberYDRipple(color = colorScheme.onSurface)
     val selectionColors = rememberYDTextSelectionColors(colorScheme = colorScheme)

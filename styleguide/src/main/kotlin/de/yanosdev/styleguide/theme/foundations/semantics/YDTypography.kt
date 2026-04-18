@@ -37,19 +37,19 @@ internal val ExpandedYDTypography = defaultYDTypography(isCompact = false)
 
 @Stable
 private fun defaultYDTypography(isCompact: Boolean) = YDTypography(
-    h1 = YDTypographyTokens.h1.textStyle(isCompact),
-    h2 = YDTypographyTokens.h2.textStyle(isCompact),
-    h3 = YDTypographyTokens.h3.textStyle(isCompact),
-    h4 = YDTypographyTokens.h4.textStyle(isCompact),
-    h5 = YDTypographyTokens.h5.textStyle(isCompact),
-    lgMediumBold = YDTypographyTokens.lgMediumBold.textStyle(isCompact),
-    lgRegular = YDTypographyTokens.lgRegular.textStyle(isCompact),
-    mdMediumBold = YDTypographyTokens.mdMediumBold.textStyle(isCompact),
-    mdRegular = YDTypographyTokens.mdRegular.textStyle(isCompact),
-    smMediumBold = YDTypographyTokens.smMediumBold.textStyle(isCompact),
-    smRegular = YDTypographyTokens.smRegular.textStyle(isCompact),
-    xsMediumBold = YDTypographyTokens.xsMediumBold.textStyle(isCompact),
-    xsRegular = YDTypographyTokens.xsRegular.textStyle(isCompact),
+    h1 = YDTypographyTokens.h1.textStyle(isCompact = isCompact),
+    h2 = YDTypographyTokens.h2.textStyle(isCompact = isCompact),
+    h3 = YDTypographyTokens.h3.textStyle(isCompact = isCompact),
+    h4 = YDTypographyTokens.h4.textStyle(isCompact = isCompact),
+    h5 = YDTypographyTokens.h5.textStyle(isCompact = isCompact),
+    lgMediumBold = YDTypographyTokens.lgMediumBold.textStyle(isCompact = isCompact),
+    lgRegular = YDTypographyTokens.lgRegular.textStyle(isCompact = isCompact),
+    mdMediumBold = YDTypographyTokens.mdMediumBold.textStyle(isCompact = isCompact),
+    mdRegular = YDTypographyTokens.mdRegular.textStyle(isCompact = isCompact),
+    smMediumBold = YDTypographyTokens.smMediumBold.textStyle(isCompact = isCompact),
+    smRegular = YDTypographyTokens.smRegular.textStyle(isCompact = isCompact),
+    xsMediumBold = YDTypographyTokens.xsMediumBold.textStyle(isCompact = isCompact),
+    xsRegular = YDTypographyTokens.xsRegular.textStyle(isCompact = isCompact),
 )
 
 internal val LocalYDTypography = staticCompositionLocalOf { CompactYDTypography }

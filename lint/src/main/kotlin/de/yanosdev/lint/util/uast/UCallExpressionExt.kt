@@ -43,7 +43,7 @@ val UCallExpression.namedValueArguments
                 .replace(",)", ")")
                 .substring(
                     parsedCallText.indexOfFirst { it == '(' } + 1,
-                    parsedCallText.indexOfLast { it == ')' } - 1
+                    parsedCallText.indexOfLast { it == ')' }
                 )
 
         // 4.   Split the parsedText by ',' and check in each block if there is a '=' or not

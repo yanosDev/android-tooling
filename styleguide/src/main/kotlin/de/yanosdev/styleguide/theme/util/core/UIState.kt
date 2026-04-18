@@ -1,4 +1,8 @@
+@file:YDRevisionIn(implementedAt = "2026-04-18", revisionAfterInDays = 365)
+
 package de.yanosdev.styleguide.theme.util.core
+
+import de.yanosdev.annotation.YDRevisionIn
 
 interface UIState<out T> {
     data class Content<T>(

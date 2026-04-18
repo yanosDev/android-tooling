@@ -20,9 +20,23 @@ internal fun UParameter.isFunctionType(): Boolean {
 }
 
 internal val UParameter.isComposable
-    get() = text?.contains("@${ClassNameReference.Composable}") != false
+    get() = text != null && text?.contains("@${ClassNameReference.Composable}") != false
 
 internal val UParameter.isRequired
-    get() = !text.contains("=")
+    get() = text != null && !text.contains("=")
 
 internal fun UParameter.isOfType(typeName: String) = type.canonicalText.contains(typeName)
+
+
+/**
+ * internal fun UParameter.isComposable(alternativeText: String?): Boolean =
+ *     when {
+ *         text != null -> text?.contains("@${ClassNameReference.Composable}") != false
+ *         alternativeText != null -> alternativeText.contains("@${ClassNameReference.Composable}")
+ *         else -> findAnnotation(QualifiedNameReference.Composable) != null
+ *     }
+ *
+ * internal fun UParameter.isRequired(alternativeText: String?) =
+ *     (text ?: alternativeText)?.contains("=") != true
+ *
+ */

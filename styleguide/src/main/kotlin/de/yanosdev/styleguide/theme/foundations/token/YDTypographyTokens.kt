@@ -71,7 +71,7 @@ internal data class YDTypographyToken(
     private val lineHeightRatio: Float
 ) {
     fun textStyle(isCompact: Boolean): TextStyle {
-        val fontSize = fontSize(isCompact)
+        val fontSize = fontSize(isCompact = isCompact)
 
         return TextStyle(
             fontSize = fontSize,

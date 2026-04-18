@@ -9,7 +9,9 @@ import com.android.tools.lint.detector.api.JavaContext
 import com.android.tools.lint.detector.api.Scope
 import com.android.tools.lint.detector.api.Severity
 import com.android.tools.lint.detector.api.SourceCodeScanner
+import de.yanosdev.lint.util.uast.isYDCode
 import de.yanosdev.lint.util.uast.namedValueArguments
+import de.yanosdev.lint.util.uast.resolvedUMethod
 import org.jetbrains.uast.UCallExpression
 import org.jetbrains.uast.UElement
 
@@ -25,6 +27,8 @@ class NamedArgumentCodeStyleDetector : Detector(), SourceCodeScanner {
     override fun createUastHandler(context: JavaContext): UElementHandler =
         object : UElementHandler() {
             override fun visitCallExpression(node: UCallExpression) {
+                if (!node.resolvedUMethod.isYDCode) return
+
                 val argumentsWithErrors = node.namedValueArguments.filter { !it.isNamed }
                 if (argumentsWithErrors.isNotEmpty()) {
                     val fixes = argumentsWithErrors.map { argument ->
