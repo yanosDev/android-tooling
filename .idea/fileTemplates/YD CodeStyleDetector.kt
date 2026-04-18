@@ -29,9 +29,9 @@ class ${NAME}CodeStyleDetector : Detector(), SourceCodeScanner {
             priority = 3,
             severity = Severity.WARNING,
             implementation = Implementation(
-                ${NAME}CodeStyleDetector ::class.java,
+                ${NAME}CodeStyleDetector::class.java,
                 Scope.JAVA_FILE_SCOPE
             )
         )
-    }
+   }
 }

@@ -33,5 +33,5 @@ class ${NAME}RevisionDetector : Detector(), SourceCodeScanner {
                 Scope.JAVA_FILE_SCOPE
             )
         )
-    }
+   }
 }

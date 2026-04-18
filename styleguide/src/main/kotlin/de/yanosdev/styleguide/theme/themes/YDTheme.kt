@@ -27,7 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.platform.LocalContext
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.styleguide.theme.components.atoms.rememberYDRipple
+import de.yanosdev.styleguide.theme.components.atoms.util.rememberYDRipple
 import de.yanosdev.styleguide.theme.foundations.semantics.CompactYDTypography
 import de.yanosdev.styleguide.theme.foundations.semantics.DarkTonalElevationColorSchemes
 import de.yanosdev.styleguide.theme.foundations.semantics.DarkYDColors
@@ -64,7 +64,7 @@ import de.yanosdev.styleguide.theme.foundations.semantics.rememberYDTextSelectio
 import de.yanosdev.styleguide.theme.foundations.token.YDAlphaTokens
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.util.LocalYDWindowSizeClass
-import de.yanosdev.styleguide.theme.util.findActivity
+import de.yanosdev.styleguide.theme.util.core.findActivity
 
 @Composable
 @ReadOnlyComposable

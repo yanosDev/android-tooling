@@ -26,6 +26,7 @@ class FileTemplatesPlugin : Plugin<Project> {
                 provide(loader = loader, target = target) {
                     install(destDir = ".idea/", fileName = "base.txt")
                     install(destDir = ".idea/fileTemplates/", fileName = "lint.txt")
+                    install(destDir = ".idea/fileTemplates/includes", fileName = "includes.txt")
                 }
             }
         }
