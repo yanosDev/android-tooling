@@ -10,4 +10,4 @@
 
 #set(${VIEWMODEL}="${NAME}ViewModel")
 
-#parse("YD Screen.kt.ft")
+#parse("YD Screen.kt")
