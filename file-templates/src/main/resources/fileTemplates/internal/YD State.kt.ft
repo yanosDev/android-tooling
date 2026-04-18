@@ -1,4 +1,4 @@
-#if (${ PACKAGE_NAME_MODEL } && ${ PACKAGE_NAME_MODEL } != "")package ${ PACKAGE_NAME_MODEL }
+#if (${PACKAGE_NAME_MODEL} && ${PACKAGE_NAME_MODEL} != "")package ${PACKAGE_NAME_MODEL}
 
 #end
 import kotlin.Result
