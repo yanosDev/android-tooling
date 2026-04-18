@@ -29,7 +29,8 @@ class NamedArgumentCodeStyleDetector : Detector(), SourceCodeScanner {
             override fun visitCallExpression(node: UCallExpression) {
                 if (!node.resolvedUMethod.isYDCode) return
 
-                val argumentsWithErrors = node.namedValueArguments.filter { !it.isNamed }
+                val argumentsWithErrors =
+                    node.namedValueArguments.filter { !it.isNamed && (it.name != "content" && node.namedValueArguments.last() != it) }
                 if (argumentsWithErrors.isNotEmpty()) {
                     val fixes = argumentsWithErrors.map { argument ->
                         fix()

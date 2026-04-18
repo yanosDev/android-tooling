@@ -33,12 +33,10 @@ fun YDScaffold(
         MutableWindowInsets(contentWindowInsets)
     }
     YDSurface(
-
         modifier = modifier,
-        content = {
-            content(PaddingValues())
-        }
-    )
+    ) {
+        content(PaddingValues())
+    }
 }
 
 internal object YDScaffoldDefaults {

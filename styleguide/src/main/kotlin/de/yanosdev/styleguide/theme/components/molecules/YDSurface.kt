@@ -23,14 +23,14 @@ import de.yanosdev.styleguide.theme.themes.contentColorFor
 @Composable
 internal fun YDSurface(
     modifier: Modifier = Modifier,
+    border: BorderStroke? = null,
     color: Color = colorScheme.surfaceContainerDefault,
     contentColor: Color = contentColorFor(backgroundColor = color),
-    tonalElevation: YDTonal = YDTonal.Zero,
-    shape: Shape = RectangleShape,
-    border: BorderStroke? = null,
-    test: Boolean = false,
     shadowElevation: YDShadow = YDShadow.Zero,
+    shape: Shape = RectangleShape,
+    test: Boolean = false,
+    tonalElevation: YDTonal = YDTonal.Zero,
     content: @Composable () -> Unit
 ) {
-    val test = 0L
+
 }
