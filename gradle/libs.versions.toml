@@ -5,10 +5,10 @@ yd-minSdk = "28"
 yd-targetSdk = "36"
 
 # YD Libraries
-yd-lint = "0.0.2"
-yd-file-templates = "0.0.2"
-yd-live-templates = "0.0.2"
-yd-styleguide = "0.0.2"
+yd-lint = "0.0.4"
+yd-file-templates = "0.0.4"
+yd-live-templates = "0.0.4"
+yd-styleguide = "0.0.4"
 
 # Android
 agp = "9.1.0"

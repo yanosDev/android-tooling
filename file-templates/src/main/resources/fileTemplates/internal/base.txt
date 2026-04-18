@@ -1,1 +1,1 @@
-file.template.settings.xml
+file.template.settings.xml.ft
