@@ -64,7 +64,7 @@ import de.yanosdev.styleguide.theme.foundations.semantics.rememberYDTextSelectio
 import de.yanosdev.styleguide.theme.foundations.token.YDAlphaTokens
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.util.LocalYDWindowSizeClass
-import de.yanosdev.styleguide.theme.util.findActivity
+import de.yanosdev.styleguide.theme.util.core.findActivity
 
 @Composable
 @ReadOnlyComposable

@@ -1,4 +1,4 @@
-#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME}
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME}.${NAME.toLowerCase()}
 
 #end
 import androidx.compose.runtime.Composable
@@ -11,11 +11,13 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 #end
 #if (${STATE})import ${PACKAGE_NAME_MODEL}.${STATE}
 #end
-#if (${VIEWMODEL})import ${PACKAGE_NAME_VM}.${VIEWMODEL}
+#if (${VIEWMODEL})
+import ${PACKAGE_NAME_VM}.${VIEWMODEL}
+import ${PACKAGE_NAME_VM}.${VIEWMODEL}Impl
+import de.yanosdev.styleguide.theme.util.core.ScreenWithViewModel
 #end
 
 #parse("File Header.java")
-
 @Composable
 internal fun ${NAME}Screen(
 navBack: @Composable () -> Unit,
@@ -23,7 +25,11 @@ navBack: @Composable () -> Unit,
 viewModel: ${VIEWMODEL},
 #end
 modifier: Modifier = Modifier,
-) {
+)#if (${VIEWMODEL}) = ScreenWithViewModel<${VIEWMODEL}Impl, ${VIEWMODEL}>(
+      viewModel = viewModel
+  ) {
+  viewModel ->
+  #end
     #if (${STATE})
     val state by viewModel.state.collectAsStateWithLifecycle()
     #end

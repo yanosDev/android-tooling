@@ -10,16 +10,16 @@
     <default_templates>
       <template name="YD CodeStyleDetector.kt" file-name="${NAME}CodeStyleDetector" reformat="true" live-template-enabled="false" />
       <template name="YD RevisionDetector.kt" file-name="${NAME}RevisionDetector" reformat="true" live-template-enabled="false" />
-      <template name="YD Screen Full.kt" file-name="${NAME}Screen" reformat="true" live-template-enabled="false">
-        <template name="YD Screen Full.kt.child.0.kt" file-name="viewmodel/${NAME}ViewModel" reformat="true" live-template-enabled="false" />
-        <template name="YD Screen Full.kt.child.1.kt" file-name="viewmodel/${NAME}ViewModelImpl" reformat="true" live-template-enabled="false" />
-        <template name="YD Screen Full.kt.child.2.kt" file-name="model/${NAME}Action" reformat="true" live-template-enabled="false" />
-        <template name="YD Screen Full.kt.child.3.kt" file-name="model/${NAME}State" reformat="true" live-template-enabled="false" />
+      <template name="YD Screen Full.kt" file-name="${NAME.toLowerCase()}/${NAME}Screen" reformat="true" live-template-enabled="false">
+        <template name="YD Screen Full.kt.child.0.kt" file-name="${NAME.toLowerCase()}/viewmodel/${NAME}ViewModel" reformat="true" live-template-enabled="false" />
+        <template name="YD Screen Full.kt.child.1.kt" file-name="${NAME.toLowerCase()}/viewmodel/${NAME}ViewModelImpl" reformat="true" live-template-enabled="false" />
+        <template name="YD Screen Full.kt.child.2.kt" file-name="${NAME.toLowerCase()}/model/${NAME}Action" reformat="true" live-template-enabled="false" />
+        <template name="YD Screen Full.kt.child.3.kt" file-name="${NAME.toLowerCase()}/model/${NAME}State" reformat="true" live-template-enabled="false" />
       </template>
-      <template name="YD Screen Full.kt.child.0.kt" file-name="viewmodel/${NAME}ViewModel" reformat="true" live-template-enabled="false" />
-      <template name="YD Screen Full.kt.child.1.kt" file-name="viewmodel/${NAME}ViewModelImpl" reformat="true" live-template-enabled="false" />
-      <template name="YD Screen Full.kt.child.2.kt" file-name="model/${NAME}Action" reformat="true" live-template-enabled="false" />
-      <template name="YD Screen Full.kt.child.3.kt" file-name="model/${NAME}State" reformat="true" live-template-enabled="false" />
+      <template name="YD Screen Full.kt.child.0.kt" file-name="${NAME.toLowerCase()}/viewmodel/${NAME}ViewModel" reformat="true" live-template-enabled="false" />
+      <template name="YD Screen Full.kt.child.1.kt" file-name="${NAME.toLowerCase()}/viewmodel/${NAME}ViewModelImpl" reformat="true" live-template-enabled="false" />
+      <template name="YD Screen Full.kt.child.2.kt" file-name="${NAME.toLowerCase()}/model/${NAME}Action" reformat="true" live-template-enabled="false" />
+      <template name="YD Screen Full.kt.child.3.kt" file-name="${NAME.toLowerCase()}/model/${NAME}State" reformat="true" live-template-enabled="false" />
     </default_templates>
   </component>
 </project>

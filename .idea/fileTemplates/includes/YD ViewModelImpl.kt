@@ -9,9 +9,9 @@ import ${PACKAGE_NAME_VM}.${VIEWMODEL}
 #if (${STATE})import ${PACKAGE_NAME_MODEL}.${STATE} #end
 
 #parse("File Header.java")
-class ${VIEWMODEL}Impl : ViewModel(), ${VIEWMODEL} {
+internal class ${VIEWMODEL}Impl : ViewModel(), ${VIEWMODEL} {
     #if (${STATE})
     private val _state = MutableStateFlow<${STATE}>(${STATE}.Loading)
-    internal override val state = _state.asStateFlow()
+    val state = _state.asStateFlow()
     #end
 }
