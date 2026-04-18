@@ -12,6 +12,6 @@ import ${PACKAGE_NAME_VM}.${VIEWMODEL}
 class ${VIEWMODEL}Impl : ViewModel(), ${VIEWMODEL} {
     #if (${STATE})
     private val _state = MutableStateFlow<${STATE}>(${STATE}.Loading)
-    override internal val state = _state.asStateFlow()
+    internal override val state = _state.asStateFlow()
     #end
 }

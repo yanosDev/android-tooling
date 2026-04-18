@@ -2,11 +2,14 @@
 
 #end
 
-#if (${STATE})import ${PACKAGE_NAME_MODEL}.${STATE} #end
+#if (${STATE})
+import ${PACKAGE_NAME_MODEL}.${STATE}
+import kotlinx.coroutines.flow.StateFlow
+#end
 
 #parse("File Header.java")
 interface ${VIEWMODEL} {
     #if (${STATE})
-    internal val state: StateFlow<${STATE}>
+    val state: StateFlow<${STATE}>
     #end
 }

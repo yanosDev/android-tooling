@@ -1,8 +1,8 @@
 plugins {
     id(libs.plugins.android.library.get().pluginId) apply false
-    /*    alias(libs.plugins.yd.file.templates)
-        alias(libs.plugins.yd.live.templates)
-        alias(libs.plugins.yd.lint)*/
+    alias(libs.plugins.yd.file.templates)
+    alias(libs.plugins.yd.live.templates)
+    alias(libs.plugins.yd.lint)
 }
 
 // Root-level tasks

@@ -2,14 +2,16 @@
 
 #end
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 #if (${ACTION})import ${PACKAGE_NAME_MODEL}.${ACTION}
 #end
 #if (${STATE})import ${PACKAGE_NAME_MODEL}.${STATE}
 #end
-#if (${VIEWMODEL})import ${PACKAGE_NAME_VIEWMODEL}.${VIEWMODEL}
+#if (${VIEWMODEL})import ${PACKAGE_NAME_VM}.${VIEWMODEL}
 #end
 
 #parse("File Header.java")
@@ -51,5 +53,8 @@ modifier: Modifier = Modifier,
 @Preview
 @Composable
 private fun Preview() {
-    Content()
+    Content(
+        state = HomeState.Loading,
+        onAction = {}
+    )
 }
