@@ -4,11 +4,12 @@
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-#if (${ACTION})import ${PACKAGE_NAME}.model.${ACTION}
+
+#if (${ ACTION })import ${PACKAGE_NAME_MODEL}.${ACTION}
 #end
-#if (${STATE})import ${PACKAGE_NAME}.model.${STATE}
+#if (${ STATE })import ${PACKAGE_NAME_MODEL}.${STATE}
 #end
-#if (${VIEWMODEL})import ${PACKAGE_NAME}.viewmodel.${VIEWMODEL}
+#if (${ VIEWMODEL })import ${PACKAGE_NAME_VIEWMODEL}.${VIEWMODEL}
 #end
 
 #parse("File Header.java")

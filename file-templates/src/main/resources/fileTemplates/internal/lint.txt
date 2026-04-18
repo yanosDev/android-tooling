@@ -1,1 +1,7 @@
-YD Screen, ViewModel, State, Action.kt.ft
+YD Screen Full.kt
+YD Screen Full.kt.child.0.kt
+YD Screen Full.kt.child.1.kt
+YD Screen Full.kt.child.2.kt
+YD Screen Full.kt.child.3.kt
+YD CodeStyleDetector.kt
+YD RevisionDetector.kt

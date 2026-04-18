@@ -4,6 +4,16 @@
     <default_templates>
       <template name="YD CodeStyleDetector.kt" file-name="${NAME}CodeStyleDetector" reformat="true" live-template-enabled="false" />
       <template name="YD RevisionDetector.kt" file-name="${NAME}RevisionDetector" reformat="true" live-template-enabled="false" />
+      <template name="YD Screen, ViewModel, State, Action.kt" file-name="${NAME}Screen" reformat="true" live-template-enabled="false">
+        <template name="YD Screen, ViewModel, State, Action.kt.child.3.kt" file-name="${NAME}State" reformat="true" live-template-enabled="false" />
+        <template name="YD Screen, ViewModel, State, Action.kt.child.2.kt" file-name="${NAME}Action" reformat="true" live-template-enabled="false" />
+        <template name="YD Screen, ViewModel, State, Action.kt.child.1.kt" file-name="${NAME}ViewModelImpl" reformat="true" live-template-enabled="false" />
+        <template name="YD Screen, ViewModel, State, Action.kt.child.0.kt" file-name="${NAME}ViewModel" reformat="true" live-template-enabled="false" />
+      </template>
+      <template name="YD Screen, ViewModel, State, Action.kt.child.0.kt" file-name="${NAME}ViewModel" reformat="true" live-template-enabled="false" />
+      <template name="YD Screen, ViewModel, State, Action.kt.child.1.kt" file-name="${NAME}ViewModelImpl" reformat="true" live-template-enabled="false" />
+      <template name="YD Screen, ViewModel, State, Action.kt.child.2.kt" file-name="${NAME}Action" reformat="true" live-template-enabled="false" />
+      <template name="YD Screen, ViewModel, State, Action.kt.child.3.kt" file-name="${NAME}State" reformat="true" live-template-enabled="false" />
     </default_templates>
   </component>
 </project>

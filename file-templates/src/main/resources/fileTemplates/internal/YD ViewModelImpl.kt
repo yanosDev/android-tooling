@@ -1,11 +1,12 @@
-#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME}.viewmodel
+#if (${ PACKAGE_NAME_VM } && ${ PACKAGE_NAME_VM } != "")package ${ PACKAGE_NAME_VM }
 
 #end
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import ${PACKAGE_NAME}.${VIEWMODEL}
-#if (${STATE})import ${PACKAGE_NAME}.model.${STATE} #end
+import ${PACKAGE_NAME_VM}.${VIEWMODEL}
+
+#if (${ STATE })import ${PACKAGE_NAME_MODEL}.${STATE} #end
 
 #parse("File Header.java")
 class ${VIEWMODEL}Impl : ViewModel(), ${VIEWMODEL} {
