@@ -15,7 +15,7 @@ import de.yanosdev.lint.util.reference.ClassNameReference
 import de.yanosdev.lint.util.uast.isComposable
 import de.yanosdev.lint.util.uast.isFunctionType
 import de.yanosdev.lint.util.uast.isOfType
-import de.yanosdev.lint.util.uast.isRequired
+import de.yanosdev.lint.util.uast.isOptional
 import org.jetbrains.uast.UElement
 import org.jetbrains.uast.UMethod
 import org.jetbrains.uast.toUElement
@@ -47,7 +47,7 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                         issue = issue,
                         scope = node.toUElement(),
                         location = context.getLocation(node),
-                        message = "The sorting of the parameters is wrong.",
+                        message = "The sorting of the parameters is wrong. Correct would be ${sortedParams.map { it.name + "\n" }}",
                         quickfixData = if (sortedParams.first().plainText != null) fix()
                             .replace()
                             .range(context.getLocation(node.parameterList))
@@ -108,7 +108,7 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                     hasIssue = true
                 }
                 modifiers.forEach {
-                    if (it.isRequired) {
+                    if (!it.isOptional) {
                         context.report(
                             issue = issue,
                             scope = node,
@@ -141,9 +141,9 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                         param.isNavLambda -> navParams.add(param)
                         param.isViewModel -> viewModelParams.add(param)
                         param.isContentLambda -> contentLambdaParams.add(param)
-                        param.isRequired -> requiredParams.add(param)
+                        param.isOptional -> optionalParams.add(param)
                         param.isModifier -> modifierParams.add(param)
-                        else -> optionalParams.add(param) // This includes modifiers and other optional parameters
+                        else -> requiredParams.add(param) // This includes modifiers and other optional parameters
                     }
                 }
 
@@ -175,7 +175,7 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                 isActionLambda = parameter.name.startsWith("on"),
                 isComposableLambda = parameter.isComposable,
                 isContentLambda = parameter.name == "content",
-                isRequired = parameter.isRequired,
+                isOptional = parameter.isOptional,
                 isModifier = parameter.isOfType(ClassNameReference.Modifier),
                 index = index,
                 name = parameter.name,
@@ -216,7 +216,7 @@ private data class DetectorParams(
     val isComposableLambda: Boolean,
     val isActionLambda: Boolean,
     val isContentLambda: Boolean,
-    val isRequired: Boolean,
+    val isOptional: Boolean,
     val isModifier: Boolean,
     val index: Int,
     val name: String,

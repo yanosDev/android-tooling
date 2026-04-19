@@ -16,9 +16,9 @@ import de.yanosdev.styleguide.theme.foundations.semantics.elevatedColorFor
 
 @Composable
 fun ProvideTonalElevation(
-    tonalElevation: YDTonal,
     backgroundColor: Color,
     contentColor: Color,
+    tonalElevation: YDTonal,
     content: @Composable (Color) -> Unit,
 ) {
     if (!LocalTonalElevationEnabled.current || tonalElevation.isZero) {

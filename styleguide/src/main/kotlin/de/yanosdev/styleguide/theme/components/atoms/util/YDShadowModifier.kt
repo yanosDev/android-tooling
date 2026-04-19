@@ -17,9 +17,9 @@ import de.yanosdev.styleguide.theme.foundations.token.YDColorTokens
 @ReadOnlyComposable
 @Composable
 internal fun Modifier.ydShadow(
+    clip: Boolean = true,
     shadowElevation: YDShadow,
     shape: Shape = RectangleShape,
-    clip: Boolean = true,
 ) = if (shadowElevation.elevation > 0.dp && LocalYDShadowEnabled.current) {
     shadow(
         elevation = shadowElevation.elevation * shadowElevation.progress,

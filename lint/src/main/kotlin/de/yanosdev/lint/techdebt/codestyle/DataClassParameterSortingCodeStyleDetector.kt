@@ -4,6 +4,7 @@ import com.android.tools.lint.client.api.UElementHandler
 import com.android.tools.lint.detector.api.Category
 import com.android.tools.lint.detector.api.Detector
 import com.android.tools.lint.detector.api.Implementation
+import com.android.tools.lint.detector.api.Incident
 import com.android.tools.lint.detector.api.Issue
 import com.android.tools.lint.detector.api.JavaContext
 import com.android.tools.lint.detector.api.Scope
@@ -91,11 +92,15 @@ class DataClassParameterSortingCodeStyleDetector : Detector(), SourceCodeScanner
                     // Report on each out-of-order parameter individually
                     outOfOrderParams.forEach { param ->
                         context.report(
-                            issue,
-                            param,
-                            context.getLocation(param),
-                            "Parameter '${param.name}' is out of alphabetical order.",
-                            fix
+                            incident = Incident(context)
+                                .issue(issue)
+                                .location(
+                                    context.getLocation(constructor)
+
+                                )
+                                .message("Parameter '${param.name}' is out of alphabetical order.")
+                                .fix(fix)
+
                         )
                     }
                 }

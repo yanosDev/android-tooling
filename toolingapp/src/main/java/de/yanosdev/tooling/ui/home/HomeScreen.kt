@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.styleguide.theme.components.molecules.YDScaffold
+import de.yanosdev.styleguide.theme.components.atoms.YDScaffold
 import de.yanosdev.styleguide.theme.util.core.ScreenWithViewModel
 import de.yanosdev.tooling.ui.home.model.HomeAction
 import de.yanosdev.tooling.ui.home.model.HomeState

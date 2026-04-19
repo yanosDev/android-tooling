@@ -14,7 +14,9 @@ import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.util.core.findActivity
 
 @Composable
-fun YDStatusBarColorManager(statusBarColor: Color) {
+fun YDStatusBarColorManager(
+    statusBarColor: Color
+) {
     val view = LocalView.current
     val colorScheme = colorScheme
 

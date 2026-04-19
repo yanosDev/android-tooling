@@ -2,7 +2,7 @@
 
 @file:YDRevisionIn(implementedAt = "2026-04-18", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.components.molecules
+package de.yanosdev.styleguide.theme.components.atoms
 
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.MutableWindowInsets
@@ -27,9 +27,8 @@ fun YDScaffold(
     contentWindowInsets: WindowInsets = YDScaffoldDefaults.contentWindowInsets,
     content: @Composable (PaddingValues) -> Unit
 ) {
-    val imePaddingModifier =
-        if (applyImePadding) androidx.compose.ui.Modifier.imePadding() else androidx.compose.ui.Modifier
-    val safeInsets = remember(contentWindowInsets) {
+    if (applyImePadding) Modifier.imePadding() else Modifier
+    remember(contentWindowInsets) {
         MutableWindowInsets(contentWindowInsets)
     }
     YDSurface(

@@ -2,6 +2,7 @@ package de.yanosdev.lint.util.uast
 
 import com.intellij.psi.PsiClassType
 import de.yanosdev.lint.util.reference.ClassNameReference
+import org.jetbrains.kotlin.psi.KtParameter
 import org.jetbrains.uast.UClass
 import org.jetbrains.uast.UParameter
 import org.jetbrains.uast.UastFacade
@@ -22,8 +23,9 @@ internal fun UParameter.isFunctionType(): Boolean {
 internal val UParameter.isComposable
     get() = text != null && text?.contains("@${ClassNameReference.Composable}") != false
 
-internal val UParameter.isRequired
-    get() = text != null && !text.contains("=")
+
+internal val UParameter.isOptional
+    get() = (sourcePsi as? KtParameter)?.hasDefaultValue() ?: (text == null || text.contains("="))
 
 internal fun UParameter.isOfType(typeName: String) = type.canonicalText.contains(typeName)
 
