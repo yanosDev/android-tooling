@@ -8,7 +8,7 @@ import de.yanosdev.tooling.ui.home.model.HomeState
 import kotlinx.coroutines.flow.StateFlow
 
 
-interface HomeViewModel {
+internal interface HomeViewModel {
     val state: StateFlow<HomeState>
 
     fun onHomeAction(action: HomeAction)

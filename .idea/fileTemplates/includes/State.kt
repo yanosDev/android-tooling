@@ -6,7 +6,7 @@
 import de.yanosdev.annotation.YDRevisionIn
 
 #parse("File Header.java")
-sealed interface ${STATE} {
+internal sealed interface ${STATE} {
     data object Loading: ${STATE}
     data class Error(val failure: Exception): ${STATE}
     data class Content(val data: ${DATA_NAME}): ${STATE}
