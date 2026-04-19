@@ -77,10 +77,10 @@ fun YDScaffold(
 
 @Composable
 private fun ScaffoldLayout(
-    bottomBar: @Composable () -> Unit,
     contentWindowInsets: WindowInsets,
-    fab: @Composable () -> Unit,
     fabPosition: YDFabPosition,
+    bottomBar: @Composable () -> Unit,
+    fab: @Composable () -> Unit,
     snackbar: @Composable () -> Unit,
     topBar: @Composable () -> Unit,
     content: @Composable (PaddingValues) -> Unit

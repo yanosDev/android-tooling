@@ -9,26 +9,31 @@ import org.jetbrains.uast.UParameter
 import org.jetbrains.uast.UastFacade
 
 internal fun UParameter.isFunctionType(): Boolean {
-    val types = (type as? PsiClassType)?.resolve()?.let {
+    return (type as? PsiClassType)?.resolve()?.let {
         (UastFacade.convertElementWithParent(
             it,
             UClass::class.java
         ) as? UClass)?.superTypes?.mapNotNull { type -> type.resolve() }
-    }.orEmpty()
-    return types.any {
+    }?.any {
         val parent = UastFacade.convertElementWithParent(it, UClass::class.java) as? UClass
         parent?.name == Function::class.simpleName
-    }
+    } ?: type.canonicalText.contains("Function")
 }
 
 internal val UParameter.isComposable
     get() = when {
+        type.annotations.any { it.qualifiedName == QualifiedNameReference.Composable } -> true
+        uAnnotations.any { it.qualifiedName == QualifiedNameReference.Composable } -> true
         text != null -> text?.contains("@${ClassNameReference.Composable}") != false
         else -> findAnnotation(QualifiedNameReference.Composable) != null
     }
 
 
 internal val UParameter.isOptional
-    get() = (sourcePsi as? KtParameter)?.hasDefaultValue() ?: (text == null || text.contains("="))
+    get() = when {
+        sourcePsi is KtParameter -> (sourcePsi as KtParameter).hasDefaultValue()
+        text != null -> text.contains("=")
+        else -> true
+    }
 
 internal fun UParameter.isOfType(typeName: String) = type.canonicalText.contains(typeName)
