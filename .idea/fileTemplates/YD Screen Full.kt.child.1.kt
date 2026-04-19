@@ -10,4 +10,6 @@
 
 #set(${VIEWMODEL}="${NAME}ViewModel")
 
-#parse("YD ViewModelImpl.kt")
+#set(${DATA_NAME}="${NAME}Data")
+
+#parse("YD State.kt")

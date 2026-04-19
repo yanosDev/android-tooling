@@ -10,4 +10,6 @@
 
 #set(${VIEWMODEL}="${NAME}ViewModel")
 
+#set(${DATA_NAME}="${NAME}Data")
+
 #parse("YD Action.kt")

@@ -2,6 +2,8 @@
 
 package de.yanosdev.tooling.ui.home
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -36,7 +38,9 @@ private fun Content(
     onAction: (HomeAction) -> Unit,
     modifier: Modifier = Modifier,
 ) = YDScaffold { contentPadding ->
+    Column(modifier = modifier.padding(contentPadding)) {
 
+    }
 }
 
 @Preview
