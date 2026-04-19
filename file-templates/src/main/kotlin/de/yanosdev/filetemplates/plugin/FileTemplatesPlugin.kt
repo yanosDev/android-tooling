@@ -75,7 +75,7 @@ class FileTemplatesPlugin : Plugin<Project> {
 
         templates.forEach { name ->
             val resource = loader.getResourceAsStream("fileTemplates/internal/$name")
-            val nameWithoutFTExtension = name.removeSuffix(".ft")
+            val nameWithoutFTExtension = name.split("/").last().removeSuffix(".ft")
             if (resource != null) {
                 val file = File(destDir, nameWithoutFTExtension)
                 file.writeBytes(resource.readBytes())

@@ -4,6 +4,7 @@ import com.android.tools.lint.client.api.UElementHandler
 import com.android.tools.lint.detector.api.Category
 import com.android.tools.lint.detector.api.Detector
 import com.android.tools.lint.detector.api.Implementation
+import com.android.tools.lint.detector.api.Incident
 import com.android.tools.lint.detector.api.Issue
 import com.android.tools.lint.detector.api.JavaContext
 import com.android.tools.lint.detector.api.Scope
@@ -43,10 +44,11 @@ class YDRevisionMissingRevisionDetector : Detector(), SourceCodeScanner {
                         .build()
 
                     context.report(
-                        issue,
-                        context.getLocation(node.getContainingUFile()),
-                        "Please make sure, any code you develop has this annotation as we want to revision files which were untouched for a long time.",
-                        fix
+                        incident = Incident(context)
+                            .issue(issue)
+                            .location(context.getLocation(node = node.getContainingUFile()))
+                            .message("")
+                            .fix(fix)
                     )
                 }
             }

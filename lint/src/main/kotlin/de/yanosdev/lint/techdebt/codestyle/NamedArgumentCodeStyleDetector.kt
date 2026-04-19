@@ -4,6 +4,7 @@ import com.android.tools.lint.client.api.UElementHandler
 import com.android.tools.lint.detector.api.Category
 import com.android.tools.lint.detector.api.Detector
 import com.android.tools.lint.detector.api.Implementation
+import com.android.tools.lint.detector.api.Incident
 import com.android.tools.lint.detector.api.Issue
 import com.android.tools.lint.detector.api.JavaContext
 import com.android.tools.lint.detector.api.Scope
@@ -51,11 +52,11 @@ class NamedArgumentCodeStyleDetector : Detector(), SourceCodeScanner {
 
                     fixes.forEach { fix ->
                         context.report(
-                            issue = issue,
-                            scope = node,
-                            location = requireNotNull(fix.range),
-                            message = "Only named argument calls allowed: ${fix.getDisplayName()}",
-                            quickfixData = fix().alternatives(fixGroup, fix)
+                            incident = Incident(context)
+                                .issue(issue)
+                                .location(fix.range ?: context.getLocation(node))
+                                .message("")
+                                .apply { if (fix.range != null) fix(fix().alternatives(fixGroup, fix)) },
                         )
                     }
                 }

@@ -2,13 +2,15 @@
 
 package de.yanosdev.tooling.ui.home
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.styleguide.theme.components.molecules.YDScaffold
+import de.yanosdev.styleguide.theme.components.atoms.YDScaffold
 import de.yanosdev.styleguide.theme.util.core.ScreenWithViewModel
 import de.yanosdev.tooling.ui.home.model.HomeAction
 import de.yanosdev.tooling.ui.home.model.HomeState
@@ -36,7 +38,9 @@ private fun Content(
     onAction: (HomeAction) -> Unit,
     modifier: Modifier = Modifier,
 ) = YDScaffold { contentPadding ->
+    Column(modifier = modifier.padding(contentPadding)) {
 
+    }
 }
 
 @Preview

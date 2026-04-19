@@ -5,10 +5,10 @@ yd-minSdk = "28"
 yd-targetSdk = "36"
 
 # YD Libraries
-yd-lint = "0.0.8"
-yd-file-templates = "0.0.8"
-yd-live-templates = "0.0.8"
-yd-styleguide = "0.0.8"
+yd-lint = "0.0.13"
+yd-file-templates = "0.0.13"
+yd-live-templates = "0.0.13"
+yd-styleguide = "0.0.13"
 
 # Android
 agp = "9.1.0"
@@ -17,6 +17,7 @@ android-tools = "32.1.0"
 
 # Kotlin
 kotlin = "2.1.20"
+kotlinx-serialization = "1.11.0"
 
 # AndroidX
 androidx-core = "1.18.0"
@@ -71,6 +72,7 @@ androidx-compose-material3-wsc = { group = "androidx.compose.material3", name = 
 # Kotlin
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlin" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 # Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -96,6 +98,7 @@ test-core = ["kotlin-test", "kotlin-test-junit", "junit", "mockk", "assertk"]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 lint = { id = "com.android.lint", version.ref = "lint" }

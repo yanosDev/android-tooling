@@ -33,4 +33,7 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose.app)
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    // Serialization
+    implementation(libs.kotlinx.serialization.json)
 }

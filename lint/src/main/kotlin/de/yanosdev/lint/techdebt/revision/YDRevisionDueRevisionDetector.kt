@@ -4,6 +4,7 @@ import com.android.tools.lint.client.api.UElementHandler
 import com.android.tools.lint.detector.api.Category
 import com.android.tools.lint.detector.api.Detector
 import com.android.tools.lint.detector.api.Implementation
+import com.android.tools.lint.detector.api.Incident
 import com.android.tools.lint.detector.api.Issue
 import com.android.tools.lint.detector.api.JavaContext
 import com.android.tools.lint.detector.api.Scope
@@ -86,17 +87,16 @@ class YDRevisionDueRevisionDetector : Detector(), SourceCodeScanner {
                                 .build()
 
                             context.report(
-                                issue,
-                                context.getLocation(context.uastFile),
-                                "This file needs revision.",
-                                fix().alternatives(
-                                    resetFix,
-                                    techDebtTicket
-                                )
+                                incident = Incident(context)
+                                    .issue(issue)
+                                    .location(context.getLocation(context.uastFile))
+                                    .message("This file needs revision.")
+                                    .fix(fix().alternatives(resetFix, techDebtTicket))
                             )
                         }
                     }
             }
+
             override fun visitElement(node: UElement) {
                 val file = context.uastFile
                 file
