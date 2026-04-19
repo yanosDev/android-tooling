@@ -28,8 +28,8 @@
         <template name="YD Section.kt.child.0.kt" file-name="model/${NAME}Action" reformat="true" live-template-enabled="false" />
         <template name="YD Section.kt.child.1.kt" file-name="model/${NAME}SectionData" reformat="true" live-template-enabled="false" />
       </template>
-      <template name="YD Section.kt.child.0.kt" file-name="model/${NAME}Action" reformat="true" live-template-enabled="false" />
-      <template name="YD Section.kt.child.1.kt" file-name="model/${NAME}SectionData" reformat="true" live-template-enabled="false" />
+      <template name="YD Section Full.kt.child.0.kt" file-name="model/${NAME}Action" reformat="true" live-template-enabled="false" />
+      <template name="YD Section Full.kt.child.1.kt" file-name="model/${NAME}SectionData" reformat="true" live-template-enabled="false" />
     </default_templates>
   </component>
 </project>

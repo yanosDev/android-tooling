@@ -1,7 +1,7 @@
-YD Screen.kt.ft
-YD State.kt.ft
-YD ViewModel.kt.ft
-YD ViewModelImpl.kt.ft
-YD Action.kt.ft
-YD Data.kt.ft
-YD Section.kt.ft
+includes/Screen.kt.ft
+includes/State.kt.ft
+includes/ViewModel.kt.ft
+includes/ViewModelImpl.kt.ft
+includes/Action.kt.ft
+includes/Data.kt.ft
+includes/Section.kt.ft

@@ -1,9 +1,10 @@
-YD Screen Full.kt.ft
-YD Screen Full.kt.child.0.kt.ft
-YD Screen Full.kt.child.1.kt.ft
-YD Screen Full.kt.child.2.kt.ft
-YD Screen Full.kt.child.3.kt.ft
-YD CodeStyleDetector.kt.ft
-YD RevisionDetector.kt.ft
-YD Section Full.kt.child.0.kt.ft
-YD Section Full.kt.ft
+screen/Screen.kt.ft
+screen/Screen.kt.child.0.kt.ft
+screen/Screen.kt.child.1.kt.ft
+screen/Screen.kt.child.2.kt.ft
+screen/Screen.kt.child.3.kt.ft
+section/Section.kt.child.1.kt.ft
+section/Section.kt.child.0.kt.ft
+section/Section.kt.ft
+detector/CodeStyleDetector.kt.ft
+detector/RevisionDetector.kt.ft

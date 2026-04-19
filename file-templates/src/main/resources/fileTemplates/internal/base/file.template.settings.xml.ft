@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExportableFileTemplateSettings">
+    <includes_templates>
+      <template name="Data.kt" file-name="${DATA_NAME}Data" reformat="true" live-template-enabled="false" />
+      <template name="Screen.kt" file-name="${NAME}SCREEN" reformat="true" live-template-enabled="false" />
+      <template name="Section.kt" file-name="${NAME}Section" reformat="true" live-template-enabled="false" />
+      <template name="State.kt" file-name="${STATE}" reformat="true" live-template-enabled="false" />
+      <template name="ViewModel.kt" file-name="${VIEWMODEL}" reformat="true" live-template-enabled="false" />
+      <template name="ViewModelImpl.kt" file-name="${VIEWMODEL}Impl" reformat="true" live-template-enabled="false" />
+    </includes_templates>
+    <default_templates>
+      <template name="CodeStyleDetector.kt" file-name="${NAME}CodeStyleDetector" reformat="true" live-template-enabled="false" />
+      <template name="RevisionDetector.kt" file-name="${NAME}RevisionDetector" reformat="true" live-template-enabled="false" />
+      <template name="Screen Full.kt" file-name="${NAME.toLowerCase()}/${NAME}Screen" reformat="true" live-template-enabled="false">
+        <template name="Screen Full.kt.child.0.kt" file-name="${NAME.toLowerCase()}/model/${NAME}Data" reformat="true" live-template-enabled="false" />
+        <template name="Screen Full.kt.child.1.kt" file-name="${NAME.toLowerCase()}/model/${NAME}State" reformat="true" live-template-enabled="false" />
+        <template name="Screen Full.kt.child.2.kt" file-name="${NAME.toLowerCase()}/model/${NAME}Action" reformat="true" live-template-enabled="false" />
+        <template name="Screen Full.kt.child.3.kt" file-name="${NAME.toLowerCase()}/viewmodel/${NAME}ViewModelImpl" reformat="true" live-template-enabled="false" />
+        <template name="Screen Full.kt.child.4.kt" file-name="${NAME.toLowerCase()}/viewmodel/${NAME}ViewModel" reformat="true" live-template-enabled="false" />
+      </template>
+      <template name="Screen Full.kt.child.0.kt" file-name="${NAME.toLowerCase()}/model/${NAME}Data" reformat="true" live-template-enabled="false" />
+      <template name="Screen Full.kt.child.1.kt" file-name="${NAME.toLowerCase()}/model/${NAME}State" reformat="true" live-template-enabled="false" />
+      <template name="Screen Full.kt.child.2.kt" file-name="${NAME.toLowerCase()}/model/${NAME}Action" reformat="true" live-template-enabled="false" />
+      <template name="Screen Full.kt.child.3.kt" file-name="${NAME.toLowerCase()}/viewmodel/${NAME}ViewModelImpl" reformat="true" live-template-enabled="false" />
+      <template name="Screen Full.kt.child.4.kt" file-name="${NAME.toLowerCase()}/viewmodel/${NAME}ViewModel" reformat="true" live-template-enabled="false" />
+      <template name="Section.kt" file-name="section/${NAME}Section" reformat="true" live-template-enabled="false">
+        <template name="Section.kt.child.0.kt" file-name="model/${NAME}Action" reformat="true" live-template-enabled="false" />
+        <template name="Section.kt.child.1.kt" file-name="model/${NAME}SectionData" reformat="true" live-template-enabled="false" />
+      </template>
+      <template name="Section Full.kt.child.0.kt" file-name="model/${NAME}Action" reformat="true" live-template-enabled="false" />
+      <template name="Section Full.kt.child.1.kt" file-name="model/${NAME}SectionData" reformat="true" live-template-enabled="false" />
+    </default_templates>
+  </component>
+</project>
