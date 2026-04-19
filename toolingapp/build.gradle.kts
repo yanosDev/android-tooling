@@ -1,6 +1,8 @@
 plugins {
     id(libs.plugins.android.application.get().pluginId)
     id(libs.plugins.compose.compiler.get().pluginId)
+    alias(libs.plugins.kotlin.serialization)
+
 }
 
 android {
@@ -33,7 +35,4 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose.app)
     debugImplementation(libs.androidx.compose.ui.tooling)
-
-    // Serialization
-    implementation(libs.kotlinx.serialization.json)
 }
