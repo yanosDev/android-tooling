@@ -6,5 +6,5 @@
 import de.yanosdev.annotation.YDRevisionIn
 
 #parse("File Header.java")
-internal sealed interface ${ACTION}{
+sealed interface ${ACTION}{
 }
