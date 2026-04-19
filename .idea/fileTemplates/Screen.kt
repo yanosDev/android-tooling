@@ -12,4 +12,4 @@
 
 #set(${DATA_NAME}="${NAME}Data")
 
-#parse("YD Data.kt")
+#parse("Screen.kt")

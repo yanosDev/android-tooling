@@ -12,4 +12,4 @@
 
 #set(${DATA_NAME}="${NAME}Data")
 
-#parse("YD ViewModel.kt")
+#parse("State.kt")
