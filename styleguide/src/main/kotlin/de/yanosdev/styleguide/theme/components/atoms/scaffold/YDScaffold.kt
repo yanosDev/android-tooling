@@ -8,15 +8,12 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.MutableWindowInsets
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.exclude
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.onConsumedWindowInsetsChanged
-import androidx.compose.foundation.layout.only
-import androidx.compose.foundation.layout.systemBars
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -28,6 +25,8 @@ import androidx.compose.ui.util.fastMap
 import androidx.compose.ui.util.fastMaxBy
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.components.atoms.YDSurface
+import de.yanosdev.styleguide.theme.components.atoms.fab.YDFabPlacement
+import de.yanosdev.styleguide.theme.components.atoms.fab.YDFabPosition
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.themes.contentColorFor
@@ -57,13 +56,12 @@ fun YDScaffold(
         modifier = modifier
             .then(imePaddingModifier)
             .onConsumedWindowInsetsChanged { consumedWindowInsets ->
-                safeInsets.insets = consumedWindowInsets.exclude(consumedWindowInsets)
+                safeInsets.insets = contentWindowInsets.exclude(consumedWindowInsets)
             },
         color = containerColor,
         contentColor = contentColor
     ) {
         ScaffoldLayout(
-
             snackbar = snackbarHost,
             fab = floatingActionButton,
             fabPosition = floatingActionButtonPosition,
@@ -218,20 +216,3 @@ private fun ScaffoldLayout(
 }
 
 
-internal object YDScaffoldDefaults {
-    /**
-     * Default scaffold content window insets.
-     *
-     * Prevents content from overlapping any system bars.
-     */
-    val contentWindowInsets: WindowInsets
-        @Composable
-        get() = WindowInsets.systemBars
-
-    /**
-     * Default insets for a custom bottom bar in a scaffold.
-     */
-    val bottomBarInsets: WindowInsets
-        @Composable
-        get() = WindowInsets.systemBars.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom)
-}

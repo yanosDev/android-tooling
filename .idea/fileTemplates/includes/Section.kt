@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 #parse("File Header.java")
 @Composable
 internal fun ${NAME}Section(
-    ${NAME.toLowerCase()}: ${DATA_NAME},
+    data: ${DATA_NAME} = ${DATA_NAME},
     on${NAME}Action: () -> Unit,
     modifier: Modifier = Modifier,
 ) {

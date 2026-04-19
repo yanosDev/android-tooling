@@ -10,8 +10,8 @@ import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
 
 @Composable
-fun rememberYDRipple(
+internal fun rememberYDRipple(
     bounded: Boolean = true,
-    radius: Dp = Dp.Unspecified,
-    color: Color = LocalYDContentColor.current
+    color: Color = LocalYDContentColor.current,
+    radius: Dp = Dp.Unspecified
 ) = ripple(bounded, radius, color)

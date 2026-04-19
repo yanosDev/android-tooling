@@ -9,12 +9,17 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import ${PACKAGE_NAME_VM}.${VIEWMODEL}
 
-#if (${STATE})import ${PACKAGE_NAME_MODEL}.${STATE} #end
+import ${PACKAGE_NAME_MODEL}.${ACTION}
+import ${PACKAGE_NAME_MODEL}.${STATE}
 
 #parse("File Header.java")
 internal class ${VIEWMODEL}Impl : ViewModel(), ${VIEWMODEL} {
     #if (${STATE})
     private val _state = MutableStateFlow<${STATE}>(${STATE}.Loading)
-    val state = _state.asStateFlow()
+    override val state = _state.asStateFlow()
     #end
+
+    override fun on${NAME}Action(action: ${NAME}Action) {
+
+    }
 }

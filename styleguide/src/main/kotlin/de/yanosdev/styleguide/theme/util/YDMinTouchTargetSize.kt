@@ -19,17 +19,17 @@ import kotlin.math.roundToInt
  * TODO: Clean up
  */
 fun Modifier.ydMinTouchTargetSize(): Modifier = composed {
-    if (LocalC24MinimumTouchTargetEnforcement.current) {
+    if (LocalYDMinTouchTargetEnforcement.current) {
         // We're using 44x44 instead of ViewConfiguration's 48x48 default to match our design system
-        MinimumTouchTargetModifier(C24MinimumTouchTargetSize)
+        MinimumTouchTargetModifier(YDMinTouchTargetSize)
     } else {
         Modifier
     }
 }
 
-val LocalC24MinimumTouchTargetEnforcement = staticCompositionLocalOf { true }
+val LocalYDMinTouchTargetEnforcement = staticCompositionLocalOf { true }
 
-val C24MinimumTouchTargetSize = DpSize(44.dp, 44.dp)
+val YDMinTouchTargetSize = DpSize(44.dp, 44.dp)
 
 private class MinimumTouchTargetModifier(val size: DpSize) : LayoutModifier {
     override fun MeasureScope.measure(

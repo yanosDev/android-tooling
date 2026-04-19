@@ -2,8 +2,6 @@
 
 package de.yanosdev.styleguide.theme.components.atoms.util
 
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.LocalTonalElevationEnabled
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
@@ -11,6 +9,8 @@ import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalAbsoluteYDTonal
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalTonalYDColors
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDColors
+import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
+import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDTonalEnabled
 import de.yanosdev.styleguide.theme.foundations.semantics.YDTonal
 import de.yanosdev.styleguide.theme.foundations.semantics.elevatedColorFor
 
@@ -21,8 +21,8 @@ fun ProvideTonalElevation(
     tonalElevation: YDTonal,
     content: @Composable (Color) -> Unit,
 ) {
-    if (!LocalTonalElevationEnabled.current || tonalElevation.isZero) {
-        CompositionLocalProvider(LocalContentColor provides contentColor) {
+    if (!LocalYDTonalEnabled.current || tonalElevation.isZero) {
+        CompositionLocalProvider(LocalYDContentColor provides contentColor) {
             content(backgroundColor)
         }
     } else {
@@ -42,7 +42,7 @@ fun ProvideTonalElevation(
         CompositionLocalProvider(
             LocalAbsoluteYDTonal provides absoluteTonalElevation,
             LocalYDColors provides elevatedColorScheme,
-            LocalContentColor provides colorScheme.elevatedColorFor(
+            LocalYDContentColor provides colorScheme.elevatedColorFor(
                 color = contentColor,
                 elevatedScheme = elevatedColorScheme,
             ),

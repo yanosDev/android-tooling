@@ -1,6 +1,6 @@
-@file:YDRevisionIn(implementedAt = "2026-04-18", revisionAfterInDays = 365)
+@file:YDRevisionIn(implementedAt = "2026-04-19", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.util.core
+package de.yanosdev.styleguide.theme.util.core.model
 
 import de.yanosdev.annotation.YDRevisionIn
 

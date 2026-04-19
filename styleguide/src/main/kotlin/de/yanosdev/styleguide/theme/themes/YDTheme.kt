@@ -6,8 +6,6 @@ import androidx.annotation.RequiresPermission
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.LocalTonalElevationEnabled
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
@@ -166,7 +164,7 @@ fun YDTheme(
     CompositionLocalProvider(
         LocalTonalYDColors provides tonalElevationColorSchemes,
         LocalYDShadowEnabled provides shadowElevationEnabled,
-        LocalTonalElevationEnabled provides tonalElevationEnabled,
+        LocalYDTonalEnabled provides tonalElevationEnabled,
         LocalYDRippleTheme provides DefaultYDRippleTheme,
         LocalIndication provides rippleIndication,
         LocalTextSelectionColors provides selectionColors,
@@ -203,7 +201,7 @@ fun YDRootTheme(content: @Composable () -> Unit) {
     ) {
         CompositionLocalProvider(
             LocalYDWindowSizeClass provides windowSizeClass,
-            LocalContentColor provides colorScheme.onSurface,
+            LocalYDContentColor provides colorScheme.onSurface,
             content = content
         )
     }

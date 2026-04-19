@@ -47,7 +47,7 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
                         issue = issue,
                         scope = node.toUElement(),
                         location = context.getLocation(node),
-                        message = "The sorting of the parameters is wrong. Correct would be ${sortedParams.map { it.name + ": ${it.isLambda}" }}",
+                        message = "The sorting of the parameters is wrong. Correct would be ${sortedParams.map { it.name }}",
                         quickfixData = if (sortedParams.first().plainText != null) fix()
                             .replace()
                             .range(context.getLocation(node.parameterList))

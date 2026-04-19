@@ -4,4 +4,4 @@ package de.yanosdev.tooling.ui.home.model
 
 import de.yanosdev.annotation.YDRevisionIn
 
-sealed interface HomeAction
+internal data class HomeHeaderSectionData(val isLoading: Boolean = false)

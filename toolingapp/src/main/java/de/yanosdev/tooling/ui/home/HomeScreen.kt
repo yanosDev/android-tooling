@@ -3,32 +3,36 @@
 package de.yanosdev.tooling.ui.home
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.components.atoms.scaffold.YDScaffold
-import de.yanosdev.styleguide.theme.util.core.ScreenWithViewModel
+import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
+import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
+import de.yanosdev.styleguide.theme.util.PhonePreview
+import de.yanosdev.styleguide.theme.util.YDPreview
+import de.yanosdev.styleguide.theme.util.YDStatusBarColorManager
 import de.yanosdev.tooling.ui.home.model.HomeAction
+import de.yanosdev.tooling.ui.home.model.HomeHeaderSectionData
 import de.yanosdev.tooling.ui.home.model.HomeState
+import de.yanosdev.tooling.ui.home.section.HomeHeaderSection
 import de.yanosdev.tooling.ui.home.viewmodel.HomeViewModel
-import de.yanosdev.tooling.ui.home.viewmodel.HomeViewModelImpl
 
 @Composable
 internal fun HomeScreen(
     viewModel: HomeViewModel,
     navBack: @Composable () -> Unit,
     modifier: Modifier = Modifier
-) = ScreenWithViewModel<HomeViewModelImpl, HomeViewModel>(
-    viewModel = viewModel
-) { viewModel ->
+) = YDScaffold(modifier = modifier) { contentPadding ->
+    YDStatusBarColorManager(statusBarColor = colorScheme.primary)
     val state by viewModel.state.collectAsStateWithLifecycle()
     Content(
-        modifier = modifier,
+        modifier = modifier
+            .padding(contentPadding)
+            .padding(horizontal = spacings.b16),
         state = state,
         onAction = { action -> },
     )
@@ -39,20 +43,16 @@ private fun Content(
     state: HomeState,
     onAction: (HomeAction) -> Unit,
     modifier: Modifier = Modifier,
-) = YDScaffold(modifier = modifier) { contentPadding ->
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(contentPadding)
-    ) {
-
-    }
+) = Column(modifier = modifier) {
+    HomeHeaderSection(
+        data = HomeHeaderSectionData(),
+        onHomeHeaderAction = { },
+    )
 }
 
-@Preview
+@PhonePreview
 @Composable
-private fun Preview() {
+private fun Preview() = YDPreview {
     Content(
         state = HomeState.Loading,
         onAction = {}

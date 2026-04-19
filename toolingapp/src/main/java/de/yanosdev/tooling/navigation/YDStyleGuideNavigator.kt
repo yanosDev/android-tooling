@@ -23,7 +23,7 @@ internal class YDStyleGuideNavigator(private val state: YDStyleGuideNavState) {
         get() = if (state.backStackSize > 1) {
             {
                 //TODO:
-                // C24NavigationUpIcon(onNavigateUp = ::navigateBack)
+                // NavigationUpIcon(onNavigateUp = ::navigateBack)
             }
         } else {
             {}

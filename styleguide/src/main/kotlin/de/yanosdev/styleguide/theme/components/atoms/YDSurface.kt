@@ -42,7 +42,7 @@ import de.yanosdev.styleguide.theme.util.ydMinTouchTargetSize
  * Derived from M3 Surface.
  */
 @Composable
-internal fun YDSurface(
+fun YDSurface(
     modifier: Modifier = Modifier,
     border: BorderStroke? = null,
     color: Color = colorScheme.surfaceContainerDefault,
@@ -91,7 +91,7 @@ internal fun YDSurface(
  */
 @Composable
 @NonRestartableComposable
-fun C24Surface(
+fun YDSurface(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     border: BorderStroke? = null,
