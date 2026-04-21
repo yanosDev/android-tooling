@@ -11,61 +11,56 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.R
+import de.yanosdev.styleguide.theme.foundations.semantics.DefaultYDFontSizes
 
 internal object YDTypographyTokens {
     val h1 = HeadlineToken(
-        compactFontSize = 30.sp,
-        expandedFontSize = 32.sp,
+        compactFontSize = DefaultYDFontSizes.gigantic,
     )
     val h2 = HeadlineToken(
-        compactFontSize = 24.sp,
-        expandedFontSize = 26.sp,
+        compactFontSize = DefaultYDFontSizes.extraHuge,
     )
     val h3 = HeadlineToken(
-        compactFontSize = 20.sp,
-        expandedFontSize = 22.sp,
+        compactFontSize = DefaultYDFontSizes.huge,
     )
     val h4 = HeadlineToken(
-        compactFontSize = 18.sp,
-        expandedFontSize = 20.sp,
+        compactFontSize = DefaultYDFontSizes.big,
     )
     val h5 = HeadlineToken(
-        compactFontSize = 16.sp,
-        expandedFontSize = 18.sp,
+        compactFontSize = DefaultYDFontSizes.large,
     )
     val lgMediumBold = TextToken(
-        fontSize = 16.sp,
+        fontSize = DefaultYDFontSizes.large,
         fontWeight = FontWeight.SemiBold,
     )
     val lgRegular = TextToken(
-        fontSize = 16.sp,
+        fontSize = DefaultYDFontSizes.large,
     )
     val mdMediumBold = TextToken(
-        fontSize = 14.sp,
+        fontSize = DefaultYDFontSizes.medium,
         fontWeight = FontWeight.SemiBold,
     )
     val mdRegular = TextToken(
-        fontSize = 14.sp,
+        fontSize = DefaultYDFontSizes.medium,
     )
     val smMediumBold = TextToken(
-        fontSize = 12.sp,
+        fontSize = DefaultYDFontSizes.small,
         fontWeight = FontWeight.SemiBold,
     )
     val smRegular = TextToken(
-        fontSize = 12.sp,
+        fontSize = DefaultYDFontSizes.small,
     )
     val xsMediumBold = TextToken(
-        fontSize = 10.sp,
+        fontSize = DefaultYDFontSizes.tiny,
         fontWeight = FontWeight.SemiBold,
     )
     val xsRegular = TextToken(
-        fontSize = 10.sp,
+        fontSize = DefaultYDFontSizes.tiny,
     )
 }
 
 internal data class YDTypographyToken(
     private val compactFontSize: TextUnit,
-    private val expandedFontSize: TextUnit,
     private val fontFamily: FontFamily,
     private val fontWeight: FontWeight,
     private val lineHeightRatio: Float
@@ -86,16 +81,14 @@ internal data class YDTypographyToken(
         )
     }
 
-    private fun fontSize(isCompact: Boolean) = if (isCompact) compactFontSize else expandedFontSize
+    private fun fontSize(isCompact: Boolean) = if (isCompact) compactFontSize else (compactFontSize.value + 2).sp
 }
 
 @Suppress("FunctionName")
 private fun HeadlineToken(
     compactFontSize: TextUnit,
-    expandedFontSize: TextUnit,
 ) = YDTypographyToken(
     compactFontSize = compactFontSize,
-    expandedFontSize = expandedFontSize,
     fontWeight = FontWeight.Medium,
     lineHeightRatio = 1.25f,
     fontFamily = defaultFontFamily,
@@ -107,7 +100,6 @@ private fun TextToken(
     fontWeight: FontWeight = FontWeight.Normal,
 ) = YDTypographyToken(
     compactFontSize = fontSize,
-    expandedFontSize = fontSize,
     fontWeight = fontWeight,
     lineHeightRatio = 1.5f,
     fontFamily = defaultFontFamily,

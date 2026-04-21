@@ -4,4 +4,4 @@ package de.yanosdev.tooling.ui.home.model
 
 import de.yanosdev.annotation.YDRevisionIn
 
-internal sealed interface HomeHeaderAction
+internal sealed interface HomeHeaderAction : HomeAction

@@ -45,25 +45,34 @@ class DataClassParameterSortingCodeStyleDetector : Detector(), SourceCodeScanner
             private fun checkConstructorParameters(context: JavaContext, constructor: UMethod) {
                 val parameters = constructor.parameterList.parameters.toList()
                 val outOfOrderParams = mutableListOf<PsiParameter>()
-                val groupedParameters =
-                    parameters.groupBy { it.text.contains("=") }
+                if (parameters.any { !sizeNames.contains(it.name) }) {
+                    val groupedParameters =
+                        parameters.groupBy { it.text.contains("=") }
 
-                groupedParameters.forEach { (_, params) ->
-                    for (i in 1 until params.size) {
-                        val prevName = params[i - 1].name
-                        val currName = params[i].name
+                    groupedParameters.forEach { (_, params) ->
+                        for (i in 1 until params.size) {
+                            val prevName = params[i - 1].name
+                            val currName = params[i].name
 
-                        val numberPrev = Regex("\\d+").find(prevName)?.value?.toLongOrNull()
-                        val numberCurr = Regex("\\d+").find(currName)?.value?.toLongOrNull()
-                        if (numberPrev != null && numberCurr != null) {
-                            if (numberCurr < numberPrev)
+                            val numberPrev = Regex("\\d+").find(prevName)?.value?.toLongOrNull()
+                            val numberCurr = Regex("\\d+").find(currName)?.value?.toLongOrNull()
+                            if (numberPrev != null && numberCurr != null) {
+                                if (numberCurr < numberPrev)
+                                    outOfOrderParams.add(params[i])
+                            } else if (currName < prevName) {
                                 outOfOrderParams.add(params[i])
-                        } else if (currName < prevName) {
-                            outOfOrderParams.add(params[i])
+                            }
                         }
                     }
-                }
+                } else {
+                    for (i in 1 until parameters.size) {
+                        val prevName = parameters[i - 1].name
+                        val currName = parameters[i].name
 
+                        if (sizeNames.indexOf(currName) < sizeNames.indexOf(prevName))
+                            outOfOrderParams.add(parameters[i])
+                    }
+                }
 
                 if (outOfOrderParams.isNotEmpty()) {
                     val parameterList = constructor.parameterList
@@ -107,6 +116,10 @@ class DataClassParameterSortingCodeStyleDetector : Detector(), SourceCodeScanner
             }
         }
     }
+
+    private val sizeNames = listOf(
+        "extraTiny", "tiny", "small", "medium", "large", "big", "huge", "extraHuge"
+    )
 
     companion object {
         val issue: Issue = Issue.create(

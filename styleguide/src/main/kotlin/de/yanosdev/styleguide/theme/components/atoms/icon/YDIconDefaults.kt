@@ -7,7 +7,7 @@ import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.themes.YDTheme.sizes
 
 internal object YDIconDefaults {
-    val smallSize @Composable get() = sizes.s16
-    val mediumSize @Composable get() = sizes.s24
-    val largeSize @Composable get() = sizes.s32
+    val smallSize @Composable get() = sizes.extraTiny
+    val mediumSize @Composable get() = sizes.tiny
+    val largeSize @Composable get() = sizes.small
 }

@@ -11,26 +11,26 @@ import de.yanosdev.annotation.YDRevisionIn
 
 @Immutable
 data class YDRadius(
-    val r0: Dp,
-    val r1: Dp,
-    val r2: Dp,
-    val r4: Dp,
-    val r8: Dp,
-    val r12: Dp,
-    val r16: Dp,
-    val r32: Dp
+    val zero: Dp,
+    val extraTiny: Dp,
+    val tiny: Dp,
+    val small: Dp,
+    val medium: Dp,
+    val large: Dp,
+    val big: Dp,
+    val huge: Dp,
 )
 
 @Stable
 internal val DefaultYDRadius = YDRadius(
-    r0 = 0.dp,
-    r1 = 1.dp,
-    r2 = 2.dp,
-    r4 = 4.dp,
-    r8 = 8.dp,
-    r12 = 12.dp,
-    r16 = 16.dp,
-    r32 = 32.dp
+    zero = 0.dp,
+    extraTiny = 1.dp,
+    tiny = 2.dp,
+    small = 4.dp,
+    medium = 8.dp,
+    large = 12.dp,
+    big = 16.dp,
+    huge = 32.dp
 )
 
 internal val LocalYDRadius = staticCompositionLocalOf { DefaultYDRadius }

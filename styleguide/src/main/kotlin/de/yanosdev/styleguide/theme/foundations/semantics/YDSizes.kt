@@ -11,32 +11,26 @@ import de.yanosdev.annotation.YDRevisionIn
 
 @Immutable
 data class YDSizes(
-    val s16: Dp,
-    val s24: Dp,
-    val s32: Dp,
-    val s40: Dp,
-    val s48: Dp,
-    val s56: Dp,
-    val s64: Dp,
-    val s72: Dp,
-    val s126: Dp,
-    val s156: Dp,
-    val s256: Dp
+    val extraTiny: Dp,
+    val tiny: Dp,
+    val small: Dp,
+    val medium: Dp,
+    val large: Dp,
+    val big: Dp,
+    val huge: Dp,
+    val extraHuge: Dp,
 )
 
 @Stable
 private val DefaultYDSize = YDSizes(
-    s16 = 16.dp,
-    s24 = 24.dp,
-    s32 = 32.dp,
-    s40 = 40.dp,
-    s48 = 48.dp,
-    s56 = 56.dp,
-    s64 = 64.dp,
-    s72 = 72.dp,
-    s126 = 126.dp,
-    s156 = 156.dp,
-    s256 = 256.dp,
+    extraTiny = 16.dp,
+    tiny = 24.dp,
+    small = 32.dp,
+    medium = 48.dp,
+    large = 56.dp,
+    big = 64.dp,
+    huge = 72.dp,
+    extraHuge = 256.dp
 )
 
 internal val LocalYDSizes = staticCompositionLocalOf { DefaultYDSize }

@@ -2,22 +2,24 @@
 
 package de.yanosdev.tooling.ui.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.components.atoms.scaffold.YDScaffold
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
+import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.util.PhonePreview
-import de.yanosdev.styleguide.theme.util.YDPreview
+import de.yanosdev.styleguide.theme.util.YDContentPreview
 import de.yanosdev.styleguide.theme.util.YDStatusBarColorManager
+import de.yanosdev.styleguide.theme.util.core.ScreenWithViewModelScope
+import de.yanosdev.styleguide.theme.util.core.viewmodel.YDUIContentScope
 import de.yanosdev.tooling.ui.home.model.HomeAction
-import de.yanosdev.tooling.ui.home.model.HomeHeaderSectionData
-import de.yanosdev.tooling.ui.home.model.HomeState
+import de.yanosdev.tooling.ui.home.model.HomeScreenData
 import de.yanosdev.tooling.ui.home.section.HomeBodySection
 import de.yanosdev.tooling.ui.home.section.HomeHeaderSection
 import de.yanosdev.tooling.ui.home.viewmodel.HomeViewModel
@@ -29,39 +31,35 @@ internal fun HomeScreen(
     modifier: Modifier = Modifier
 ) = YDScaffold(modifier = modifier) { contentPadding ->
     YDStatusBarColorManager(statusBarColor = colorScheme.primary)
-    val state by viewModel.state.collectAsStateWithLifecycle()
-    Content(
-        modifier = modifier,
-        state = state,
-        contentPadding = contentPadding,
-        onAction = { action -> },
-    )
+
+    LaunchedEffect(viewModel.navEvents) {
+        viewModel.navEvents.collect { navAction ->
+            when (navAction) {
+                else -> {}
+            }
+        }
+    }
+
+    ScreenWithViewModelScope(viewModel = viewModel) {
+        Content(
+            contentPadding = contentPadding,
+        )
+    }
 }
 
 @Composable
-private fun Content(
+internal fun YDUIContentScope<HomeScreenData, HomeAction>.Content(
     contentPadding: PaddingValues,
-    state: HomeState,
-    onAction: (HomeAction) -> Unit,
     modifier: Modifier = Modifier,
-) = Column(modifier = modifier) {
-    HomeHeaderSection(
-        modifier = modifier
-            .padding(
-                top = contentPadding.calculateTopPadding()
-            ),
-        data = HomeHeaderSectionData(),
-        onHomeHeaderAction = { },
-    )
+) = Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(spacings.medium)) {
+    HomeHeaderSection(modifier = modifier.padding(top = contentPadding.calculateTopPadding()))
     HomeBodySection()
 }
 
 @PhonePreview
 @Composable
-private fun Preview() = YDPreview {
+private fun Preview() = YDContentPreview(data = HomeScreenData()) {
     Content(
-        state = HomeState.Loading,
         contentPadding = PaddingValues(),
-        onAction = {}
     )
 }

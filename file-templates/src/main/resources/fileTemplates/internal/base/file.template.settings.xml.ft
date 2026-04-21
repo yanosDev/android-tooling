@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ExportableFileTemplateSettings">
     <includes_templates>
-      <template name="Data.kt" file-name="${DATA_NAME}Data" reformat="true" live-template-enabled="false" />
+      <template name="Data.kt" file-name="${DATA}Data" reformat="true" live-template-enabled="false" />
       <template name="Screen.kt" file-name="${NAME}SCREEN" reformat="true" live-template-enabled="false" />
       <template name="Section.kt" file-name="${NAME}Section" reformat="true" live-template-enabled="false" />
       <template name="State.kt" file-name="${STATE}" reformat="true" live-template-enabled="false" />

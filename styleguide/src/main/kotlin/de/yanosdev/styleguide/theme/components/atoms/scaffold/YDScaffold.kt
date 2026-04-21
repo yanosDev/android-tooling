@@ -83,7 +83,7 @@ private fun ScaffoldLayout(
     topBar: @Composable () -> Unit,
     content: @Composable (PaddingValues) -> Unit
 ) {
-    val fabSpacing = spacings.b16
+    val fabSpacing = spacings.large
 
     SubcomposeLayout { constraints ->
         val layoutWidth = constraints.maxWidth

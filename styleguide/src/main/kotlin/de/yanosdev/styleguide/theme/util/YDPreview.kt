@@ -24,6 +24,8 @@ import de.yanosdev.styleguide.theme.foundations.semantics.LightYDColors
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
 import de.yanosdev.styleguide.theme.themes.YDTheme
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
+import de.yanosdev.styleguide.theme.util.core.rememberYDViewModelScope
+import de.yanosdev.styleguide.theme.util.core.viewmodel.YDUIContentScope
 
 @Preview(
     name = PreviewLight,
@@ -80,4 +82,13 @@ fun YDPreview(
             )
         }
     }
+}
+
+@Composable
+fun <T, Z> YDContentPreview(
+    data: T,
+    modifier: Modifier = Modifier,
+    content: @Composable YDUIContentScope<T, Z>.() -> Unit
+) = YDPreview(modifier = modifier) {
+    rememberYDViewModelScope<T, Z>(data = data).content()
 }

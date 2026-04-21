@@ -3,13 +3,9 @@
 package de.yanosdev.tooling.ui.home.viewmodel
 
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.styleguide.theme.util.core.model.UIState
+import de.yanosdev.styleguide.theme.util.core.viewmodel.YDViewModel
 import de.yanosdev.tooling.ui.home.model.HomeAction
-import de.yanosdev.tooling.ui.home.model.HomeState
-import kotlinx.coroutines.flow.StateFlow
+import de.yanosdev.tooling.ui.home.model.HomeScreenData
 
-
-internal interface HomeViewModel {
-    val state: StateFlow<HomeState>
-
-    fun onHomeAction(action: HomeAction)
-}
+internal interface HomeViewModel : YDViewModel<UIState<HomeScreenData>, HomeAction>

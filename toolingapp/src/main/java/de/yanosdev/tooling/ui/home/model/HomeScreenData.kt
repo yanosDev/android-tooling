@@ -4,7 +4,7 @@ package de.yanosdev.tooling.ui.home.model
 
 import de.yanosdev.annotation.YDRevisionIn
 
-internal data class HomeBodySectionData(
+internal data class HomeScreenData(
     val items: List<StyleGuideItems> = listOf(
         StyleGuideItems.SubAtoms.Colors,
         StyleGuideItems.Atoms.Text,
