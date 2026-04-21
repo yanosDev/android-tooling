@@ -14,12 +14,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.core.component.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.components.atoms.text.YDText
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.themes.YDTheme.typography
 import de.yanosdev.styleguide.theme.util.PhonePreview
 import de.yanosdev.styleguide.theme.util.YDContentPreview
-import de.yanosdev.styleguide.theme.util.core.viewmodel.YDUIContentScope
 import de.yanosdev.tooling.ui.home.model.HomeAction
 import de.yanosdev.tooling.ui.home.model.HomeScreenData
 import de.yanosdev.tooling.ui.home.model.StyleGuideItems
@@ -69,7 +69,7 @@ private fun StyleItemGroup(
             style = typography.lgMediumBold
         )
         YDText(
-            "↓",
+            text = "↓",
             style = typography.lgMediumBold
         )
     }

@@ -17,3 +17,5 @@ interface UIState<out T> {
 
     data object Loading : UIState<Nothing>
 }
+
+fun <T> T.toUIContent() = UIState.Content(data = this)

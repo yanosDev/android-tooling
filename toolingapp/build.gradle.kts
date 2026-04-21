@@ -23,6 +23,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
     implementation(project(":lint-annotation"))
     lintChecks(project(":lint"))
     implementation(project(":styleguide"))

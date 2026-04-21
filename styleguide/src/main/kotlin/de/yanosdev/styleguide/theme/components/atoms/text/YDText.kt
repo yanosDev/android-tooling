@@ -28,10 +28,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.core.net.toUri
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.core.util.openUri
 import de.yanosdev.styleguide.theme.components.atoms.text.YDTextTokens.AnnotatedStringUriAnnotationTag
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDTextStyle
-import de.yanosdev.styleguide.theme.util.core.openUri
 
 
 /**
