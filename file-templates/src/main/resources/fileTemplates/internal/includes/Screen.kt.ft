@@ -2,50 +2,54 @@
 
 package ${PACKAGE_NAME}.${NAME.toLowerCase()}
 
-import de.yanosdev.annotation.YDRevisionIn
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import de.yanosdev.styleguide.theme.util.PhonePreview
-import androidx.compose.runtime.LaunchedEffect
+
 import androidx.compose.foundation.layout.PaddingValues
-import de.yanosdev.styleguide.theme.util.core.ScreenWithViewModelScope
-import ${PACKAGE_NAME_MODEL}.${ACTION}
-import ${PACKAGE_NAME_MODEL}.${DATA}
-import ${PACKAGE_NAME_MODEL}.${STATE}
-import ${PACKAGE_NAME_VM}.${VIEWMODEL}
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
+import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.core.component.screen.YDScreen
+import de.yanosdev.core.component.screen.YDUIContentScope
+import de.yanosdev.styleguide.theme.components.atoms.scaffold.YDScaffold
+import de.yanosdev.styleguide.theme.components.atoms.text.YDText
+import de.yanosdev.styleguide.theme.util.PhonePreview
+import de.yanosdev.styleguide.theme.util.YDContentPreview
+import ${PACKAGE_NAME}.${NAME.toLowerCase()}.model.${NAME}Action
+import ${PACKAGE_NAME}.${NAME.toLowerCase()}.model.${NAME}ScreenData
 
 #parse("File Header.java")
 @Composable
 internal fun ${NAME}Screen(
-    viewModel: ${VIEWMODEL},
+    viewModel: ${NAME}ViewModel,
     navBack: @Composable () -> Unit,
-    modifier: Modifier = Modifier,
-){
+    modifier: Modifier = Modifier
+) = YDScaffold(modifier = modifier) { contentPadding ->
     LaunchedEffect(viewModel.navEvents) {
-            viewModel.navEvents.collect { navAction ->
-                when (navAction) {
-                    else -> {}
-                }
+        viewModel.navEvents.collect { navAction ->
+            when (navAction) {
+                else -> {}
             }
+        }
     }
-    ScreenWithViewModelScope(viewModel = viewModel) {
-            Content(
-                contentPadding = contentPadding,
-            )
+
+    YDScreen(viewModel = viewModel) {
+        Content(
+            contentPadding = contentPadding,
+        )
     }
 }
 
 @Composable
-private fun YDViewModelScope<${STATE}, ${ACTION}>.Content(
+internal fun YDUIContentScope<${NAME}ScreenData, ${NAME}Action>.Content(
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
-
+    YDText(text = "This is the ${NAME}Screen")
 }
 
 @PhonePreview
 @Composable
-private fun Preview() = YDContentPreview<${STATE}, ${ACTION}>(state = ${STATE}.Content(data = ${DATA}())) {
+private fun Preview() = YDContentPreview(data = ${NAME}ScreenData()) {
     Content(
         contentPadding = PaddingValues(),
     )

@@ -1,3 +1,1 @@
-#set(${PACKAGE_NAME_MODEL}="${PACKAGE_NAME}.${NAME.toLowerCase()}.model")
-
-#parse("Data.kt")
+#parse("ViewModel.kt")

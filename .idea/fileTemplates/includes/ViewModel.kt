@@ -1,15 +1,12 @@
 @file:YDRevisionIn(implementedAt = "${YEAR}-${MONTH}-${DAY}", revisionAfterInDays = 365)
 
-#if (${PACKAGE_NAME_VM} && ${PACKAGE_NAME_VM} != "")package ${PACKAGE_NAME_VM}
+package ${PACKAGE_NAME}.${NAME.toLowerCase()}
 
-#end
 import de.yanosdev.annotation.YDRevisionIn
-import kotlinx.coroutines.flow.StateFlow
-import ${PACKAGE_NAME_MODEL}.${ACTION}
-import ${PACKAGE_NAME_MODEL}.${STATE}
+import de.yanosdev.core.component.screen.YDViewModel
+import de.yanosdev.core.component.screen.model.UIState
+import ${PACKAGE_NAME}.${NAME.toLowerCase()}.model.${NAME}Action
+import ${PACKAGE_NAME}.${NAME.toLowerCase()}.model.${NAME}ScreenData
 
 #parse("File Header.java")
-internal interface ${VIEWMODEL} {
-    val state: StateFlow<${STATE}>
-    fun on${NAME}Action(action: ${NAME}Action)
-}
+internal interface ${NAME}ViewModel : YDViewModel<UIState<${NAME}ScreenData>, ${NAME}Action>

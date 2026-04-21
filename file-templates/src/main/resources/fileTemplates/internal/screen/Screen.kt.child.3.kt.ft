@@ -1,8 +1,1 @@
-#set(${PACKAGE_NAME_MODEL}="${PACKAGE_NAME}.${NAME.toLowerCase()}.model")
-#set(${PACKAGE_NAME_VM}="${PACKAGE_NAME}.${NAME.toLowerCase()}.viewmodel")
-
-#set(${ACTION}="${NAME}Action")
-#set(${DATA}="${NAME}ScreenData")
-#set(${VIEWMODEL}="${NAME}ViewModel")
-
-#parse("ViewModelImpl.kt")
+#parse("Action.kt")

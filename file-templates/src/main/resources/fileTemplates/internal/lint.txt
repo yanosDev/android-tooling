@@ -3,9 +3,6 @@ screen/Screen.kt.child.0.kt.ft
 screen/Screen.kt.child.1.kt.ft
 screen/Screen.kt.child.2.kt.ft
 screen/Screen.kt.child.3.kt.ft
-screen/Screen.kt.child.4.kt.ft
-section/Section.kt.child.1.kt.ft
-section/Section.kt.child.0.kt.ft
 section/Section.kt.ft
 detector/CodeStyleDetector.kt.ft
 detector/RevisionDetector.kt.ft

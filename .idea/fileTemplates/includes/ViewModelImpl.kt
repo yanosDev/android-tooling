@@ -1,25 +1,21 @@
 @file:YDRevisionIn(implementedAt = "${YEAR}-${MONTH}-${DAY}", revisionAfterInDays = 365)
 
-#if (${PACKAGE_NAME_VM} && ${PACKAGE_NAME_VM} != "")package ${PACKAGE_NAME_VM}
+package ${PACKAGE_NAME}.${NAME.toLowerCase()}
 
-#end
 import de.yanosdev.annotation.YDRevisionIn
-import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import ${PACKAGE_NAME_VM}.${VIEWMODEL}
-
-import ${PACKAGE_NAME_MODEL}.${ACTION}
-import ${PACKAGE_NAME_MODEL}.${STATE}
+import de.yanosdev.core.component.screen.YDViewModelImpl
+import de.yanosdev.core.component.screen.model.UIState
+import de.yanosdev.core.component.screen.model.toUIContent
+import ${PACKAGE_NAME}.${NAME.toLowerCase()}.model.${NAME}Action
+import ${PACKAGE_NAME}.${NAME.toLowerCase()}.model.${NAME}ScreenData
 
 #parse("File Header.java")
-internal class ${VIEWMODEL}Impl : ViewModel(), ${VIEWMODEL} {
-    #if (${STATE})
-    private val _state = MutableStateFlow<${STATE}>(${STATE}.Loading)
-    override val state = _state.asStateFlow()
-    #end
-
-    override fun on${NAME}Action(action: ${NAME}Action) {
-
+internal class ${NAME}ViewModelImpl : YDViewModelImpl<UIState<${NAME}ScreenData>, ${NAME}Action>(
+    defaultState = ${NAME}ScreenData().toUIContent()
+), ${NAME}ViewModel {
+    override fun onAction(action: ${NAME}Action) {
+        when (action) {
+            else -> super.onAction(action)
+        }
     }
 }

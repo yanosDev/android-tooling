@@ -1,5 +1,1 @@
-#set(${PACKAGE_NAME_MODEL}="${PACKAGE_NAME}.${NAME.toLowerCase()}.model")
-
-#set(${ACTION}="${SCREEN}Action")
-
-#parse("Action.kt")
+#parse("Data.kt")

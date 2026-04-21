@@ -1,16 +1,16 @@
 @file:YDRevisionIn(implementedAt = "${YEAR}-${MONTH}-${DAY}", revisionAfterInDays = 365)
 
-package ${PACKAGE_NAME_SECTION}
+package ${PACKAGE_NAME}.section
 
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.core.component.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.util.PhonePreview
 import de.yanosdev.styleguide.theme.util.YDContentPreview
 import de.yanosdev.styleguide.theme.components.atoms.text.YDText
-import de.yanosdev.styleguide.theme.util.core.viewmodel.YDUIContentScope
-import de.yanosdev.tooling.ui.home.model.HomeAction
-import de.yanosdev.tooling.ui.home.model.HomeScreenData
+import ${PACKAGE_NAME}.model.${SCREEN}Action
+import ${PACKAGE_NAME}.model.${SCREEN}ScreenData
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 
 #parse("File Header.java")
 @Composable
