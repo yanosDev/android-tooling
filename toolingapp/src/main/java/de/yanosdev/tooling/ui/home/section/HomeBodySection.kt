@@ -34,23 +34,23 @@ internal fun YDUIContentScope<HomeScreenData, HomeAction>.HomeBodySection(
         }
         item { Spacer(modifier = Modifier.height(spacings.small)) }
         stickyHeader { StyleItemGroup("SubAtoms") }
-        items(items = data.items.filterIsInstance<StyleGuideItems.SubAtoms>()) { StyleItem(name = it.javaClass.simpleName) }
+        items(items = data.items.filterIsInstance<StyleGuideItems.SubAtoms>()) { StyleItem(item = it) }
         stickyHeader { StyleItemGroup("Atoms") }
-        items(items = data.items.filterIsInstance<StyleGuideItems.Atoms>()) { StyleItem(name = it.javaClass.simpleName) }
+        items(items = data.items.filterIsInstance<StyleGuideItems.Atoms>()) { StyleItem(item = it) }
         stickyHeader { StyleItemGroup("Molecules") }
-        items(items = data.items.filterIsInstance<StyleGuideItems.Molecules>()) { StyleItem(name = it.javaClass.simpleName) }
+        items(items = data.items.filterIsInstance<StyleGuideItems.Molecules>()) { StyleItem(item = it) }
     }
 }
 
 @Composable
-private fun StyleItem(
-    name: String,
+private fun YDUIContentScope<HomeScreenData, HomeAction>.StyleItem(
+    item: StyleGuideItems,
     modifier: Modifier = Modifier,
 ) {
     Row(modifier = modifier.padding(spacings.tiny)) {
         YDText(
             modifier = modifier.fillMaxWidth(),
-            text = name
+            text = item.javaClass.simpleName
         )
     }
 }
