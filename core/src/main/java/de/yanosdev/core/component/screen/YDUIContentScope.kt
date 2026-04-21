@@ -1,9 +1,9 @@
 @file:YDRevisionIn(implementedAt = "2026-04-21", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.util.core.viewmodel
+package de.yanosdev.core.component.screen
 
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.styleguide.theme.util.core.model.NavAction
+import de.yanosdev.core.navigation.model.NavAction
 
 interface YDUIContentScope<T, Z> {
 
@@ -12,7 +12,7 @@ interface YDUIContentScope<T, Z> {
     fun onScreenAction(action: Z)
 }
 
-class YDUIContentScopeImpl<T, Z>(
+internal class YDUIContentScopeImpl<T, Z>(
     override val data: T,
     val onNavAction: (NavAction) -> Unit,
     val onAction: (Z) -> Unit

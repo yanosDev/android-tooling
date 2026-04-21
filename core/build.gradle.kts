@@ -1,14 +1,10 @@
 plugins {
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.compose.compiler.get().pluginId)
-    `maven-publish`
 }
 
-group = "de.yanosdev"
-version = libs.versions.yd.styleguide.get()
-
 android {
-    namespace = "de.yanosdev.styleguide"
+    namespace = "de.yanosdev.core"
     compileSdk = libs.versions.yd.targetSdk.get().toInt()
 
     defaultConfig {
@@ -43,14 +39,8 @@ android {
     }
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(libs.versions.yd.java.get())
-    }
-}
 
 dependencies {
-    implementation(project(":core"))
     implementation(project(":lint-annotation"))
     lintChecks(project(":lint"))
 
@@ -60,23 +50,8 @@ dependencies {
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.icon)
     implementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.compose.ui.tooling.preview)
 
-    api(libs.androidx.compose.material3.wsc)
     implementation(libs.androidx.compose.material3)
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                groupId = "de.yanosdev"
-                artifactId = "styleguide"
-                version = libs.versions.yd.styleguide.get()
-                from(components["release"])
-            }
-        }
-    }
 }

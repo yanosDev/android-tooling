@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-19", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.util.core
+package de.yanosdev.core.util
 
 import android.app.UiModeManager
 import android.content.ActivityNotFoundException
@@ -11,7 +11,6 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.getSystemService
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.styleguide.theme.util.core.model.NightMode
 
 /**
  * Opens any Uri.

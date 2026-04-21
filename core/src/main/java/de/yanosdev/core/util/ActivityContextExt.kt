@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-17", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.util.core
+package de.yanosdev.core.util
 
 import android.app.Activity
 import android.content.Context

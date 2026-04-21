@@ -15,6 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.core.component.screen.YDUIContentScope
+import de.yanosdev.core.component.screen.rememberYDScreenScope
 import de.yanosdev.styleguide.theme.foundations.semantics.CompactYDTypography
 import de.yanosdev.styleguide.theme.foundations.semantics.DarkTonalElevationColorSchemes
 import de.yanosdev.styleguide.theme.foundations.semantics.DarkYDColors
@@ -24,8 +26,6 @@ import de.yanosdev.styleguide.theme.foundations.semantics.LightYDColors
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
 import de.yanosdev.styleguide.theme.themes.YDTheme
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
-import de.yanosdev.styleguide.theme.util.core.rememberYDViewModelScope
-import de.yanosdev.styleguide.theme.util.core.viewmodel.YDUIContentScope
 
 @Preview(
     name = PreviewLight,
@@ -90,5 +90,5 @@ fun <T, Z> YDContentPreview(
     modifier: Modifier = Modifier,
     content: @Composable YDUIContentScope<T, Z>.() -> Unit
 ) = YDPreview(modifier = modifier) {
-    rememberYDViewModelScope<T, Z>(data = data).content()
+    rememberYDScreenScope<T, Z>(data = data).content()
 }

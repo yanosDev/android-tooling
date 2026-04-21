@@ -9,8 +9,8 @@ import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.core.util.findActivity
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
-import de.yanosdev.styleguide.theme.util.core.findActivity
 
 @Composable
 fun YDStatusBarColorManager(statusBarColor: Color) {

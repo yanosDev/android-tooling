@@ -7,6 +7,7 @@ include(":live-templates")
 include(":lint-annotation")
 include(":file-templates")
 include(":lint")
+include(":core")
 
 project(":lint-annotation").projectDir = file("lint/annotation")
 

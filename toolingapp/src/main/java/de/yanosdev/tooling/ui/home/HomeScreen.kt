@@ -16,7 +16,7 @@ import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.util.PhonePreview
 import de.yanosdev.styleguide.theme.util.YDContentPreview
 import de.yanosdev.styleguide.theme.util.YDStatusBarColorManager
-import de.yanosdev.styleguide.theme.util.core.ScreenWithViewModelScope
+import de.yanosdev.styleguide.theme.util.core.YDScreen
 import de.yanosdev.styleguide.theme.util.core.viewmodel.YDUIContentScope
 import de.yanosdev.tooling.ui.home.model.HomeAction
 import de.yanosdev.tooling.ui.home.model.HomeScreenData
@@ -40,7 +40,7 @@ internal fun HomeScreen(
         }
     }
 
-    ScreenWithViewModelScope(viewModel = viewModel) {
+    YDScreen(viewModel = viewModel) {
         Content(
             contentPadding = contentPadding,
         )

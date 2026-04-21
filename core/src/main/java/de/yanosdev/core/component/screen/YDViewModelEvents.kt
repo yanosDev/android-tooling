@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-20", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.util.core.viewmodel
+package de.yanosdev.core.component.screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
