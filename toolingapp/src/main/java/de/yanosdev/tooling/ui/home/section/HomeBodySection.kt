@@ -29,9 +29,7 @@ internal fun YDUIContentScope<HomeScreenData, HomeAction>.HomeBodySection(
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(modifier = modifier, contentPadding = PaddingValues(spacings.large)) {
-        stickyHeader {
-            YDText(text = "Overview", style = typography.h2)
-        }
+        stickyHeader { YDText(text = "Overview", style = typography.h2) }
         item { Spacer(modifier = Modifier.height(spacings.small)) }
         stickyHeader { StyleItemGroup("SubAtoms") }
         items(items = data.items.filterIsInstance<StyleGuideItems.SubAtoms>()) { StyleItem(item = it) }

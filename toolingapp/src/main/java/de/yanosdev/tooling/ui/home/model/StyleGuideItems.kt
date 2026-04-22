@@ -8,6 +8,8 @@ sealed interface StyleGuideItems {
 
     sealed interface SubAtoms : StyleGuideItems {
         data object Colors : SubAtoms
+        data object Typographies : SubAtoms
+        data object Shadows : SubAtoms
     }
 
     sealed interface Atoms : StyleGuideItems {
