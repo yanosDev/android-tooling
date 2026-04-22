@@ -21,9 +21,8 @@ internal fun YDStyleGuideApp() {
         val navState = rememberYDStyleGuideNavState(start = YDStyleGuideNavKey.Home)
         val navigator = rememberYDStyleGuideNavigator(state = navState)
         NavDisplay(
-            entries = navState.entries(
-                onProvideEntry = entryProvider { ydStyleGuideNavEntries(navigator) }
-            ),
+            entries = navState.entries(onProvideEntry = entryProvider { ydStyleGuideNavEntries(navigator) }),
+
             onBack = navigator::navigateBack,
         )
     }

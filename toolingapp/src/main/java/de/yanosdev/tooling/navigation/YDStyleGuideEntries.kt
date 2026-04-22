@@ -11,6 +11,7 @@ internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navig
     entry<YDStyleGuideNavKey.Home> {
         HomeScreen(
             viewModel = HomeViewModelImpl(),
+            navToItem = navigator::navigate,
             navBack = {}
         )
     }

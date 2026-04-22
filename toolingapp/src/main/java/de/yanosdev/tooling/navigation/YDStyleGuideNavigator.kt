@@ -8,11 +8,12 @@ import de.yanosdev.annotation.YDRevisionIn
 
 
 @Composable
-internal fun rememberYDStyleGuideNavigator(state: YDStyleGuideNavState) = remember { YDStyleGuideNavigator(state) }
+internal fun rememberYDStyleGuideNavigator(state: YDStyleGuideNavState) =
+    remember { YDStyleGuideNavigator(state = state) }
 
 internal class YDStyleGuideNavigator(private val state: YDStyleGuideNavState) {
     fun navigate(key: YDStyleGuideNavKey) {
-        state.push(key)
+        state.push(key = key)
     }
 
     fun navigateBack() {

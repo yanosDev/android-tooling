@@ -18,16 +18,19 @@ import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.util.PhonePreview
 import de.yanosdev.styleguide.theme.util.YDContentPreview
 import de.yanosdev.styleguide.theme.util.YDStatusBarColorManager
+import de.yanosdev.tooling.navigation.YDStyleGuideNavKey
 import de.yanosdev.tooling.ui.home.model.HomeAction
 import de.yanosdev.tooling.ui.home.model.HomeScreenData
+import de.yanosdev.tooling.ui.home.model.StyleGuideItems
 import de.yanosdev.tooling.ui.home.section.HomeBodySection
 import de.yanosdev.tooling.ui.home.section.HomeHeaderSection
 import de.yanosdev.tooling.ui.home.viewmodel.HomeViewModel
 
 @Composable
 internal fun HomeScreen(
-    viewModel: HomeViewModel,
     navBack: @Composable () -> Unit,
+    navToItem: (YDStyleGuideNavKey) -> Unit,
+    viewModel: HomeViewModel,
     modifier: Modifier = Modifier
 ) = YDScaffold(modifier = modifier) { contentPadding ->
     YDStatusBarColorManager(statusBarColor = colorScheme.primary)
@@ -35,6 +38,18 @@ internal fun HomeScreen(
     LaunchedEffect(viewModel.navEvents) {
         viewModel.navEvents.collect { navAction ->
             when (navAction) {
+                is HomeAction.NavToStyleItem -> navToItem(
+                    when (navAction.item) {
+                        StyleGuideItems.SubAtoms.Colors -> YDStyleGuideNavKey.Colors
+                        StyleGuideItems.SubAtoms.Typographies -> YDStyleGuideNavKey.Typographies
+                        StyleGuideItems.SubAtoms.Shadows -> YDStyleGuideNavKey.Shadows
+                        StyleGuideItems.Atoms.Text -> YDStyleGuideNavKey.Text
+                        StyleGuideItems.Atoms.Icon -> YDStyleGuideNavKey.Icon
+                        StyleGuideItems.Atoms.IconButton -> YDStyleGuideNavKey.IconButton
+                        StyleGuideItems.Atoms.Surface -> YDStyleGuideNavKey.Surface
+                        StyleGuideItems.Atoms.Scaffold -> YDStyleGuideNavKey.Scaffold
+                    }
+                )
                 else -> {}
             }
         }

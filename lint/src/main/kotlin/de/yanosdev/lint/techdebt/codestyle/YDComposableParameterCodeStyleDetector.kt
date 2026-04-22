@@ -171,7 +171,7 @@ class YDComposableParameterCodeStyleDetector : Detector(), SourceCodeScanner {
             DetectorParams(
                 isLambda = parameter.isFunctionType(),
                 isViewModel = parameter.isOfType(ClassNameReference.ViewModel),
-                isNavLambda = parameter.name.startsWith("navTo"),
+                isNavLambda = parameter.name.startsWith("nav"),
                 isActionLambda = parameter.name.startsWith("on"),
                 isComposableLambda = parameter.isComposable,
                 isContentLambda = parameter.name == "content",
