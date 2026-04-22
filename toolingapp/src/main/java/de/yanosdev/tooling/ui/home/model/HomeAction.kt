@@ -3,5 +3,8 @@
 package de.yanosdev.tooling.ui.home.model
 
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.core.navigation.model.NavAction
 
-internal sealed interface HomeAction
+internal sealed interface HomeAction {
+    data class NavToStyleItem(val item: StyleGuideItems) : HomeAction, NavAction
+}

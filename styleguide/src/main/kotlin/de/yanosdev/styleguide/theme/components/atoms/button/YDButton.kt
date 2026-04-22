@@ -38,11 +38,9 @@ import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.themes.YDTheme.typography
 import de.yanosdev.styleguide.theme.util.LocalYDMinTouchTargetEnforcement
 
-/**
- * Button with text content.
- */
+
 @Composable
-internal fun YDButton(
+fun YDButton(
     colors: YDButtonColors,
     text: String,
     onClick: () -> Unit,
@@ -68,7 +66,7 @@ internal fun YDButton(
 }
 
 @Composable
-internal fun YDButton(
+fun YDButton(
     colors: YDButtonColors,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,

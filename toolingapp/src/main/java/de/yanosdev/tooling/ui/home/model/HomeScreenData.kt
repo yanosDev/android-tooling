@@ -7,6 +7,8 @@ import de.yanosdev.annotation.YDRevisionIn
 internal data class HomeScreenData(
     val items: List<StyleGuideItems> = listOf(
         StyleGuideItems.SubAtoms.Colors,
+        StyleGuideItems.SubAtoms.Typographies,
+        StyleGuideItems.SubAtoms.Shadows,
         StyleGuideItems.Atoms.Text,
         StyleGuideItems.Atoms.Icon,
         StyleGuideItems.Atoms.Surface,

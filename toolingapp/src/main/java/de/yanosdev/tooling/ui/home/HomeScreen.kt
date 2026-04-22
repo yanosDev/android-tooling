@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.core.component.screen.YDScreen
 import de.yanosdev.core.component.screen.YDUIContentScope
-import de.yanosdev.styleguide.theme.components.atoms.scaffold.YDScaffold
+import de.yanosdev.styleguide.theme.components.molecules.button.icon.scaffold.YDScaffold
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.util.PhonePreview

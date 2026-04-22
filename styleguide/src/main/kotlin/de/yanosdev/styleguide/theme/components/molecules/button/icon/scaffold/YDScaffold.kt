@@ -2,7 +2,7 @@
 
 @file:YDRevisionIn(implementedAt = "2026-04-18", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.components.atoms.scaffold
+package de.yanosdev.styleguide.theme.components.molecules.button.icon.scaffold
 
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.MutableWindowInsets
@@ -39,7 +39,7 @@ fun YDScaffold(
     modifier: Modifier = Modifier,
     applyImePadding: Boolean = true,
     containerColor: Color = colorScheme.surface,
-    contentColor: Color = contentColorFor(containerColor),
+    contentColor: Color = contentColorFor(backgroundColor = containerColor),
     contentWindowInsets: WindowInsets = YDScaffoldDefaults.contentWindowInsets,
     floatingActionButtonPosition: YDFabPosition = YDFabPosition.End,
     bottomBar: @Composable () -> Unit = {},

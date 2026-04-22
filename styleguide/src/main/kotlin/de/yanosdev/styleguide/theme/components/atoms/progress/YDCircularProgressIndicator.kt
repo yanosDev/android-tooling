@@ -59,11 +59,6 @@ fun YDCircularProgressIndicator(
     }
 }
 
-/**
- * Circular progress indicator (indeterminate).
- *
- * Derived from Material3 CircularProgressIndicator.
- */
 @Composable
 fun YDCircularProgressIndicator(
     modifier: Modifier = Modifier,

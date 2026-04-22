@@ -15,6 +15,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.core.component.screen.YDUIContentScope
+import de.yanosdev.styleguide.theme.components.atoms.button.YDButton
+import de.yanosdev.styleguide.theme.components.atoms.button.YDButtonDefaults
 import de.yanosdev.styleguide.theme.components.atoms.text.YDText
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.themes.YDTheme.typography
@@ -31,11 +33,11 @@ internal fun YDUIContentScope<HomeScreenData, HomeAction>.HomeBodySection(
     LazyColumn(modifier = modifier, contentPadding = PaddingValues(spacings.large)) {
         stickyHeader { YDText(text = "Overview", style = typography.h2) }
         item { Spacer(modifier = Modifier.height(spacings.small)) }
-        stickyHeader { StyleItemGroup("SubAtoms") }
+        stickyHeader { StyleItemGroup(groupName = "SubAtoms") }
         items(items = data.items.filterIsInstance<StyleGuideItems.SubAtoms>()) { StyleItem(item = it) }
-        stickyHeader { StyleItemGroup("Atoms") }
+        stickyHeader { StyleItemGroup(groupName = "Atoms") }
         items(items = data.items.filterIsInstance<StyleGuideItems.Atoms>()) { StyleItem(item = it) }
-        stickyHeader { StyleItemGroup("Molecules") }
+        stickyHeader { StyleItemGroup(groupName = "Molecules") }
         items(items = data.items.filterIsInstance<StyleGuideItems.Molecules>()) { StyleItem(item = it) }
     }
 }
@@ -46,9 +48,11 @@ private fun YDUIContentScope<HomeScreenData, HomeAction>.StyleItem(
     modifier: Modifier = Modifier,
 ) {
     Row(modifier = modifier.padding(spacings.tiny)) {
-        YDText(
+        YDButton(
+            colors = YDButtonDefaults.buttonColors(),
             modifier = modifier.fillMaxWidth(),
-            text = item.javaClass.simpleName
+            text = item.javaClass.simpleName,
+            onClick = { onScreenAction(action = HomeAction.NavToStyleItem(item = item)) }
         )
     }
 }

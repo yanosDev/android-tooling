@@ -44,7 +44,7 @@ import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
 
 
 @Composable
-fun YDIcon(
+internal fun YDIcon(
     contentDescription: String?,
     imageVector: ImageVector,
     modifier: Modifier = Modifier,
@@ -59,7 +59,7 @@ fun YDIcon(
 )
 
 @Composable
-fun YDIcon(
+internal fun YDIcon(
     bitmap: ImageBitmap,
     contentDescription: String?,
     modifier: Modifier = Modifier,
@@ -74,7 +74,7 @@ fun YDIcon(
 )
 
 @Composable
-fun YDIcon(
+internal fun YDIcon(
     contentDescription: String?,
     painter: Painter,
     modifier: Modifier = Modifier,
@@ -108,13 +108,13 @@ fun YDIcon(
 }
 
 @Composable
-fun YDToggleableIcon(
-    imageVector: ImageVector,
+internal fun YDToggleableIcon(
     contentDescription: String?,
+    imageVector: ImageVector,
     toggledOn: Boolean,
     modifier: Modifier = Modifier,
-    tint: Color = LocalYDContentColor.current,
-    iconSize: Dp = mediumSize
+    iconSize: Dp = mediumSize,
+    tint: Color = LocalYDContentColor.current
 ) = YDToggleableIcon(
     painter = rememberVectorPainter(imageVector),
     contentDescription = contentDescription,
@@ -126,13 +126,13 @@ fun YDToggleableIcon(
 
 
 @Composable
-fun YDToggleableIcon(
-    painter: Painter,
+internal fun YDToggleableIcon(
     contentDescription: String?,
+    painter: Painter,
     toggledOn: Boolean,
     modifier: Modifier = Modifier,
-    tint: Color = LocalYDContentColor.current,
-    iconSize: Dp = mediumSize
+    iconSize: Dp = mediumSize,
+    tint: Color = LocalYDContentColor.current
 ) {
     val colorFilter = if (tint == Color.Unspecified) null else ColorFilter.tint(tint)
     val semantics = if (contentDescription != null) {
@@ -150,10 +150,10 @@ fun YDToggleableIcon(
 
     Canvas(
         modifier = modifier
-            .defaultSizeFor(iconSize, painter)
+            .defaultSizeFor(size = iconSize, painter = painter)
             .then(semantics)
     ) {
-        drawStrikeThroughIcon(painter, tint, colorFilter, progress)
+        drawStrikeThroughIcon(painter = painter, tint = tint, colorFilter = colorFilter, progress = progress)
     }
 }
 
