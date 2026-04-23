@@ -2,7 +2,7 @@
 
 @file:YDRevisionIn(implementedAt = "2026-04-18", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.components.molecules.button.icon.scaffold
+package de.yanosdev.styleguide.theme.components.molecules.scaffold
 
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.MutableWindowInsets

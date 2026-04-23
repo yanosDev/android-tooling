@@ -5,6 +5,8 @@ package de.yanosdev.tooling.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.styleguide.theme.components.organisms.navigation.YDNavigationCloseIcon
+import de.yanosdev.styleguide.theme.components.organisms.navigation.YDNavigationUpIcon
 
 
 @Composable
@@ -23,10 +25,11 @@ internal class YDStyleGuideNavigator(private val state: YDStyleGuideNavState) {
     val navigationIcon: @Composable () -> Unit
         get() = if (state.backStackSize > 1) {
             {
-                //TODO:
-                // NavigationUpIcon(onNavigateUp = ::navigateBack)
+                YDNavigationUpIcon(navUp = { navigateBack() })
             }
         } else {
-            {}
+            {
+                YDNavigationCloseIcon(navUp = { navigateBack() })
+            }
         }
 }
