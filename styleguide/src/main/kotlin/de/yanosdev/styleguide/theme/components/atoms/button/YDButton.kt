@@ -31,7 +31,6 @@ import de.yanosdev.styleguide.theme.components.atoms.YDSurface
 import de.yanosdev.styleguide.theme.components.atoms.progress.YDCircularProgressIndicator
 import de.yanosdev.styleguide.theme.components.atoms.text.YDText
 import de.yanosdev.styleguide.theme.foundations.semantics.ProvideMergedYDTextStyle
-import de.yanosdev.styleguide.theme.foundations.semantics.YDButtonColors
 import de.yanosdev.styleguide.theme.themes.YDTheme.shapes
 import de.yanosdev.styleguide.theme.themes.YDTheme.sizes
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings

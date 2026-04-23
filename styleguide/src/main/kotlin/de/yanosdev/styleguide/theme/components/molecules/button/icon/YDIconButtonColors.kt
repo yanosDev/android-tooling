@@ -1,6 +1,6 @@
-@file:YDRevisionIn(implementedAt = "2026-04-19", revisionAfterInDays = 365)
+@file:YDRevisionIn(implementedAt = "2026-04-23", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.foundations.semantics
+package de.yanosdev.styleguide.theme.components.molecules.button.icon
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable

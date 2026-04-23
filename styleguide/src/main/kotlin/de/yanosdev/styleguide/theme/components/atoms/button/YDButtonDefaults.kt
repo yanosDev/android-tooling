@@ -5,7 +5,6 @@ package de.yanosdev.styleguide.theme.components.atoms.button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.styleguide.theme.foundations.semantics.YDButtonColors
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.themes.contentColorFor
 

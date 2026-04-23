@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.dp
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.components.atoms.util.rememberYDRipple
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
-import de.yanosdev.styleguide.theme.foundations.semantics.YDIconButtonColors
 import de.yanosdev.styleguide.theme.themes.disabledColorFor
 import de.yanosdev.styleguide.theme.util.LocalYDMinTouchTargetEnforcement
 

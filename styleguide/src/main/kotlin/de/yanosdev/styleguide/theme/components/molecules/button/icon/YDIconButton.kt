@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
-import de.yanosdev.styleguide.theme.foundations.semantics.YDIconButtonColors
 import de.yanosdev.styleguide.theme.util.ydMinTouchTargetSize
 
 @Composable

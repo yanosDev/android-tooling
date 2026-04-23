@@ -2,7 +2,6 @@
 
 package ${PACKAGE_NAME}.${NAME.toLowerCase()}
 
-
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -10,6 +9,7 @@ import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.core.component.screen.YDScreen
 import de.yanosdev.core.component.screen.YDUIContentScope
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDDefaultScreen
 import de.yanosdev.styleguide.theme.components.molecules.scaffold.YDScaffold
 import de.yanosdev.styleguide.theme.components.atoms.text.YDText
 import de.yanosdev.styleguide.theme.util.PhonePreview
@@ -23,7 +23,11 @@ internal fun ${NAME}Screen(
     navBack: @Composable () -> Unit,
     viewModel: ${NAME}ViewModel,
     modifier: Modifier = Modifier
-) = YDScaffold(modifier = modifier) { contentPadding ->
+) = YDDefaultScreen(
+      modifier = modifier,
+      navBack = navBack,
+      title =  "This is the ${NAME}Screen"
+  ) { contentPadding ->
     LaunchedEffect(viewModel.navEvents) {
         viewModel.navEvents.collect { navAction ->
             when (navAction) {

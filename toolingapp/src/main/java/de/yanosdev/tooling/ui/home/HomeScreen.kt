@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.core.component.screen.YDScreen
 import de.yanosdev.core.component.screen.YDUIContentScope
-import de.yanosdev.styleguide.theme.components.molecules.scaffold.YDScaffold
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDDefaultScreen
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.util.PhonePreview
@@ -32,7 +32,7 @@ internal fun HomeScreen(
     navToItem: (YDStyleGuideNavKey) -> Unit,
     viewModel: HomeViewModel,
     modifier: Modifier = Modifier
-) = YDScaffold(modifier = modifier) { contentPadding ->
+) = YDDefaultScreen { }(modifier = modifier) { contentPadding ->
     YDStatusBarColorManager(statusBarColor = colorScheme.primary)
 
     LaunchedEffect(viewModel.navEvents) {

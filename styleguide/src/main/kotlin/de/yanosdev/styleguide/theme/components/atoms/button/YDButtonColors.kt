@@ -1,6 +1,6 @@
-@file:YDRevisionIn(implementedAt = "2026-04-22", revisionAfterInDays = 365)
+@file:YDRevisionIn(implementedAt = "2026-04-23", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.foundations.semantics
+package de.yanosdev.styleguide.theme.components.atoms.button
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -8,7 +8,6 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.Color
 import de.yanosdev.annotation.YDRevisionIn
-
 
 @Immutable
 class YDButtonColors internal constructor(
