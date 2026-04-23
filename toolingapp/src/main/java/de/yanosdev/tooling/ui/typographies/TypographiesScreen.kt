@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-23", revisionAfterInDays = 365)
 
-package de.yanosdev.tooling.ui.colors
+package de.yanosdev.tooling.ui.typographies
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -14,19 +14,20 @@ import de.yanosdev.core.component.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.components.organisms.screen.YDDefaultScreen
 import de.yanosdev.styleguide.theme.util.PhonePreview
 import de.yanosdev.styleguide.theme.util.YDContentPreview
-import de.yanosdev.tooling.ui.colors.model.ColorsAction
-import de.yanosdev.tooling.ui.colors.model.ColorsScreenData
-import de.yanosdev.tooling.ui.colors.section.ColorsBodySection
+import de.yanosdev.tooling.ui.typographies.model.TypographiesAction
+import de.yanosdev.tooling.ui.typographies.model.TypographiesScreenData
+import de.yanosdev.tooling.ui.typographies.section.TypographiesBodySection
+
 
 @Composable
-internal fun ColorsScreen(
+internal fun TypographiesScreen(
     navBack: @Composable () -> Unit,
-    viewModel: ColorsViewModel,
-    modifier: Modifier = Modifier,
+    viewModel: TypographiesViewModel,
+    modifier: Modifier = Modifier
 ) = YDDefaultScreen(
     modifier = modifier,
     navBack = navBack,
-    title = "Colors"
+    title = "Typographies"
 ) { contentPadding ->
     LaunchedEffect(viewModel.navEvents) {
         viewModel.navEvents.collect { navAction ->
@@ -37,27 +38,23 @@ internal fun ColorsScreen(
     }
 
     YDScreen(viewModel = viewModel) {
-        Content(
-            contentPadding = contentPadding,
-        )
+        Content(contentPadding = contentPadding)
     }
 }
 
 @Composable
-internal fun YDUIContentScope<ColorsScreenData, ColorsAction>.Content(
+internal fun YDUIContentScope<TypographiesScreenData, TypographiesAction>.Content(
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier.padding(contentPadding)) {
-        ColorsBodySection()
+        TypographiesBodySection()
     }
 }
 
 
 @PhonePreview
 @Composable
-private fun Preview() = YDContentPreview(data = ColorsScreenData()) {
-    Content(
-        contentPadding = PaddingValues(),
-    )
+private fun Preview() = YDContentPreview(data = TypographiesScreenData()) {
+    Content(contentPadding = PaddingValues())
 }

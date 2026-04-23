@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,7 +40,9 @@ import de.yanosdev.tooling.ui.colors.model.ColorsScreenData
 internal fun YDUIContentScope<ColorsScreenData, ColorsAction>.ColorsBodySection(
     modifier: Modifier = Modifier,
 ) {
-    val colors = colorScheme.mapToKeyValue
+    val colorScheme = colorScheme
+
+    val colors = remember(colorScheme) { colorScheme.mapToKeyValue }
     LazyColumn(modifier = modifier) {
         items(items = colors) { (colorName, complementColorName, colorValue) ->
             ColorRow(name = colorName, complementName = complementColorName, color = colorValue)
@@ -64,8 +67,10 @@ private fun ColorRow(
         modifier = Modifier.weight(1f),
         text = buildAnnotatedString {
             withStyle(SpanStyle(fontWeight = FontWeight.Bold)) { append(name) }
-            append(" with ")
-            withStyle(SpanStyle(fontWeight = FontWeight.Bold)) { append(complementName) }
+            if (complementName.isNotEmpty()) {
+                append(" with ")
+                withStyle(SpanStyle(fontWeight = FontWeight.Bold)) { append(complementName) }
+            }
         },
         maxLines = 1,
         overflow = TextOverflow.Ellipsis
@@ -77,7 +82,8 @@ private fun ColorRow(
             .background(color = color),
         contentAlignment = Alignment.Center
     ) {
-        YDText(text = "YD", maxLines = 1, color = contentColorFor(backgroundColor = color))
+        if (complementName.isNotEmpty())
+            YDText(text = "YD", maxLines = 1, color = contentColorFor(backgroundColor = color))
     }
 }
 
