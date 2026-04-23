@@ -2,7 +2,6 @@
 
 package de.yanosdev.tooling.ui.home.section
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -62,19 +61,11 @@ private fun StyleItemGroup(
     groupName: String,
     modifier: Modifier = Modifier
 ) {
-    Row(
+    YDText(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(spacings.big)
-    ) {
-        YDText(
-            text = groupName,
-            style = typography.lgMediumBold
-        )
-        YDText(
-            text = "↓",
-            style = typography.lgMediumBold
-        )
-    }
+        text = groupName,
+        style = typography.lgMediumBold
+    )
 }
 
 @PhonePreview

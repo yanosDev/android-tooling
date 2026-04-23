@@ -11,12 +11,12 @@ import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.core.component.screen.YDScreen
 import de.yanosdev.core.component.screen.YDUIContentScope
-import de.yanosdev.styleguide.theme.components.atoms.text.YDText
 import de.yanosdev.styleguide.theme.components.organisms.screen.YDDefaultScreen
 import de.yanosdev.styleguide.theme.util.PhonePreview
 import de.yanosdev.styleguide.theme.util.YDContentPreview
 import de.yanosdev.tooling.ui.colors.model.ColorsAction
 import de.yanosdev.tooling.ui.colors.model.ColorsScreenData
+import de.yanosdev.tooling.ui.colors.section.ColorsBodySection
 
 @Composable
 internal fun ColorsScreen(
@@ -47,9 +47,12 @@ internal fun ColorsScreen(
 internal fun YDUIContentScope<ColorsScreenData, ColorsAction>.Content(
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
-) = Column(modifier = modifier.padding(contentPadding)) {
-    YDText(text = "This is the ColorsScreen")
+) {
+    Column(modifier = modifier.padding(contentPadding)) {
+        ColorsBodySection()
+    }
 }
+
 
 @PhonePreview
 @Composable

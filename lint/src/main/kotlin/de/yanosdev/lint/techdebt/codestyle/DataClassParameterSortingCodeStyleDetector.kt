@@ -118,7 +118,7 @@ class DataClassParameterSortingCodeStyleDetector : Detector(), SourceCodeScanner
     }
 
     private val sizeNames = listOf(
-        "extraTiny", "tiny", "small", "medium", "large", "big", "huge", "extraHuge"
+        "zero", "extraTiny", "tiny", "small", "medium", "large", "big", "huge", "extraHuge"
     )
 
     companion object {
