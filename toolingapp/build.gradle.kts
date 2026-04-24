@@ -2,7 +2,6 @@ plugins {
     id(libs.plugins.android.application.get().pluginId)
     id(libs.plugins.compose.compiler.get().pluginId)
     alias(libs.plugins.kotlin.serialization)
-
 }
 
 android {
@@ -12,8 +11,8 @@ android {
     defaultConfig {
         applicationId = "de.yanosdev.tooling"
         minSdk = libs.versions.yd.minSdk.get().toInt()
+        versionCode = 1
         versionName = "1.0.0"
-
     }
 
     buildFeatures {

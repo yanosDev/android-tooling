@@ -35,10 +35,6 @@ tasks.register<Exec>("createTechDebtIssues") {
     commandLine("sh", "${rootProject.projectDir}/automation/scripts/create-tech-debt-issues.sh")
 }
 
-tasks.named("build") {
-    dependsOn("createTechDebtIssues")
-}
-
 tasks.withType<Jar>().configureEach {
     manifest {
         attributes["Lint-Registry-v2"] = "de.yanosdev.lint.YDIssueRegistry"

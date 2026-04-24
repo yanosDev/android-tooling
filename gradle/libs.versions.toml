@@ -5,10 +5,10 @@ yd-minSdk = "28"
 yd-targetSdk = "36"
 
 # YD Libraries
-yd-lint = "0.0.17"
-yd-file-templates = "0.0.17"
-yd-live-templates = "0.0.17"
-yd-styleguide = "0.0.17"
+yd-lint = "0.0.0"
+yd-file-templates = "0.0.0"
+yd-live-templates = "0.0.0"
+yd-styleguide = "0.0.0"
 
 # Android
 agp = "9.1.0"
@@ -36,7 +36,7 @@ assertk = "0.28.1"
 # Gradle Plugins
 compose-compiler-plugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
-kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 
 # YD
 yd-lint = { group = "com.github.yanosDev.android-tooling", name = "lint", version.ref = "yd-lint" }

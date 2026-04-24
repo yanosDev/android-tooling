@@ -2,90 +2,116 @@
 
 A suite of Android developer tooling libraries distributed via JitPack.
 
+> Run `./gradlew syncReadmeVersions` after bumping versions in `gradle/libs.versions.toml` to keep this file in sync.
+
 ## Libraries
 
-| Library        | Plugin ID                    | Artifact                           |
-|----------------|------------------------------|------------------------------------|
-| StyleGuide     | `de.yanosdev.styleguide`     | `de.yanosdev:styleguide:1.0.0`     |
-| File Templates | `de.yanosdev.file-templates` | `de.yanosdev:file-templates:1.0.0` |
-| Live Templates | `de.yanosdev.live-templates` | `de.yanosdev:live-templates:1.0.0` |
-| Lint Rules     | `de.yanosdev.lint`           | `de.yanosdev:lint:1.0.0`           |
+| Module           | Type                        | Version                                                                    |
+|------------------|-----------------------------|----------------------------------------------------------------------------|
+| `styleguide`     | Android library             | <!-- version:yd-styleguide -->0.0.0<!-- /version:yd-styleguide -->         |
+| `lint`           | Gradle plugin + lint checks | <!-- version:yd-lint -->0.0.0<!-- /version:yd-lint -->                     |
+| `file-templates` | Gradle plugin               | <!-- version:yd-file-templates -->0.0.0<!-- /version:yd-file-templates --> |
+| `live-templates` | Gradle plugin               | <!-- version:yd-live-templates -->0.0.0<!-- /version:yd-live-templates --> |
 
 ---
 
 ## Setup in a consumer project
 
-### 1. Add JitPack to `settings.gradle.kts`
+### 1. Configure repositories in `settings.gradle.kts`
+
 ```kotlin
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven("https://jitpack.io")
+    }
+    resolutionStrategy {
+        eachPlugin {
+            when (requested.id.id) {
+                "de.yanosdev.LintPlugin" -> useModule(
+                    "com.github.yanosDev.android-tooling:lint:${requested.version}"
+                )
+                "de.yanosdev.FileTemplatesPlugin" -> useModule(
+                    "com.github.yanosDev.android-tooling:file-templates:${requested.version}"
+                )
+                "de.yanosdev.LiveTemplatesPlugin" -> useModule(
+                    "com.github.yanosDev.android-tooling:live-templates:${requested.version}"
+                )
+            }
+        }
+    }
+}
+
 dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://jitpack.io")          // ← add this
-    }
-    // also add plugin repos if using plugins block:
-    pluginManagement {
-        repositories {
-            gradlePluginPortal()
-            maven("https://jitpack.io")
-        }
+        maven("https://jitpack.io")
     }
 }
 ```
 
-### 2. Apply individual plugins in your module's `build.gradle.kts`
+### 2. Apply Gradle plugins in your root `build.gradle.kts`
+
 ```kotlin
 plugins {
-    id("de.yanosdev.styleguide") version "1.0.0"
-    id("de.yanosdev.lint") version "1.0.0"
-    id("de.yanosdev.file-templates") version "1.0.0"
-    id("de.yanosdev.live-templates") version "1.0.0"
+    id("de.yanosdev.LintPlugin") version "<!-- version:yd-lint -->0.0.0<!-- /version:yd-lint -->"
+    id("de.yanosdev.FileTemplatesPlugin") version "<!-- version:yd-file-templates -->0.0.0<!-- /version:yd-file-templates -->" apply false
+    id("de.yanosdev.LiveTemplatesPlugin") version "<!-- version:yd-live-templates -->0.0.0<!-- /version:yd-live-templates -->" apply false
 }
-// Each plugin automatically adds its library dependency – nothing else needed.
+```
+
+### 3. Add the styleguide library
+
+```kotlin
+// in your module's build.gradle.kts
+dependencies {
+    implementation("com.github.yanosDev.android-tooling:styleguide:<!-- version:yd-styleguide -->0.0.0<!-- /version:yd-styleguide -->")
+    lintChecks("com.github.yanosDev.android-tooling:lint:<!-- version:yd-lint -->0.0.0<!-- /version:yd-lint -->")
+}
 ```
 
 ---
 
-## Publishing to JitPack
+## Publishing a new release
 
-JitPack builds directly from GitHub. Steps:
-
-1. Push this repo to GitHub (e.g. `github.com/yanosdev/android-tooling`)
-2. Create a Git tag: `git tag 1.0.0 && git push origin 1.0.0`
-3. Open `https://jitpack.io/#yanosdev/android-tooling` – JitPack auto-builds on first request
-4. Consumers use the artifact as shown above
-
-No CI configuration is needed for JitPack; it uses your `build.gradle.kts` directly.
-
----
-
-## Live Templates reference
-
-| Abbreviation | Expands to |
-|---|---|
-| `comp` | `@Composable fun Name() { }` |
-| `comppreview` | Composable + `@Preview` pair |
-| `vm` | `ViewModel` class + `UiState` data class |
-| `repo` | Repository interface + Impl class |
-| `usecase` | `UseCase` with `runCatching` |
-| `flowstate` | `collectAsStateWithLifecycle()` |
+1. Bump versions in `gradle/libs.versions.toml`
+2. Run `./gradlew syncReadmeVersions` to update this README, then commit
+3. Create a Git tag and push:
+   ```bash
+   git tag 0.0.1 && git push origin 0.0.1
+   ```
+4. JitPack builds automatically on first consumer request — check status at
+   `https://jitpack.io/#yanosDev/android-tooling`
 
 ---
 
 ## Custom Lint Rules
 
-| Rule ID | Severity | What it catches |
-|---|---|---|
-| `HardcodedColor` | Warning | `#RRGGBB` values in XML layouts |
-| `MissingContentDescription` | Error | `ImageView` without `contentDescription` |
+| Rule ID                        | Severity | What it catches                                                                                      |
+|--------------------------------|----------|------------------------------------------------------------------------------------------------------|
+| `YDComposableParameterSorting` | Error    | `@Composable` parameters not in required order (nav → VM → required → modifier → optional → content) |
+| `DataClassParameterSorting`    | Warning  | `data class` parameters not alphabetically sorted (required before optional)                         |
+| `NamedArgument`                | Warning  | Call-site args in `de.yanosdev.*` not using named arguments                                          |
+| `YDRevisionMissing`            | Warning  | `.kt` files missing `@file:YDRevisionIn` annotation                                                  |
+| `YDRevisionDue`                | Warning  | Files whose revision date has passed                                                                 |
+
+See [`lint/documentation/`](lint/documentation/) for detailed rule documentation.
 
 Run manually: `./gradlew lint`
 
 ---
 
-## Adding a new Lint rule
+## Live Templates
 
-1. Create `YourDetector.kt` in `lint/src/main/kotlin/de/yanosdev/lint/`
-2. Register the `Issue` in `YanosDevIssueRegistry.issues`
-3. Add a test in `lint/src/test/kotlin/de/yanosdev/lint/`
-4. Bump `VERSION_NAME` in `gradle.properties` and tag a new release
+| Abbreviation  | Expands to                               |
+|---------------|------------------------------------------|
+| `comp`        | `@Composable fun Name() { }`             |
+| `comppreview` | Composable + `@Preview` pair             |
+| `vm`          | `ViewModel` class + `UiState` data class |
+| `repo`        | Repository interface + Impl class        |
+| `usecase`     | `UseCase` with `runCatching`             |
+| `flowstate`   | `collectAsStateWithLifecycle()`          |
+
+For file template installation, see [
+`file-templates/FILE_TEMPLATES_README.md`](file-templates/FILE_TEMPLATES_README.md).

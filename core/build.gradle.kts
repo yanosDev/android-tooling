@@ -39,6 +39,11 @@ android {
     }
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(libs.versions.yd.java.get())
+    }
+}
 
 dependencies {
     implementation(project(":lint-annotation"))

@@ -2,7 +2,7 @@ import de.yanosdev.buildsrc.util.allWarningsAsErrorsConfig
 import de.yanosdev.buildsrc.util.configureWarnings
 
 plugins {
-    id("com.android.library")
+    id(libs.plugins.android.library.get().pluginId)
 }
 
 android {

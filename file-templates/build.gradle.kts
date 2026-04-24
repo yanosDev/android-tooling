@@ -3,8 +3,6 @@ plugins {
     `kotlin-dsl`
 }
 
-val artifactId = "file-templates"
-
 group = "de.yanosdev"
 version = libs.versions.yd.file.templates.get()
 
