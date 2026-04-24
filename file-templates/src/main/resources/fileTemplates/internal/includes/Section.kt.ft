@@ -1,0 +1,25 @@
+@file:YDRevisionIn(implementedAt = "${YEAR}-${MONTH}-${DAY}", revisionAfterInDays = 365)
+
+package ${PACKAGE_NAME}.section
+
+import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.core.component.screen.YDUIContentScope
+import de.yanosdev.styleguide.theme.util.PhonePreview
+import de.yanosdev.styleguide.theme.util.YDContentPreview
+import de.yanosdev.styleguide.theme.components.atoms.text.YDText
+import ${PACKAGE_NAME}.model.${SCREEN}Action
+import ${PACKAGE_NAME}.model.${SCREEN}ScreenData
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+
+#parse("File Header.java")
+@Composable
+internal fun YDUIContentScope<${SCREEN}ScreenData, ${SCREEN}Action>.${NAME}(
+    modifier: Modifier = Modifier,
+) {
+    YDText(text = "TODO: This is the ${NAME}")
+}
+
+@PhonePreview
+@Composable
+private fun Preview() = YDContentPreview(data = ${SCREEN}ScreenData()) { ${NAME}() }

@@ -1,0 +1,12 @@
+<templateSet group="YD">
+    <template name="ydrev"
+        description="Tag with @YDRevisionIn prefilled"
+        toReformat="true" toShortenFQNames="true" value="@file:de.yanosdev.annotation.YDRevisionIn(implementedAt = &quot;$DATE$&quot;, revisionAfterInDays = 365)">
+        <variable name="DATE" alwaysStopAt="false" defaultValue=""
+            expression="date(&quot;yyyy-MM-dd&quot;)" />
+        <context>
+            <option name="ANDROID" value="true" />
+            <option name="KOTLIN" value="true" />
+        </context>
+    </template>
+</templateSet>
