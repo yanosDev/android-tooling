@@ -9,9 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.core.component.screen.YDScreen
-import de.yanosdev.core.component.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.components.organisms.screen.YDDefaultScreen
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDUIContent
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.util.PhonePreview
 import de.yanosdev.styleguide.theme.util.YDContentPreview
 import de.yanosdev.tooling.ui.colors.model.ColorsAction
@@ -36,7 +36,7 @@ internal fun ColorsScreen(
         }
     }
 
-    YDScreen(viewModel = viewModel) {
+    YDUIContent(viewModel = viewModel) {
         Content(
             contentPadding = contentPadding,
         )

@@ -3,9 +3,9 @@
 package de.yanosdev.tooling.ui.home.viewmodel
 
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.core.component.screen.YDViewModelImpl
-import de.yanosdev.core.component.screen.model.UIState
-import de.yanosdev.core.component.screen.model.toUIContent
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDViewModelImpl
+import de.yanosdev.styleguide.theme.components.organisms.screen.model.UIState
+import de.yanosdev.styleguide.theme.components.organisms.screen.model.toUIContent
 import de.yanosdev.tooling.ui.home.model.HomeAction
 import de.yanosdev.tooling.ui.home.model.HomeScreenData
 

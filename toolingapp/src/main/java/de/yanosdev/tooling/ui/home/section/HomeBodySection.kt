@@ -13,10 +13,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.core.component.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.components.atoms.button.YDButton
 import de.yanosdev.styleguide.theme.components.atoms.button.YDButtonDefaults
 import de.yanosdev.styleguide.theme.components.atoms.text.YDText
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.themes.YDTheme.typography
 import de.yanosdev.styleguide.theme.util.PhonePreview

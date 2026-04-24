@@ -23,8 +23,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.core.component.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.components.atoms.text.YDText
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.foundations.semantics.YDColors
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.themes.YDTheme.shapes

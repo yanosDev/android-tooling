@@ -10,9 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.core.component.screen.YDScreen
-import de.yanosdev.core.component.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.components.molecules.scaffold.YDScaffold
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDUIContent
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.util.PhonePreview
@@ -56,7 +56,7 @@ internal fun HomeScreen(
         }
     }
 
-    YDScreen(viewModel = viewModel) {
+    YDUIContent(viewModel = viewModel) {
         Content(
             contentPadding = contentPadding,
         )
