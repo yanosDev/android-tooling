@@ -58,7 +58,6 @@ fun YDPreview(
 ) {
     val isDarkTheme = isSystemInDarkTheme()
 
-    // We need to use BoxWithConstraints instead of the actual window size class to compute the width because we don't have access to an activity in previews
     BoxWithConstraints(modifier = modifier) {
         YDTheme(
             colorScheme = if (isDarkTheme) DarkYDColors else LightYDColors,

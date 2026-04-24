@@ -34,9 +34,6 @@ import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDTextStyle
 
 
-/**
- * Default text.
- */
 @Composable
 fun YDText(
     text: String,
@@ -76,9 +73,6 @@ fun YDText(
     style = style
 )
 
-/**
- * Text with support for annotated strings and onClick handlers.
- */
 @Composable
 fun YDText(
     text: AnnotatedString,
@@ -138,9 +132,6 @@ fun YDText(
     )
 }
 
-/**
- * Processes pointer input if text is annotated.
- */
 private fun Modifier.clickableText(
     layoutResult: TextLayoutResult?,
     text: AnnotatedString,

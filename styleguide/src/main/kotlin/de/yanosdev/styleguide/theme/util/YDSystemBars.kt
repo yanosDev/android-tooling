@@ -13,7 +13,7 @@ import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.core.util.findActivity
 
 @Suppress("DEPRECATION")
-fun Context.updateNavBar(color: Color) {
+internal fun Context.updateNavBar(color: Color) {
     val isLightBackground = color.luminance() > 0.5f
 
     findActivity().window.apply {
@@ -41,7 +41,7 @@ fun Context.updateNavBar(color: Color) {
 }
 
 @Suppress("DEPRECATION")
-fun Context.updateStatusBar(color: Color) {
+internal fun Context.updateStatusBar(color: Color) {
     val isLightBackground = color.luminance() > 0.5f
 
     findActivity().window.apply {

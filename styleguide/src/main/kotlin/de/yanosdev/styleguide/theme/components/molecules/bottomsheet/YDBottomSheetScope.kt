@@ -5,15 +5,7 @@ package de.yanosdev.styleguide.theme.components.molecules.bottomsheet
 import androidx.compose.foundation.layout.ColumnScope
 import de.yanosdev.annotation.YDRevisionIn
 
-/**
- * Scope for [YDBottomSheet] content.
- */
-interface YDBottomSheetScope : ColumnScope {
-    /**
-     * Animates the sheet to the dismiss state.
-     *
-     * @param onCompletion is only called when the sheet is dismissed successfully.
-     */
+internal interface YDBottomSheetScope : ColumnScope {
     fun animateToDismiss(onCompletion: () -> Unit = {})
 }
 

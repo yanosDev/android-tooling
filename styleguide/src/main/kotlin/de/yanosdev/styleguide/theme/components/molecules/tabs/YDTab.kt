@@ -41,10 +41,6 @@ import de.yanosdev.styleguide.theme.util.PhonePreview
 import de.yanosdev.styleguide.theme.util.YDPreview
 import kotlin.math.max
 
-/**
- * Tab that is typically used inside a [YDTabRow].
- *
- */
 @Composable
 fun YDTab(
     selected: Boolean,
@@ -106,10 +102,6 @@ fun YDTab(
     )
 }
 
-/**
- * Tab that is typically used inside a [YDTabRow].
- *
- */
 @Composable
 fun YDTab(
     selected: Boolean,

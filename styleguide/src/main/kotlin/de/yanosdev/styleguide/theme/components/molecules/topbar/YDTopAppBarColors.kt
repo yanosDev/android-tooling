@@ -18,16 +18,6 @@ class YDTopAppBarColors internal constructor(
     internal val titleContentColor: Color,
     internal val actionIconContentColor: Color,
 ) {
-    /**
-     * Represents the container color used for the top app bar.
-     *
-     * A [colorTransitionFraction] provides a percentage value that can be used to generate a color.
-     * Usually, an app bar implementation will pass in a [colorTransitionFraction] read from
-     * the [YDTopAppBarState.collapsedFraction] or the [YDTopAppBarState.overlappedFraction].
-     *
-     * @param colorTransitionFraction a `0.0` to `1.0` value that represents a color transition
-     * percentage
-     */
     @Composable
     internal fun containerColor(colorTransitionFraction: Float): Color {
         return lerp(

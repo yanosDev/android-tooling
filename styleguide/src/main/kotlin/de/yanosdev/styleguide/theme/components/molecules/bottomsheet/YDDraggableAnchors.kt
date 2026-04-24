@@ -19,11 +19,6 @@ import androidx.compose.ui.unit.IntSize
 import de.yanosdev.annotation.YDRevisionIn
 import kotlin.math.roundToInt
 
-/**
- * Modifier for configuring draggable anchors.
- *
- * Derived from Material 3 AnchoredDraggable.
- */
 internal fun <T> Modifier.draggableAnchors(
     state: AnchoredDraggableState<T>,
     orientation: Orientation,

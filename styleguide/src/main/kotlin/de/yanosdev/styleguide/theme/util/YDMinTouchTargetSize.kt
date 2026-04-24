@@ -15,10 +15,8 @@ import androidx.compose.ui.unit.dp
 import de.yanosdev.annotation.YDRevisionIn
 import kotlin.math.roundToInt
 
-/**
- * TODO: Clean up
- */
-fun Modifier.ydMinTouchTargetSize(): Modifier = composed {
+// TODO: Clean up
+internal fun Modifier.ydMinTouchTargetSize(): Modifier = composed {
     if (LocalYDMinTouchTargetEnforcement.current) {
         // We're using 44x44 instead of ViewConfiguration's 48x48 default to match our design system
         MinimumTouchTargetModifier(YDMinTouchTargetSize)
@@ -27,9 +25,9 @@ fun Modifier.ydMinTouchTargetSize(): Modifier = composed {
     }
 }
 
-val LocalYDMinTouchTargetEnforcement = staticCompositionLocalOf { true }
+internal val LocalYDMinTouchTargetEnforcement = staticCompositionLocalOf { true }
 
-val YDMinTouchTargetSize = DpSize(44.dp, 44.dp)
+internal val YDMinTouchTargetSize = DpSize(44.dp, 44.dp)
 
 private class MinimumTouchTargetModifier(val size: DpSize) : LayoutModifier {
     override fun MeasureScope.measure(
@@ -39,7 +37,6 @@ private class MinimumTouchTargetModifier(val size: DpSize) : LayoutModifier {
 
         val placeable = measurable.measure(constraints)
 
-        // Be at least as big as the minimum dimension in both dimensions
         val width = maxOf(placeable.width, size.width.roundToPx())
         val height = maxOf(placeable.height, size.height.roundToPx())
 

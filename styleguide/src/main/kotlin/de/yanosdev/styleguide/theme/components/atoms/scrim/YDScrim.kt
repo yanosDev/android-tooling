@@ -59,19 +59,19 @@ internal fun YDScrim(
 }
 
 @Composable
-fun YDSystemBarsScrim(color: Color) {
+internal fun YDSystemBarsScrim(color: Color) {
     YDStatusBarScrim(color = color)
     YDNavBarScrim(color = color)
 }
 
 @Composable
-fun YDStatusBarScrim(color: Color) = YDSystemBarScrim(
+internal fun YDStatusBarScrim(color: Color) = YDSystemBarScrim(
     color = color,
     onEffect = { updateStatusBar(color = it) }
 )
 
 @Composable
-fun YDNavBarScrim(color: Color) = YDSystemBarScrim(
+internal fun YDNavBarScrim(color: Color) = YDSystemBarScrim(
     color = color,
     onEffect = { updateNavBar(color = it) },
 )

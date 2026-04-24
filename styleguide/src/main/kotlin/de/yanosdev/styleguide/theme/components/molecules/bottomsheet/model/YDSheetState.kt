@@ -16,21 +16,20 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 
 @Composable
-fun rememberYDSheetState(
+internal fun rememberYDSheetState(
     initialValue: YDSheetValue = YDSheetValue.Hidden,
 ) = rememberSaveable(saver = YDSheetState.Saver()) {
     YDSheetState(initialValue = initialValue)
 }
 
 @Stable
-class YDSheetState internal constructor(initialValue: YDSheetValue) {
+internal class YDSheetState internal constructor(initialValue: YDSheetValue) {
 
     val currentValue: YDSheetValue
         get() = anchoredDraggableState.currentValue
 
     val settledValue: YDSheetValue
         get() = anchoredDraggableState.settledValue
-
 
     val targetValue: YDSheetValue
         get() = anchoredDraggableState.targetValue
@@ -63,19 +62,7 @@ class YDSheetState internal constructor(initialValue: YDSheetValue) {
     }
 }
 
-/**
- * Returns a flow of events that indicate that the sheet has been fully dismissed and that the
- * corresponding dialog must be removed.
- *
- * We need to make sure to be notified when the sheet _really_ settles to the
- * [YDSheetValue.Hidden] state.
- * To achieve this, we cannot rely on [YDSheetState.settledValue] only, because its initial
- * value is [YDSheetValue.Hidden] and in some scenarios it will never change (e.g. when
- * the sheet is dismissed before it has reached the [YDSheetValue.Expanded] state).
- * To circumvent this, we monitor changes to [YDSheetState.currentValue] and
- * [YDSheetState.targetValue] as well.
- */
-fun YDSheetState.dismissedEvents(): Flow<Unit> = combine(
+internal fun YDSheetState.dismissedEvents(): Flow<Unit> = combine(
     snapshotFlow { currentValue },
     snapshotFlow { targetValue },
     snapshotFlow { settledValue }

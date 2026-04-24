@@ -15,17 +15,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
 
-/**
- * Defines how different screen state changes should be animated.
- *
- * As it's likely that animations shouldn't occur everytime [targetState] changes but
- * rather when its type changes [onContentKey] will be default use [Class.getSimpleName]
- * to determine whether an animation should run.
- *
- * @see AnimatedContent
- */
 @Composable
-fun <T : Any> YDAnimatedContent(
+internal fun <T : Any> YDAnimatedContent(
     targetState: T,
     modifier: Modifier = Modifier,
     contentAlignment: Alignment = Alignment.TopStart,
@@ -46,7 +37,7 @@ fun <T : Any> YDAnimatedContent(
     )
 }
 
-object C24AnimatedScreenContentDefaults {
+internal object C24AnimatedScreenContentDefaults {
     fun <T> transitionSpec(): AnimatedContentTransitionScope<T>.() -> ContentTransform = {
         fadeIn() togetherWith fadeOut()
     }

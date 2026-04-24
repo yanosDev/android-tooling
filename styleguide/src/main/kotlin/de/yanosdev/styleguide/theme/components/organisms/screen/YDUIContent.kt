@@ -31,7 +31,7 @@ fun <T, Z> YDUIContent(
 }
 
 @Composable
-fun <T, Z> rememberYDScreenScope(
+internal fun <T, Z> rememberYDScreenScope(
     data: T,
     onAction: (Z) -> Unit = {},
     onNavAction: (NavAction) -> Unit = {}

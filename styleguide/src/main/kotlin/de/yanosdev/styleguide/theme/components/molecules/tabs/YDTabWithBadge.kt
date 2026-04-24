@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-24", revisionAfterInDays = 365)
 
-package com.chrono24.mobile.styleguide.component.tabs
+package de.yanosdev.styleguide.theme.components.molecules.tabs
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.padding
@@ -11,7 +11,6 @@ import androidx.compose.ui.graphics.Color
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.components.atoms.indicator.YDDotIndicator
 import de.yanosdev.styleguide.theme.components.atoms.text.YDText
-import de.yanosdev.styleguide.theme.components.molecules.tabs.YDTab
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.util.PhonePreview
@@ -49,7 +48,7 @@ fun YDTabWithBadge(
 
 @PhonePreview
 @Composable
-private fun YD_Tab_Selected_Preview() = YDPreview {
+private fun SelectedPreview() = YDPreview {
     YDTabWithBadge(
         selected = true,
         hasBadge = true,
@@ -60,7 +59,7 @@ private fun YD_Tab_Selected_Preview() = YDPreview {
 
 @PhonePreview
 @Composable
-private fun YD_Tab_Not_Selected_Preview() = YDPreview {
+private fun NotSelectedPreview() = YDPreview {
     YDTabWithBadge(
         selected = false,
         hasBadge = true,

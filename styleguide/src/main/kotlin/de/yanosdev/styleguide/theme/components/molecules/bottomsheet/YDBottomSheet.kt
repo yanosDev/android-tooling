@@ -63,7 +63,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 @Composable
-fun YDNavHostBottomSheet(
+internal fun YDNavHostBottomSheet(
     predictiveBackProgress: Float,
     sheetState: YDSheetState,
     onBack: () -> Unit,
@@ -92,7 +92,7 @@ fun YDNavHostBottomSheet(
 
 
 @Composable
-fun YDBottomSheetScope.YDDefaultBottomSheetScreen(
+internal fun YDBottomSheetScope.YDDefaultBottomSheetScreen(
     navigationIcon: @Composable () -> Unit,
     title: String,
     content: @Composable YDBottomSheetScope.() -> Unit
@@ -106,11 +106,8 @@ fun YDBottomSheetScope.YDDefaultBottomSheetScreen(
     }
 }
 
-/**
- * A bottom sheet with an app bar containing a title and close icon.
- */
 @Composable
-fun YDBottomSheet(
+internal fun YDBottomSheet(
     title: String,
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
@@ -147,20 +144,8 @@ fun YDBottomSheet(
     content(contentPadding)
 }
 
-/**
- * A bottom sheet with custom content.
- *
- * **Note:** The bottom sheet implementation is originally derived from the Material 3
- * implementation, but heavily customized:
- * - Fixed various issues, mostly related to state handling.
- * - Introduced [YDBottomSheetScope] to easily dismiss sheets without accessing the [YDSheetState]
- * directly.
- * - Implemented proper edge-to-edge, passing content padding to the sheet content.
- * - Removed partially expanded sheet state as it is currently not needed.
- * - Customized visuals to match our styleguide.
- */
 @Composable
-fun YDBottomSheet(
+internal fun YDBottomSheet(
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
     sheetState: YDSheetState = rememberYDSheetState(),
@@ -240,9 +225,6 @@ fun YDBottomSheet(
     }
 }
 
-/**
- * A wrapper for bottom sheets that places the sheet content and scrim.
- */
 @Composable
 private fun YDBottomSheetWrapper(
     predictiveBackProgress: Float,
@@ -327,9 +309,6 @@ private fun YDBottomSheetWrapper(
     }
 }
 
-/**
- * The actual visible bottom sheet content.
- */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun BoxScope.YDBottomSheetContent(
@@ -464,10 +443,7 @@ private fun GraphicsLayerScope.calculatePredictiveBackScaleY(progress: Float): F
     }
 }
 
-/**
- * Customizable properties for [YDBottomSheet].
- */
-data class YDBottomSheetProperties(
+internal data class YDBottomSheetProperties(
     val shouldDismissOnBackPress: Boolean = true,
     val shouldDismissOnScrimClick: Boolean = true,
     val securePolicy: SecureFlagPolicy = SecureFlagPolicy.Inherit,

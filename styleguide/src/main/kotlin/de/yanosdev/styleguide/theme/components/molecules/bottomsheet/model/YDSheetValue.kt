@@ -4,7 +4,7 @@ package de.yanosdev.styleguide.theme.components.molecules.bottomsheet.model
 
 import de.yanosdev.annotation.YDRevisionIn
 
-enum class YDSheetValue {
+internal enum class YDSheetValue {
     Hidden,
     Expanded
 }

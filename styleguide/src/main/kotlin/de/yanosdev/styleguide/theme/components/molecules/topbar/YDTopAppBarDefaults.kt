@@ -17,7 +17,7 @@ import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.themes.contentColorFor
 
-object YDTopAppBarDefaults {
+internal object YDTopAppBarDefaults {
     @Composable
     fun topAppBarColors(
         containerColor: Color = colorScheme.surfaceContainerDefault,
@@ -37,15 +37,6 @@ object YDTopAppBarDefaults {
         @Composable
         get() = WindowInsets.systemBars.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
 
-    /**
-     * Returns a pinned [YDTopAppBarScrollBehavior] that tracks nested-scroll callbacks and
-     * updates its [YDTopAppBarState.contentOffset] accordingly.
-     *
-     * @param state the state object to be used to control or observe the top app bar's scroll
-     * state. See [rememberYDTopAppBarState] for a state that is remembered across compositions.
-     * @param onCanScroll a callback used to determine whether scroll events are to be handled by this
-     * pinned [YDTopAppBarScrollBehavior]
-     */
     @Suppress("unused")
     @Composable
     fun pinnedScrollBehavior(
@@ -53,21 +44,6 @@ object YDTopAppBarDefaults {
         onCanScroll: () -> Boolean = { true }
     ): YDTopAppBarScrollBehavior = YDPinnedScrollBehavior(state = state, canScroll = onCanScroll)
 
-    /**
-     * Returns a [YDTopAppBarScrollBehavior]. A top app bar that is set up with this
-     * [YDTopAppBarScrollBehavior] will immediately collapse when the content is pulled up, and will
-     * immediately appear when the content is pulled down.
-     *
-     * @param state the state object to be used to control or observe the top app bar's scroll
-     * state. See [rememberYDTopAppBarState] for a state that is remembered across compositions.
-     * @param canScroll a callback used to determine whether scroll events are to be
-     * handled by this [YDEnterAlwaysScrollBehavior]
-     * @param snapAnimationSpec an optional [AnimationSpec] that defines how the top app bar snaps
-     * to either fully collapsed or fully extended state when a fling or a drag scrolled it into an
-     * intermediate position
-     * @param flingAnimationSpec an optional [DecayAnimationSpec] that defined how to fling the top
-     * app bar when the user flings the app bar itself, or the content below it
-     */
     @Suppress("unused")
     @Composable
     fun enterAlwaysScrollBehavior(
@@ -83,24 +59,6 @@ object YDTopAppBarDefaults {
             canScroll = canScroll
         )
 
-    /**
-     * Returns a [YDTopAppBarScrollBehavior] that adjusts its properties to affect the colors and
-     * height of the top app bar.
-     *
-     * A top app bar that is set up with this [YDTopAppBarScrollBehavior] will immediately collapse
-     * when the nested content is pulled up, and will expand back the collapsed area when the
-     * content is  pulled all the way down.
-     *
-     * @param state the state object to be used to control or observe the top app bar's scroll
-     * state. See [rememberYDTopAppBarState] for a state that is remembered across compositions.
-     * @param canScroll a callback used to determine whether scroll events are to be
-     * handled by this [YDExitUntilCollapsedScrollBehavior]
-     * @param snapAnimationSpec an optional [AnimationSpec] that defines how the top app bar snaps
-     * to either fully collapsed or fully extended state when a fling or a drag scrolled it into an
-     * intermediate position
-     * @param flingAnimationSpec an optional [DecayAnimationSpec] that defined how to fling the top
-     * app bar when the user flings the app bar itself, or the content below it
-     */
     @Suppress("unused")
     @Composable
     fun exitUntilCollapsedScrollBehavior(

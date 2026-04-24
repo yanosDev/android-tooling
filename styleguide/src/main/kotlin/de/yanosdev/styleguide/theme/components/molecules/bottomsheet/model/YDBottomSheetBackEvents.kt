@@ -5,7 +5,7 @@ package de.yanosdev.styleguide.theme.components.molecules.bottomsheet.model
 import android.window.BackEvent
 import de.yanosdev.annotation.YDRevisionIn
 
-sealed interface YDBottomSheetBackEvent {
+internal sealed interface YDBottomSheetBackEvent {
     data class OnBackStarted(val backEvent: BackEvent) : YDBottomSheetBackEvent
     data class OnBackProgressed(val backEvent: BackEvent) : YDBottomSheetBackEvent
     data object OnBackInvoked : YDBottomSheetBackEvent

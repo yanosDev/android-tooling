@@ -133,14 +133,6 @@ object YDTheme {
         get() = LocalYDTypography.current
 }
 
-/**
- * Theme implementation for YD styleguide
- *
- * Allows configuration of color scheme, typography, shapes and grid.
- *
- * Keep in mind that while this theme is very similar to the MaterialTheme in terms of structure,
- * implementation and usage, it does not follow Material design guidelines.
- */
 @Composable
 fun YDTheme(
     alphas: YDRippleAlpha = YDTheme.alphas,

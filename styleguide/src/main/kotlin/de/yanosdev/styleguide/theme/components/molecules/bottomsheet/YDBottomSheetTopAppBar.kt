@@ -19,7 +19,7 @@ import de.yanosdev.styleguide.theme.util.PhonePreview
 import de.yanosdev.styleguide.theme.util.YDPreview
 
 @Composable
-fun YDBottomSheetTopAppBar(
+internal fun YDBottomSheetTopAppBar(
     navigationIcon: (@Composable () -> Unit)? = null,
     title: String?,
     windowInsets: WindowInsets = YDTopAppBarDefaults.windowInsets
@@ -45,7 +45,7 @@ fun YDBottomSheetTopAppBar(
 
 @PhonePreview
 @Composable
-private fun YDDefaultDialogTopAppBarPreview() = YDPreview {
+private fun DefaultDialogTopAppBarPreview() = YDPreview {
     YDBottomSheetTopAppBar(
         title = "Title",
         navigationIcon = { YDNavigationCloseIcon(navUp = { }) }
@@ -54,7 +54,7 @@ private fun YDDefaultDialogTopAppBarPreview() = YDPreview {
 
 @PhonePreview
 @Composable
-private fun YDDefaultDialogTopAppBarPreview_Long_Title() = YDPreview {
+private fun DefaultDialogTopAppBarLongTitlePreview() = YDPreview {
     YDBottomSheetTopAppBar(
         title = "Lorem ipsum dolor sit amet consectetur. Vitae aliquet nec eget imperdiet. Dolor ornare amet facilisis nunc ac ante.",
         navigationIcon = { YDNavigationCloseIcon(navUp = { }) }

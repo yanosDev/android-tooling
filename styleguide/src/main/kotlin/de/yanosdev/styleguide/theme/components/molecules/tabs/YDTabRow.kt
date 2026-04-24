@@ -197,13 +197,6 @@ fun YDTabRow(
     }
 }
 
-/**
- * Scrollable tab row.
- *
- * Used when a set of tabs cannot fit on screen simultaneously.
- *
- * Derived from Material3 ScrollableTabRow.
- */
 @Composable
 fun YDScrollableTabRow(
     selectedTabIndex: Int,
@@ -362,7 +355,7 @@ class YDTabPosition internal constructor(val left: Dp, val width: Dp, val conten
     }
 }
 
-object YDTabRowDefaults {
+internal object YDTabRowDefaults {
     val containerColor @Composable get() = colorScheme.surfaceContainerDefault
 
     val contentColor @Composable get() = colorScheme.onSurface
@@ -381,13 +374,6 @@ object YDTabRowDefaults {
         )
     }
 
-    /**
-     * [Modifier] that takes up all the available width inside the [YDTabRow], and then animates
-     * the offset of the indicator it is applied to, depending on the [currentTabPosition].
-     *
-     * @param currentTabPosition [YDTabPosition] of the currently selected tab. This is used to
-     * calculate the offset of the indicator this modifier is applied to, as well as its width.
-     */
     fun Modifier.tabIndicatorOffset(
         currentTabPosition: YDTabPosition
     ): Modifier = composed(
@@ -438,8 +424,6 @@ private class ScrollableTabData(
         if (this.selectedTab != selectedTab) {
             this.selectedTab = selectedTab
             tabPositions.getOrNull(selectedTab)?.let {
-                // Scrolls to the tab with [tabPosition], trying to place it in the center of the
-                // screen or as close to the center as possible.
                 val calculatedOffset = it.calculateTabOffset(density, edgeOffset, tabPositions)
                 if (scrollState.value != calculatedOffset) {
                     coroutineScope.launch {
@@ -453,11 +437,6 @@ private class ScrollableTabData(
         }
     }
 
-    /**
-     * @return the offset required to horizontally center the tab inside this TabRow.
-     * If the tab is at the start / end, and there is not enough space to fully centre the tab, this
-     * will just clamp to the min / max position given the max width.
-     */
     private fun YDTabPosition.calculateTabOffset(
         density: Density,
         edgeOffset: Int,
@@ -478,10 +457,6 @@ private class ScrollableTabData(
 
 interface TabIndicatorScope {
 
-    /**
-     * A layout modifier that provides tab positions, this can be used to animate and layout
-     * a TabIndicator depending on size, position, and content size of each Tab.
-     */
     fun Modifier.tabIndicatorLayout(
         measure: MeasureScope.(
             Measurable,
@@ -490,13 +465,6 @@ interface TabIndicatorScope {
         ) -> MeasureResult
     ): Modifier
 
-    /**
-     * A Modifier that follows the default offset and animation
-     *
-     * @param selectedTabIndex the index of the current selected tab
-     * @param matchContentSize this modifier can also animate the width of the indicator \
-     * to match the content size of the tab.
-     */
     fun Modifier.tabIndicatorOffset(
         selectedTabIndex: Int,
         matchContentSize: Boolean = false
@@ -603,14 +571,8 @@ internal interface TabPositionsHolder {
 
 private val ScrollableTabRowMinimumTabWidth = 90.dp
 
-/**
- * The default padding from the starting edge before a tab in a [YDScrollableTabRow].
- */
 private val ScrollableTabRowPadding = 0.dp
 
-/**
- * [AnimationSpec] used when scrolling to a tab that is not fully visible.
- */
 private val ScrollableTabRowScrollSpec: AnimationSpec<Float> = tween(
     durationMillis = 250,
     easing = FastOutSlowInEasing

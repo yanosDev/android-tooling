@@ -60,11 +60,6 @@ import de.yanosdev.styleguide.R.style.Theme_YD_EdgeToEdgeFloatingDialogWindow
 import de.yanosdev.styleguide.theme.components.molecules.bottomsheet.model.YDBottomSheetBackEvent
 import java.util.UUID
 
-/**
- * Dialog for [YDBottomSheet].
- *
- * Derived from Material 3 ModalBottomSheet.android.
- */
 @Composable
 internal fun YDBottomSheetDialog(
     properties: YDBottomSheetProperties,
@@ -116,12 +111,7 @@ internal fun YDBottomSheetDialog(
     }
 }
 
-/**
- * Dialog wrapper for [YDBottomSheet].
- *
- * Derived from Material 3 ModalBottomSheet.android.
- */
-class YDBottomSheetDialogWrapper(
+internal class YDBottomSheetDialogWrapper(
     private var onDismissRequest: () -> Unit,
     private var properties: YDBottomSheetProperties,
     private val composeView: View,
@@ -160,9 +150,7 @@ class YDBottomSheetDialogWrapper(
             // Set unique id for AbstractComposeView. This allows state restoration for the
             // state defined inside the Dialog via rememberSaveable()
             setTag(R.id.compose_view_saveable_id_tag, "Dialog:$dialogId")
-            // Enable children to draw their shadow by not clipping them
             clipChildren = false
-            // Allocate space for elevation
             with(density) { elevation = maxSupportedElevation.toPx() }
             // Simple outline to force window manager to allocate space for shadow.
             // Note that the outline affects clickable area for the dismiss listener. In
@@ -186,7 +174,6 @@ class YDBottomSheetDialogWrapper(
             composeView.findViewTreeSavedStateRegistryOwner()
         )
 
-        // Initial setup
         updateParameters(onDismissRequest, properties, layoutDirection)
 
         WindowCompat.getInsetsController(window, window.decorView).apply {
@@ -240,7 +227,6 @@ class YDBottomSheetDialogWrapper(
         setSecurePolicy(properties.securePolicy)
         setLayoutDirection(layoutDirection)
 
-        // Window flags to span parent window.
         window?.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.MATCH_PARENT,
@@ -290,11 +276,6 @@ private fun SecureFlagPolicy.shouldApplySecureFlag(isSecureFlagSetOnParent: Bool
     }
 }
 
-/**
- * Layout for [YDBottomSheetDialogWrapper].
- *
- * Derived from Material 3 ModalBottomSheet.android.
- */
 @SuppressLint("ViewConstructor")
 private class YDBottomSheetDialogLayout(
     context: Context,
@@ -322,7 +303,6 @@ private class YDBottomSheetDialogLayout(
         content()
     }
 
-    // Existing predictive back behavior below.
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
 

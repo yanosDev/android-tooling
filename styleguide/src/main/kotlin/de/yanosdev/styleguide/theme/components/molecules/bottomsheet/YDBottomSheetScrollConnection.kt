@@ -11,12 +11,7 @@ import androidx.compose.ui.unit.Velocity
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.components.molecules.bottomsheet.model.YDSheetState
 
-/**
- * Scroll connection for [YDBottomSheet].
- *
- * Derived from Material 3 SheetDefaults ConsumeSwipeWithinBottomSheetBoundsNestedScrollConnection.
- */
-class YDBottomSheetScrollConnection(
+internal class YDBottomSheetScrollConnection(
     private val sheetState: YDSheetState,
     private val orientation: Orientation,
     private val onFling: (Float) -> Unit,
@@ -46,7 +41,6 @@ class YDBottomSheetScrollConnection(
         val minAnchor = sheetState.anchoredDraggableState.anchors.minPosition()
         return if (toFling < 0 && currentOffset > minAnchor) {
             onFling(toFling)
-            // since we go to the anchor with tween settling, consume all for the best UX
             available
         } else {
             Velocity.Zero
