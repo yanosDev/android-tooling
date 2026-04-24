@@ -126,7 +126,9 @@ Never use a different root package (e.g. `com.chrono24.*`) for files in this mod
 
 ### Visibility modifiers
 
-- Default to the most restrictive visibility that works.
+- Default to the most restrictive visibility that works. When creating new files, default every declaration to `private`
+  or `internal` unless there is a concrete reason it must be public (e.g. it is in a public function's parameter type
+  position, or it is a UI composable intended for consumers).
 - Internal implementation details (scaffold slots, defaults objects used only within the module, etc.) should be
   `internal`.
 - Prefer `private` over `internal` for things used only within a single file.
@@ -140,6 +142,11 @@ Never use a different root package (e.g. `com.chrono24.*`) for files in this mod
 - Token objects: internal, suffix `Tokens` (e.g. `YDColorTokens`, `YDShadowTokens`).
 - Defaults objects: suffix `Defaults` (e.g. `YDButtonDefaults`). Public if consumed externally, `internal` if only used
   inside the module.
+
+### File structure
+
+- One top-level class, interface, object, or enum per file. Private/internal helpers closely tied to that declaration
+  may live in the same file, but avoid placing two independently-meaningful types in one file.
 
 ### Kotlin style
 
