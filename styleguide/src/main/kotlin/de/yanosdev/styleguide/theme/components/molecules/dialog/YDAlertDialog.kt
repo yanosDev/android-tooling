@@ -36,6 +36,19 @@ import de.yanosdev.styleguide.theme.util.YDPreview
 private val MinWidth = 280.dp
 private val MaxWidth = 560.dp
 
+/**
+ * Modal alert dialog with composable slots for icon, title, body, and action buttons.
+ *
+ * All content slots are optional. The dialog is sized and shaped by [shape], [shadowElevation],
+ * and [tonalElevation]. Dismissal behaviour is controlled via [properties].
+ *
+ * @param onDismissRequest Called when the user taps the scrim or presses back.
+ * @param confirmButton Primary action slot — typically a [YDPrimaryButton].
+ * @param dismissButton Secondary action slot — typically a [YDTextButton]. Null hides it.
+ * @param icon Optional icon centered above the title.
+ * @param title Optional heading. Start-aligned unless [icon] is set, in which case it is centered.
+ * @param text Optional body content. Accepts any composable, not limited to plain text.
+ */
 @Composable
 fun YDAlertDialog(
     onDismissRequest: () -> Unit,
@@ -75,6 +88,18 @@ fun YDAlertDialog(
     }
 }
 
+/**
+ * Convenience overload of [YDAlertDialog] with plain-string title, body, and button labels.
+ *
+ * The confirm button is always rendered. The dismiss button appears only when [dismissText] is
+ * non-null; tapping it calls [onDismissClick] if provided, otherwise [onDismissRequest].
+ *
+ * @param confirmText Label for the confirm button.
+ * @param onConfirmClick Called when the confirm button is tapped.
+ * @param onDismissRequest Called when the dialog should close.
+ * @param dismissText Label for the optional dismiss button. Null omits it.
+ * @param onDismissClick Override click handler for the dismiss button. Defaults to [onDismissRequest].
+ */
 @Composable
 fun YDAlertDialog(
     confirmText: String,

@@ -120,7 +120,10 @@ Never use a different root package (e.g. `com.chrono24.*`) for files in this mod
 - **Remove** comments that describe *what* the code does — well-named identifiers do that.
 - **Keep** comments that explain *why*: hidden constraints, workarounds, non-obvious math, suppressed lint with reason.
 - **Keep** `// TODO:` comments as-is.
-- **Keep** KDoc (`/** */`) on public API where it adds information beyond the signature.
+- **Write KDoc** (`/** */`) on every public `@Composable`, `class`, `data class`, and top-level `fun`. At
+  minimum document: non-obvious parameter semantics, state ownership (internal vs. caller-controlled),
+  and callback contracts (when it is called, what it receives). Omit KDoc only when every parameter is
+  fully self-explanatory from its name and type alone.
 - **Remove** region markers (`//region`, `//endregion`) and section-label comments (`// Tab specifications`,
   `// Indeterminate circular indicator transition specs`, etc.).
 
@@ -182,3 +185,6 @@ Never use a different root package (e.g. `com.chrono24.*`) for files in this mod
 4. Add a `@PhonePreview` + `@Composable private fun Preview()` at the bottom of each component file.
 5. Use `YDPreview { }` as the preview wrapper.
 6. Never import `androidx.compose.material3` theme tokens directly; always go through `YDTheme.*`.
+7. Add an entry to `styleguide/docs/atoms.md`, `molecules.md`, or `organisms.md` for every new public
+   component. Each entry must include: a one-line description and at least one usage snippet. Update the
+   entry whenever the public API changes.

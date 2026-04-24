@@ -221,3 +221,117 @@ YDScaffold(
     }
 }
 ```
+
+---
+
+## YDAlertDialog
+
+Modal alert dialog. Two overloads: composable-slot API and convenience string API.
+
+**Slot-based** — full control over every content area:
+
+```kotlin
+YDAlertDialog(
+    onDismissRequest = { showDialog = false },
+    title = { YDText(text = "Delete item?") },
+    text = { YDText(text = "This action cannot be undone.") },
+    confirmButton = { YDPrimaryButton(text = "Delete", onClick = { /* delete */ }) },
+    dismissButton = { YDTextButton(text = "Cancel", onClick = { showDialog = false }) },
+)
+```
+
+**String-based** — confirm button is always shown; dismiss button is shown when `dismissText` is non-null
+and defaults to calling `onDismissRequest`:
+
+```kotlin
+YDAlertDialog(
+    confirmText = "Delete",
+    onConfirmClick = { /* delete */ },
+    onDismissRequest = { showDialog = false },
+    title = "Delete item?",
+    text = "This action cannot be undone.",
+    dismissText = "Cancel",
+)
+```
+
+Custom icon:
+
+```kotlin
+YDAlertDialog(
+    onDismissRequest = { showDialog = false },
+    icon = { YDIcon(imageVector = Icons.Rounded.Warning, contentDescription = null) },
+    title = { YDText(text = "Warning") },
+    text = { YDText(text = "Something went wrong.") },
+    confirmButton = { YDPrimaryButton(text = "OK", onClick = { showDialog = false }) },
+)
+```
+
+---
+
+## YDTimePickerDialog
+
+Modal scroll-wheel time picker dialog. Maintains internal state; confirmed value is delivered via
+`onConfirm`. The dialog does **not** auto-dismiss — call `onDismissRequest` inside `onConfirm`.
+
+```kotlin
+YDTimePickerDialog(
+    onConfirm = { time ->
+        selectedTime = time   // YDPickerTime(hour, minute, isAm)
+        showDialog = false
+    },
+    onDismissRequest = { showDialog = false },
+    title = "Select time",
+    dismissText = "Cancel",
+)
+```
+
+24-hour format:
+
+```kotlin
+YDTimePickerDialog(
+    onConfirm = { time -> /* time.hour is 0–23 */ },
+    onDismissRequest = { showDialog = false },
+    initialValue = YDPickerTime(hour = 14, minute = 30),
+    is24HourFormat = true,
+)
+```
+
+---
+
+## YDDatePickerDialog
+
+Modal scroll-wheel date picker dialog (day / month / year). Day values are automatically clamped
+when the month or year changes (e.g. scrolling from Jan 31 to Feb clamps to Feb 28/29).
+
+```kotlin
+YDDatePickerDialog(
+    onConfirm = { date ->
+        selectedDate = date   // YDPickerDate(day, month, year)
+        showDialog = false
+    },
+    onDismissRequest = { showDialog = false },
+    title = "Select date",
+    dismissText = "Cancel",
+    yearRange = 2020..2030,
+)
+```
+
+---
+
+## YDMonthYearPickerDialog
+
+Modal scroll-wheel month and year picker. Useful for expiry dates, filter ranges, and similar
+month-granularity selections.
+
+```kotlin
+YDMonthYearPickerDialog(
+    onConfirm = { yearMonth ->
+        expiry = yearMonth   // YDPickerYearMonth(month, year)
+        showDialog = false
+    },
+    onDismissRequest = { showDialog = false },
+    title = "Expiry date",
+    dismissText = "Cancel",
+    yearRange = 2024..2040,
+)
+```

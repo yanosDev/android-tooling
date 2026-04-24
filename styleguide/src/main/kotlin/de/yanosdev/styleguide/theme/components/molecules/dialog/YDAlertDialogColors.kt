@@ -6,6 +6,10 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import de.yanosdev.annotation.YDRevisionIn
 
+/**
+ * Colors used by [YDAlertDialog]. Instances are created via the internal defaults factory;
+ * the constructor is not part of the public API.
+ */
 @Immutable
 class YDAlertDialogColors internal constructor(
     val containerColor: Color,
