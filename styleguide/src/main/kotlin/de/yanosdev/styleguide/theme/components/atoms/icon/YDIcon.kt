@@ -44,7 +44,7 @@ import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
 
 
 @Composable
-internal fun YDIcon(
+fun YDIcon(
     contentDescription: String?,
     imageVector: ImageVector,
     modifier: Modifier = Modifier,
@@ -59,7 +59,7 @@ internal fun YDIcon(
 )
 
 @Composable
-internal fun YDIcon(
+fun YDIcon(
     bitmap: ImageBitmap,
     contentDescription: String?,
     modifier: Modifier = Modifier,
@@ -74,7 +74,7 @@ internal fun YDIcon(
 )
 
 @Composable
-internal fun YDIcon(
+fun YDIcon(
     contentDescription: String?,
     painter: Painter,
     modifier: Modifier = Modifier,
@@ -108,7 +108,7 @@ internal fun YDIcon(
 }
 
 @Composable
-internal fun YDToggleableIcon(
+fun YDToggleableIcon(
     contentDescription: String?,
     imageVector: ImageVector,
     toggledOn: Boolean,
@@ -126,7 +126,7 @@ internal fun YDToggleableIcon(
 
 
 @Composable
-internal fun YDToggleableIcon(
+fun YDToggleableIcon(
     contentDescription: String?,
     painter: Painter,
     toggledOn: Boolean,

@@ -4,6 +4,8 @@ package de.yanosdev.tooling.navigation
 
 import androidx.navigation3.runtime.EntryProviderScope
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.tooling.ui.button.ButtonScreen
+import de.yanosdev.tooling.ui.button.ButtonViewModelImpl
 import de.yanosdev.tooling.ui.colors.ColorsScreen
 import de.yanosdev.tooling.ui.colors.ColorsViewModelImpl
 import de.yanosdev.tooling.ui.home.HomeScreen
@@ -30,6 +32,13 @@ internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navig
         TypographiesScreen(
             navBack = navigator.navigationIcon,
             viewModel = TypographiesViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.Button> {
+        ButtonScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = ButtonViewModelImpl()
         )
     }
 

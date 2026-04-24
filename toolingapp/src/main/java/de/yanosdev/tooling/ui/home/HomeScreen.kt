@@ -41,13 +41,13 @@ internal fun HomeScreen(
                 is HomeAction.NavToStyleItem -> navToItem(
                     when (navAction.item) {
                         StyleGuideItems.SubAtoms.Colors -> YDStyleGuideNavKey.Colors
-                        StyleGuideItems.SubAtoms.Typographies -> YDStyleGuideNavKey.Typographies
-                        StyleGuideItems.SubAtoms.Shadows -> YDStyleGuideNavKey.Shadows
                         StyleGuideItems.Atoms.Text -> YDStyleGuideNavKey.Text
+                        StyleGuideItems.SubAtoms.Typographies -> YDStyleGuideNavKey.Typographies
                         StyleGuideItems.Atoms.Icon -> YDStyleGuideNavKey.Icon
                         StyleGuideItems.Atoms.IconButton -> YDStyleGuideNavKey.IconButton
                         StyleGuideItems.Atoms.Surface -> YDStyleGuideNavKey.Surface
                         StyleGuideItems.Atoms.Scaffold -> YDStyleGuideNavKey.Scaffold
+                        StyleGuideItems.Molecules.Button -> YDStyleGuideNavKey.Button
                     }
                 )
 

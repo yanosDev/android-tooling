@@ -15,7 +15,7 @@ internal class ${NAME}ViewModelImpl : YDViewModelImpl<UIState<${NAME}ScreenData>
 ), ${NAME}ViewModel {
     override fun onAction(action: ${NAME}Action) {
         when (action) {
-            else -> super.onAction(action)
+            else -> super.onAction(action = action)
         }
     }
 }

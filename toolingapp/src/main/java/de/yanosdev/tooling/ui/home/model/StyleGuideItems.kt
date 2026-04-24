@@ -9,17 +9,18 @@ sealed interface StyleGuideItems {
     sealed interface SubAtoms : StyleGuideItems {
         data object Colors : SubAtoms
         data object Typographies : SubAtoms
-        data object Shadows : SubAtoms
     }
 
     sealed interface Atoms : StyleGuideItems {
         data object Text : Atoms
         data object Icon : Atoms
-        data object IconButton : Molecules
+        data object IconButton : Atoms
         data object Surface : Atoms
         data object Scaffold : Atoms
     }
 
-    sealed interface Molecules : StyleGuideItems
+    sealed interface Molecules : StyleGuideItems {
+        data object Button : Molecules
+    }
 
 }

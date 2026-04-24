@@ -35,5 +35,6 @@ dependencies {
     // Compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose.app)
+    implementation(libs.androidx.compose.icon)
     debugImplementation(libs.androidx.compose.ui.tooling)
 }

@@ -14,7 +14,7 @@ internal class TypographiesViewModelImpl : YDViewModelImpl<UIState<TypographiesS
 ), TypographiesViewModel {
     override fun onAction(action: TypographiesAction) {
         when (action) {
-            else -> super.onAction(action)
+            else -> super.onAction(action = action)
         }
     }
 }

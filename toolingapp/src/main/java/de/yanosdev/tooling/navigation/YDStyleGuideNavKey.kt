@@ -21,9 +21,6 @@ internal sealed interface YDStyleGuideNavKey : NavKey {
     data object Typographies : YDStyleGuideNavKey
 
     @Serializable
-    data object Shadows : YDStyleGuideNavKey
-
-    @Serializable
     data object Text : YDStyleGuideNavKey
 
     @Serializable
@@ -38,4 +35,6 @@ internal sealed interface YDStyleGuideNavKey : NavKey {
     @Serializable
     data object Scaffold : YDStyleGuideNavKey
 
+    @Serializable
+    data object Button : YDStyleGuideNavKey
 }
