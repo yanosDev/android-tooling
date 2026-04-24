@@ -8,8 +8,12 @@ import de.yanosdev.tooling.ui.button.ButtonScreen
 import de.yanosdev.tooling.ui.button.ButtonViewModelImpl
 import de.yanosdev.tooling.ui.colors.ColorsScreen
 import de.yanosdev.tooling.ui.colors.ColorsViewModelImpl
+import de.yanosdev.tooling.ui.dialog.DialogScreen
+import de.yanosdev.tooling.ui.dialog.DialogViewModelImpl
 import de.yanosdev.tooling.ui.home.HomeScreen
 import de.yanosdev.tooling.ui.home.viewmodel.HomeViewModelImpl
+import de.yanosdev.tooling.ui.picker.PickerScreen
+import de.yanosdev.tooling.ui.picker.PickerViewModelImpl
 import de.yanosdev.tooling.ui.typographies.TypographiesScreen
 import de.yanosdev.tooling.ui.typographies.TypographiesViewModelImpl
 
@@ -39,6 +43,20 @@ internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navig
         ButtonScreen(
             navBack = navigator.navigationIcon,
             viewModel = ButtonViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.Dialog> {
+        DialogScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = DialogViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.Picker> {
+        PickerScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = PickerViewModelImpl()
         )
     }
 
