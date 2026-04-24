@@ -18,8 +18,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.core.component.screen.YDScreen
-import de.yanosdev.core.component.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.components.atoms.icon.YDIcon
 import de.yanosdev.styleguide.theme.components.atoms.text.YDText
 import de.yanosdev.styleguide.theme.components.molecules.button.YDPrimaryButton
@@ -28,6 +26,8 @@ import de.yanosdev.styleguide.theme.components.molecules.button.YDTextButton
 import de.yanosdev.styleguide.theme.components.molecules.tabs.YDTab
 import de.yanosdev.styleguide.theme.components.molecules.tabs.YDTabRow
 import de.yanosdev.styleguide.theme.components.organisms.screen.YDDefaultScreen
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDUIContent
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDUIContentScope
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.util.PhonePreview
 import de.yanosdev.styleguide.theme.util.YDContentPreview
@@ -53,7 +53,7 @@ internal fun ButtonScreen(
         }
     }
 
-    YDScreen(viewModel = viewModel) {
+    YDUIContent(viewModel = viewModel) {
         Content(
             contentPadding = contentPadding,
         )

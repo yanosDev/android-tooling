@@ -1,24 +1,23 @@
 @file:YDRevisionIn(implementedAt = "2026-04-18", revisionAfterInDays = 365)
 
-package de.yanosdev.core.component.screen
+package de.yanosdev.styleguide.theme.components.organisms.screen
 
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.core.component.screen.model.UIState
-import de.yanosdev.core.component.screen.model.UIState.Content
 import de.yanosdev.core.navigation.model.NavAction
+import de.yanosdev.styleguide.theme.components.organisms.screen.model.UIState
+import de.yanosdev.styleguide.theme.util.YDAnimatedContent
 
 @Composable
-fun <T, Z> YDScreen(
+fun <T, Z> YDUIContent(
     viewModel: YDViewModel<UIState<T>, Z>,
     content: @Composable (YDUIContentScope<T, Z>.() -> Unit)
 ) {
-    AnimatedContent(targetState = viewModel.state.collectAsStateWithLifecycle().value) { targetState ->
+    YDAnimatedContent(targetState = viewModel.state.collectAsStateWithLifecycle().value) { targetState ->
         when (targetState) {
-            is Content -> {
+            is UIState.Content -> {
                 rememberYDScreenScope(
                     data = targetState.data,
                     onAction = viewModel::onAction,
@@ -32,7 +31,7 @@ fun <T, Z> YDScreen(
 }
 
 @Composable
-fun <T, Z> rememberYDScreenScope(
+internal fun <T, Z> rememberYDScreenScope(
     data: T,
     onAction: (Z) -> Unit = {},
     onNavAction: (NavAction) -> Unit = {}

@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.components.molecules.scaffold.YDScaffold
-import de.yanosdev.styleguide.theme.components.organisms.topbar.YDTopAppBar
+import de.yanosdev.styleguide.theme.components.molecules.topbar.YDTopAppBar
 
 @Composable
 fun YDDefaultScreen(

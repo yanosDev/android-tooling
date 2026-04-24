@@ -31,9 +31,6 @@ import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.themes.contentColorFor
 
-/**
- * Derived from Material3 Scaffold
- */
 @Composable
 fun YDScaffold(
     modifier: Modifier = Modifier,

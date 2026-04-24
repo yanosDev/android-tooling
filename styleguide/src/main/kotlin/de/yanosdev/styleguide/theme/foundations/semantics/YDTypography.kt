@@ -59,7 +59,7 @@ internal val LocalYDTextStyle = compositionLocalOf {
 }
 
 @Composable
-fun ProvideMergedYDTextStyle(value: TextStyle, content: @Composable () -> Unit) {
+internal fun ProvideMergedYDTextStyle(value: TextStyle, content: @Composable () -> Unit) {
     val mergedStyle = LocalYDTextStyle.current.merge(value)
     CompositionLocalProvider(LocalYDTextStyle provides mergedStyle, content = content)
 }

@@ -15,8 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.core.component.screen.YDUIContentScope
-import de.yanosdev.core.component.screen.rememberYDScreenScope
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDUIContentScope
+import de.yanosdev.styleguide.theme.components.organisms.screen.rememberYDScreenScope
 import de.yanosdev.styleguide.theme.foundations.semantics.CompactYDTypography
 import de.yanosdev.styleguide.theme.foundations.semantics.DarkTonalElevationColorSchemes
 import de.yanosdev.styleguide.theme.foundations.semantics.DarkYDColors
@@ -58,7 +58,6 @@ fun YDPreview(
 ) {
     val isDarkTheme = isSystemInDarkTheme()
 
-    // We need to use BoxWithConstraints instead of the actual window size class to compute the width because we don't have access to an activity in previews
     BoxWithConstraints(modifier = modifier) {
         YDTheme(
             colorScheme = if (isDarkTheme) DarkYDColors else LightYDColors,

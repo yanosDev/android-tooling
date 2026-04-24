@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-21", revisionAfterInDays = 365)
 
-package de.yanosdev.core.component.screen.model
+package de.yanosdev.styleguide.theme.components.organisms.screen.model
 
 import de.yanosdev.annotation.YDRevisionIn
 

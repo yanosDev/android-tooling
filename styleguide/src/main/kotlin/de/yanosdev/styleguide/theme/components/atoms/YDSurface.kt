@@ -29,18 +29,6 @@ import de.yanosdev.styleguide.theme.themes.YDTheme.colorScheme
 import de.yanosdev.styleguide.theme.themes.contentColorFor
 import de.yanosdev.styleguide.theme.util.ydMinTouchTargetSize
 
-/**
- *
- * 1) Clipping to the specified [shape].
- *
- * 2) Drawing the [border].
- *
- * 3) Drawing a background [color].
- *
- * 4) Setting the correct [contentColor] for elements on the surface.
- *
- * Derived from M3 Surface.
- */
 @Composable
 fun YDSurface(
     modifier: Modifier = Modifier,
@@ -75,20 +63,6 @@ fun YDSurface(
 }
 
 
-/**
- *
- * 1) Clipping to the specified [shape].
- *
- * 2) Drawing the [border].
- *
- * 3) Drawing a background [color].
- *
- * 4) Setting the correct [contentColor] for elements on the surface.
- *
- * This version is clickable.
- *
- * Derived from Material3 Surface.
- */
 @Composable
 @NonRestartableComposable
 fun YDSurface(

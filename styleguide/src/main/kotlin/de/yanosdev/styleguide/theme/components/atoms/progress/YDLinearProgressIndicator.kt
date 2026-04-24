@@ -15,11 +15,6 @@ import androidx.compose.ui.unit.dp
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.util.PhonePreview
 
-/**
- * Linear progress indicator (determinate).
- *
- * Derived from Material3 LinearProgressIndicator.
- */
 @Composable
 fun YDLinearProgressIndicator(
     progress: Float,

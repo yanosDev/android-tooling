@@ -3,8 +3,8 @@
 package de.yanosdev.tooling.ui.colors
 
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.core.component.screen.YDViewModel
-import de.yanosdev.core.component.screen.model.UIState
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDViewModel
+import de.yanosdev.styleguide.theme.components.organisms.screen.model.UIState
 import de.yanosdev.tooling.ui.colors.model.ColorsAction
 import de.yanosdev.tooling.ui.colors.model.ColorsScreenData
 

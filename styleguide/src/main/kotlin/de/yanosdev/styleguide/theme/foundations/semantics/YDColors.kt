@@ -212,7 +212,7 @@ internal val LocalTonalYDColors = staticCompositionLocalOf {
 
 internal val LocalYDColors = staticCompositionLocalOf { LightYDColors }
 
-val LocalYDContentColor = compositionLocalOf {
+internal val LocalYDContentColor = compositionLocalOf {
     if (BuildConfig.DEBUG) LightYDColors.warning else LightYDColors.onSurface
 }
 

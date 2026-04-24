@@ -15,7 +15,7 @@ import de.yanosdev.styleguide.theme.foundations.semantics.YDTonal
 import de.yanosdev.styleguide.theme.foundations.semantics.elevatedColorFor
 
 @Composable
-fun ProvideTonalElevation(
+internal fun ProvideTonalElevation(
     backgroundColor: Color,
     contentColor: Color,
     tonalElevation: YDTonal,

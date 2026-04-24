@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-23", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.components.organisms.topbar
+package de.yanosdev.styleguide.theme.components.molecules.topbar
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
@@ -49,7 +49,6 @@ fun YDTopAppBar(
     modifier: Modifier = Modifier,
     centeredTitle: Boolean = true,
     colors: YDTopAppBarColors = YDTopAppBarDefaults.topAppBarColors(),
-    scrollBehavior: YDTopAppBarScrollBehavior? = null,
     windowInsets: WindowInsets = YDTopAppBarDefaults.windowInsets,
     actions: @Composable RowScope.() -> Unit = {}
 ) = YDTopAppBar(
@@ -60,14 +59,8 @@ fun YDTopAppBar(
     centeredTitle = centeredTitle,
     windowInsets = windowInsets,
     colors = colors,
-    scrollBehavior = scrollBehavior
 )
 
-/**
- * Default, center-aligned top app bar.
- *
- * Derived from Material3 CenterAlignedTopAppBar.
- */
 @Composable
 fun YDTopAppBar(
     title: @Composable () -> Unit,
@@ -76,8 +69,7 @@ fun YDTopAppBar(
     actions: @Composable RowScope.() -> Unit = {},
     centeredTitle: Boolean = true,
     windowInsets: WindowInsets = YDTopAppBarDefaults.windowInsets,
-    colors: YDTopAppBarColors = YDTopAppBarDefaults.topAppBarColors(),
-    scrollBehavior: YDTopAppBarScrollBehavior? = null
+    colors: YDTopAppBarColors = YDTopAppBarDefaults.topAppBarColors()
 ) {
     SingleRowTopAppBar(
         modifier = modifier,
@@ -88,18 +80,10 @@ fun YDTopAppBar(
         actions = actions,
         windowInsets = windowInsets,
         colors = colors,
-        scrollBehavior = scrollBehavior
+        scrollBehavior = null
     )
 }
 
-/**
- * A single-row top app bar that is designed to be called by the small and center aligned top app
- * bar composables.
- *
- * This SingleRowTopAppBar has slots for a title, navigation icon, and actions. When the
- * [centeredTitle] flag is true, the title will be horizontally aligned to the center of the top app
- * bar width.
- */
 @Composable
 private fun SingleRowTopAppBar(
     modifier: Modifier = Modifier,
@@ -112,8 +96,6 @@ private fun SingleRowTopAppBar(
     colors: YDTopAppBarColors,
     scrollBehavior: YDTopAppBarScrollBehavior?
 ) {
-    // Sets the app bar's height offset to collapse the entire bar's height when content is
-    // scrolled.
     val heightOffsetLimit =
         with(LocalDensity.current) { -TopAppBarSmallContainerHeight.toPx() }
     SideEffect {
@@ -122,10 +104,6 @@ private fun SingleRowTopAppBar(
         }
     }
 
-    // Obtain the container color from the TopAppBarColors using the `overlapFraction`. This
-    // ensures that the colors will adjust whether the app bar behavior is pinned or scrolled.
-    // This may potentially animate or interpolate a transition between the container-color and the
-    // container's scrolled-color according to the app bar's scroll state.
     val colorTransitionFraction = scrollBehavior?.state?.overlappedFraction ?: 0f
     val fraction = if (colorTransitionFraction > 0.01f) 1f else 0f
     val appBarContainerColor by animateColorAsState(
@@ -133,7 +111,6 @@ private fun SingleRowTopAppBar(
         animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
     )
 
-    // Wrap the given actions in a Row.
     val actionsRow = @Composable {
         Row(
             horizontalArrangement = Arrangement.End,
@@ -142,7 +119,6 @@ private fun SingleRowTopAppBar(
         )
     }
 
-    // Set up support for resizing the top app bar when vertically dragging the bar itself.
     val appBarDragModifier = if (scrollBehavior != null && !scrollBehavior.isPinned) {
         Modifier.draggable(
             orientation = Orientation.Vertical,
@@ -162,19 +138,14 @@ private fun SingleRowTopAppBar(
         Modifier
     }
 
-    // Compose a Surface with a TopAppBarLayout content.
-    // The surface's background color is animated as specified above.
-    // The height of the app bar is determined by subtracting the bar's height offset from the
-    // app bar's defined constant height value (i.e. the ContainerHeight token).
     YDSurface(modifier = modifier.then(appBarDragModifier), color = appBarContainerColor) {
         val height = LocalDensity.current.run {
             TopAppBarSmallContainerHeight.toPx() + (scrollBehavior?.state?.heightOffset
                 ?: 0f)
         }
-        TopAppBarLayout(
+        YDTopAppBarLayout(
             modifier = Modifier
                 .windowInsetsPadding(windowInsets)
-                // clip after padding so we don't show the title over the inset area
                 .clipToBounds(),
             heightPx = height,
             navigationIconContentColor = colors.navigationIconContentColor,
@@ -194,34 +165,8 @@ private fun SingleRowTopAppBar(
     }
 }
 
-/**
- * The base [Layout] for all top app bars. This function lays out a top app bar navigation icon
- * (leading icon), a title (header), and action icons (trailing icons). Note that the navigation and
- * the actions are optional.
- *
- * @param heightPx the total height this layout is capped to
- * @param navigationIconContentColor the content color that will be applied via a
- * [de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor] when composing the navigation icon
- * @param titleContentColor the color that will be applied via a [de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor] when composing
- * the title
- * @param actionIconContentColor the content color that will be applied via a [de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor]
- * when composing the action icons
- * @param title the top app bar title (header)
- * @param titleTextStyle the title's text style
- * @param modifier a [Modifier]
- * @param titleAlpha the title's alpha
- * @param titleVerticalArrangement the title's vertical arrangement
- * @param titleHorizontalArrangement the title's horizontal arrangement
- * @param titleBottomPadding the title's bottom padding
- * @param hideTitleSemantics hides the title node from the semantic tree. Apply this
- * boolean when this layout is part of a YDTwoRowsTopAppBar to hide the title's semantics
- * from accessibility services. This is needed to avoid having multiple titles visible to
- * accessibility services at the same time, when animating between collapsed / expanded states.
- * @param navigationIcon a navigation icon [Composable]
- * @param actions actions [Composable]
- */
 @Composable
-private fun TopAppBarLayout(
+private fun YDTopAppBarLayout(
     modifier: Modifier,
     heightPx: Float,
     navigationIconContentColor: Color,
@@ -302,7 +247,6 @@ private fun TopAppBarLayout(
             measurables.first { it.layoutId == "title" }
                 .measure(constraints.copy(minWidth = 0, maxWidth = maxTitleWidth))
 
-        // Locate the title's baseline.
         val titleBaseline =
             if (titlePlaceable[LastBaseline] != AlignmentLine.Unspecified) {
                 titlePlaceable[LastBaseline]
@@ -313,39 +257,30 @@ private fun TopAppBarLayout(
         val layoutHeight = heightPx.roundToInt()
 
         layout(constraints.maxWidth, layoutHeight) {
-            // Navigation icon
             navigationIconPlaceable.placeRelative(
                 x = 0,
                 y = (layoutHeight - navigationIconPlaceable.height) / 2
             )
 
-            // Title
             titlePlaceable.placeRelative(
                 x = when (titleHorizontalArrangement) {
                     Arrangement.Center -> (constraints.maxWidth - titlePlaceable.width) / 2
                     Arrangement.End ->
                         constraints.maxWidth - titlePlaceable.width - actionIconsPlaceable.width
-                    // Arrangement.Start.
-                    // An TopAppBarTitleInset will make sure the title is offset in case the
-                    // navigation icon is missing.
                     else -> max(TopAppBarTitleInset.roundToPx(), navigationIconPlaceable.width)
                 },
                 y = when (titleVerticalArrangement) {
                     Arrangement.Center -> (layoutHeight - titlePlaceable.height) / 2
-                    // Apply bottom padding from the title's baseline only when the Arrangement is
-                    // "Bottom".
                     Arrangement.Bottom ->
                         if (titleBottomPadding == 0) layoutHeight - titlePlaceable.height
                         else layoutHeight - titlePlaceable.height - max(
                             0,
                             titleBottomPadding - titlePlaceable.height + titleBaseline
                         )
-                    // Arrangement.Top
                     else -> 0
                 }
             )
 
-            // Action icons
             actionIconsPlaceable.placeRelative(
                 x = constraints.maxWidth - actionIconsPlaceable.width,
                 y = (layoutHeight - actionIconsPlaceable.height) / 2
@@ -357,8 +292,6 @@ private fun TopAppBarLayout(
 
 private val TopAppBarHorizontalPadding = 4.dp
 
-// A title inset when the App-Bar is a Medium or Large one. Also used to size a spacer when the
-// navigation icon is missing.
 private val TopAppBarTitleInset = 16.dp
 
 private val TopAppBarSmallContainerHeight = 64.dp

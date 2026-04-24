@@ -69,7 +69,7 @@ fun YDBetaBadge(modifier: Modifier = Modifier) = YDBadgeIndicator(
     modifier = modifier,
 )
 
-object YDBadgeV2Defaults {
+internal object YDBadgeV2Defaults {
     val color @Composable get() = colorScheme.surfaceContainerSignal
 
     val smallTextStyle

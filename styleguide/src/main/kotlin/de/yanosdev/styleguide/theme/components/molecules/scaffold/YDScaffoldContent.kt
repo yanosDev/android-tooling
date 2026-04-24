@@ -4,7 +4,7 @@ package de.yanosdev.styleguide.theme.components.molecules.scaffold
 
 import de.yanosdev.annotation.YDRevisionIn
 
-enum class YDScaffoldContent {
+internal enum class YDScaffoldContent {
     TopBar,
     MainContent,
     Snackbar,

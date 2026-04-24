@@ -1,11 +1,12 @@
 @file:YDRevisionIn(implementedAt = "2026-04-23", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.components.organisms.topbar
+package de.yanosdev.styleguide.theme.components.molecules.topbar
 
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import de.yanosdev.annotation.YDRevisionIn
 
 
@@ -17,19 +18,9 @@ class YDTopAppBarColors internal constructor(
     internal val titleContentColor: Color,
     internal val actionIconContentColor: Color,
 ) {
-    /**
-     * Represents the container color used for the top app bar.
-     *
-     * A [colorTransitionFraction] provides a percentage value that can be used to generate a color.
-     * Usually, an app bar implementation will pass in a [colorTransitionFraction] read from
-     * the [YDTopAppBarState.collapsedFraction] or the [YDTopAppBarState.overlappedFraction].
-     *
-     * @param colorTransitionFraction a `0.0` to `1.0` value that represents a color transition
-     * percentage
-     */
     @Composable
     internal fun containerColor(colorTransitionFraction: Float): Color {
-        return androidx.compose.ui.graphics.lerp(
+        return lerp(
             containerColor,
             scrolledContainerColor,
             FastOutLinearInEasing.transform(colorTransitionFraction)
