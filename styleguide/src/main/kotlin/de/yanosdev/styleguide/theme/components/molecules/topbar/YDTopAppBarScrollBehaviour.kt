@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-23", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.components.organisms.topbar
+package de.yanosdev.styleguide.theme.components.molecules.topbar
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.AnimationState
@@ -20,7 +20,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.unit.Velocity
 import de.yanosdev.annotation.YDRevisionIn
-import de.yanosdev.styleguide.theme.components.organisms.topbar.YDTopAppBarState.Companion.Saver
+import de.yanosdev.styleguide.theme.components.molecules.topbar.YDTopAppBarState.Companion.Saver
 import kotlin.math.abs
 
 /**
@@ -79,6 +79,7 @@ internal class YDPinnedScrollBehavior(
     override val flingAnimationSpec: DecayAnimationSpec<Float>? = null
     override var nestedScrollConnection =
         object : NestedScrollConnection {
+            @Suppress("SameReturnValue")
             override fun onPostScroll(
                 consumed: Offset,
                 available: Offset,
@@ -137,6 +138,7 @@ internal class YDEnterAlwaysScrollBehavior(
                 }
             }
 
+            @Suppress("SameReturnValue")
             override fun onPostScroll(
                 consumed: Offset,
                 available: Offset,

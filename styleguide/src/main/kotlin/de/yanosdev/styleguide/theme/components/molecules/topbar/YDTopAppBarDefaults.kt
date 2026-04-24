@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-23", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.components.organisms.topbar
+package de.yanosdev.styleguide.theme.components.molecules.topbar
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.DecayAnimationSpec
@@ -43,15 +43,15 @@ object YDTopAppBarDefaults {
      *
      * @param state the state object to be used to control or observe the top app bar's scroll
      * state. See [rememberYDTopAppBarState] for a state that is remembered across compositions.
-     * @param canScroll a callback used to determine whether scroll events are to be handled by this
+     * @param onCanScroll a callback used to determine whether scroll events are to be handled by this
      * pinned [YDTopAppBarScrollBehavior]
      */
     @Suppress("unused")
     @Composable
     fun pinnedScrollBehavior(
         state: YDTopAppBarState = rememberYDTopAppBarState(),
-        canScroll: () -> Boolean = { true }
-    ): YDTopAppBarScrollBehavior = YDPinnedScrollBehavior(state = state, canScroll = canScroll)
+        onCanScroll: () -> Boolean = { true }
+    ): YDTopAppBarScrollBehavior = YDPinnedScrollBehavior(state = state, canScroll = onCanScroll)
 
     /**
      * Returns a [YDTopAppBarScrollBehavior]. A top app bar that is set up with this

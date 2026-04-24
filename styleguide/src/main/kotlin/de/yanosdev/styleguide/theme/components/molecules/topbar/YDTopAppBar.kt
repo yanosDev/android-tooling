@@ -1,6 +1,6 @@
 @file:YDRevisionIn(implementedAt = "2026-04-23", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.components.organisms.topbar
+package de.yanosdev.styleguide.theme.components.molecules.topbar
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
@@ -171,7 +171,7 @@ private fun SingleRowTopAppBar(
             TopAppBarSmallContainerHeight.toPx() + (scrollBehavior?.state?.heightOffset
                 ?: 0f)
         }
-        TopAppBarLayout(
+        YDTopAppBarLayout(
             modifier = Modifier
                 .windowInsetsPadding(windowInsets)
                 // clip after padding so we don't show the title over the inset area
@@ -201,10 +201,10 @@ private fun SingleRowTopAppBar(
  *
  * @param heightPx the total height this layout is capped to
  * @param navigationIconContentColor the content color that will be applied via a
- * [de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor] when composing the navigation icon
- * @param titleContentColor the color that will be applied via a [de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor] when composing
+ * [LocalYDContentColor] when composing the navigation icon
+ * @param titleContentColor the color that will be applied via a [LocalYDContentColor] when composing
  * the title
- * @param actionIconContentColor the content color that will be applied via a [de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor]
+ * @param actionIconContentColor the content color that will be applied via a [LocalYDContentColor]
  * when composing the action icons
  * @param title the top app bar title (header)
  * @param titleTextStyle the title's text style
@@ -221,7 +221,7 @@ private fun SingleRowTopAppBar(
  * @param actions actions [Composable]
  */
 @Composable
-private fun TopAppBarLayout(
+private fun YDTopAppBarLayout(
     modifier: Modifier,
     heightPx: Float,
     navigationIconContentColor: Color,

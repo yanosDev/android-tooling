@@ -1,11 +1,12 @@
 @file:YDRevisionIn(implementedAt = "2026-04-23", revisionAfterInDays = 365)
 
-package de.yanosdev.styleguide.theme.components.organisms.topbar
+package de.yanosdev.styleguide.theme.components.molecules.topbar
 
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import de.yanosdev.annotation.YDRevisionIn
 
 
@@ -29,7 +30,7 @@ class YDTopAppBarColors internal constructor(
      */
     @Composable
     internal fun containerColor(colorTransitionFraction: Float): Color {
-        return androidx.compose.ui.graphics.lerp(
+        return lerp(
             containerColor,
             scrolledContainerColor,
             FastOutLinearInEasing.transform(colorTransitionFraction)
