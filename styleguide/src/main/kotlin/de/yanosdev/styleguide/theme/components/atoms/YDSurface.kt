@@ -70,7 +70,7 @@ fun YDSurface(
     modifier: Modifier = Modifier,
     border: BorderStroke? = null,
     color: Color = colorScheme.surfaceContainerDefault,
-    contentColor: Color = contentColorFor(color),
+    contentColor: Color = contentColorFor(backgroundColor = color),
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     shadowElevation: YDShadow = YDShadow.Zero,

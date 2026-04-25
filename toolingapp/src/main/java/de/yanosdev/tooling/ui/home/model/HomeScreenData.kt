@@ -14,6 +14,7 @@ internal data class HomeScreenData(
         StyleGuideItems.Atoms.Surface,
         StyleGuideItems.Atoms.Scaffold,
         StyleGuideItems.Molecules.Button,
+        StyleGuideItems.Molecules.Card,
         StyleGuideItems.Molecules.Dialog,
         StyleGuideItems.Molecules.Picker,
     )

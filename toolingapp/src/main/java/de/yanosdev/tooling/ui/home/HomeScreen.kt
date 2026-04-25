@@ -48,6 +48,7 @@ internal fun HomeScreen(
                         StyleGuideItems.Atoms.Surface -> YDStyleGuideNavKey.Surface
                         StyleGuideItems.Atoms.Scaffold -> YDStyleGuideNavKey.Scaffold
                         StyleGuideItems.Molecules.Button -> YDStyleGuideNavKey.Button
+                        StyleGuideItems.Molecules.Card -> YDStyleGuideNavKey.Card
                         StyleGuideItems.Molecules.Dialog -> YDStyleGuideNavKey.Dialog
                         StyleGuideItems.Molecules.Picker -> YDStyleGuideNavKey.Picker
                     }

@@ -6,6 +6,8 @@ import androidx.navigation3.runtime.EntryProviderScope
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.tooling.ui.button.ButtonScreen
 import de.yanosdev.tooling.ui.button.ButtonViewModelImpl
+import de.yanosdev.tooling.ui.card.CardScreen
+import de.yanosdev.tooling.ui.card.CardViewModelImpl
 import de.yanosdev.tooling.ui.colors.ColorsScreen
 import de.yanosdev.tooling.ui.colors.ColorsViewModelImpl
 import de.yanosdev.tooling.ui.dialog.DialogScreen
@@ -66,6 +68,13 @@ internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navig
         PickerScreen(
             navBack = navigator.navigationIcon,
             viewModel = PickerViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.Card> {
+        CardScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = CardViewModelImpl()
         )
     }
 

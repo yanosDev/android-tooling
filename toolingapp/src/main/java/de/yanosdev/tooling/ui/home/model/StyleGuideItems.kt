@@ -21,6 +21,7 @@ sealed interface StyleGuideItems {
 
     sealed interface Molecules : StyleGuideItems {
         data object Button : Molecules
+        data object Card : Molecules
         data object Dialog : Molecules
         data object Picker : Molecules
     }

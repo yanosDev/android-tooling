@@ -5,6 +5,71 @@ Composed atoms that form a recognizable UI unit. Import from
 
 ---
 
+## YDCard / YDOutlinedCard
+
+Surface-backed cards. `YDCard` uses the filled style (`surfaceContainerDefault` background). `YDOutlinedCard` adds a
+visible `colorScheme.line` border on a `surface` background. Both have a static and a clickable overload.
+
+```kotlin
+// Static filled card
+YDCard {
+    Text("Hello")
+}
+
+// Clickable filled card
+YDCard(onClick = { /* handle */ }) {
+    Text("Tap me")
+}
+
+// Static outlined card
+YDOutlinedCard {
+    Text("Outlined")
+}
+
+// Clickable outlined card
+YDOutlinedCard(onClick = { /* handle */ }) {
+    Text("Tap me")
+}
+```
+
+---
+
+## YDSelectableCard
+
+Filled card that animates between unselected and selected color tokens when `selected` changes. Caller owns the
+selection state.
+
+```kotlin
+var selected by remember { mutableStateOf(false) }
+
+YDSelectableCard(
+    selected = selected,
+    onClick = { selected = !selected },
+) {
+    Text(if (selected) "Selected" else "Tap to select")
+}
+```
+
+---
+
+## YDToggleableCard
+
+Like `YDSelectableCard` but exposes `onToggleChange: (Boolean) -> Unit`, matching the toggle contract used by switches
+and checkboxes. Useful when you want the new value delivered directly rather than the caller computing it.
+
+```kotlin
+var toggled by remember { mutableStateOf(false) }
+
+YDToggleableCard(
+    toggled = toggled,
+    onToggleChange = { toggled = it },
+) {
+    Text(if (toggled) "On" else "Off")
+}
+```
+
+---
+
 ## YDPrimaryButton
 
 Filled primary-color button. The most prominent call-to-action.
