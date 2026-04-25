@@ -66,7 +66,7 @@ YDButton(
     colors = YDButtonDefaults.buttonColors(),
     onClick = { /* handle */ },
 ) {
-    YDIcon(imageVector = Icons.Rounded.Check, contentDescription = null)
+    YDIcon(imageVector = YDIcons.Check, contentDescription = null)
     YDText(text = "Done")
 }
 ```
@@ -86,13 +86,38 @@ val colors = YDButtonDefaults.buttonColors(
 
 ---
 
+## YDIcons
+
+Geometric monoline icon set with a sharp, technical aesthetic. All icons share a 24×24 dp canvas,
+1.5 dp round-capped strokes, and miter joins — producing a circuit-board / terminal visual language.
+Use directly with `YDIcon`.
+
+**Navigation:** `ArrowLeft`, `ArrowRight`, `ArrowUp`, `ArrowDown`, `Home`, `Close`, `Menu`
+
+**Actions:** `Add`, `Minus`, `Check`, `Search`, `Edit`, `Trash`, `Copy`, `Share`, `Download`,
+`Upload`, `Refresh`, `Filter`, `ExternalLink`, `Eye`
+
+**Status:** `Info`, `Warning`, `Bell`
+
+**Content:** `User`, `Star`, `Heart`, `Lock`, `Calendar`, `Clock`, `Settings`
+
+**Techie:** `Terminal`, `Code`, `Layers`, `Bolt`, `Database`
+
+```kotlin
+YDIcon(imageVector = YDIcons.Search, contentDescription = "Search")
+YDIcon(imageVector = YDIcons.Terminal, contentDescription = "Open terminal")
+YDIcon(imageVector = YDIcons.Bolt, contentDescription = "Performance")
+```
+
+---
+
 ## YDIcon
 
 Renders a tinted icon from an `ImageVector`, `Painter`, or `ImageBitmap`. Defaults to `LocalYDContentColor`.
 
 ```kotlin
 YDIcon(
-    imageVector = Icons.Rounded.Search,
+    imageVector = YDIcons.Search,
     contentDescription = "Search",
 )
 ```

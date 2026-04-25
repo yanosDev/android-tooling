@@ -12,18 +12,20 @@ import de.yanosdev.annotation.YDRevisionIn
 
 @Immutable
 data class YDShapes(
-    val extraLarge: CornerBasedShape,
-    val large: CornerBasedShape,
+    val tiny: CornerBasedShape,
+    val small: CornerBasedShape,
     val medium: CornerBasedShape,
-    val small: CornerBasedShape
+    val large: CornerBasedShape,
+    val huge: CornerBasedShape
 )
 
 @Stable
 private val DefaultYDShapes = YDShapes(
-    small = RoundedCornerShape(2.dp),
-    medium = RoundedCornerShape(6.dp),
-    large = RoundedCornerShape(8.dp),
-    extraLarge = RoundedCornerShape(20.dp),
+    tiny = RoundedCornerShape(2.dp),
+    small = RoundedCornerShape(6.dp),
+    medium = RoundedCornerShape(8.dp),
+    large = RoundedCornerShape(16.dp),
+    huge = RoundedCornerShape(20.dp),
 )
 
 internal val LocalYDShapes = staticCompositionLocalOf { DefaultYDShapes }

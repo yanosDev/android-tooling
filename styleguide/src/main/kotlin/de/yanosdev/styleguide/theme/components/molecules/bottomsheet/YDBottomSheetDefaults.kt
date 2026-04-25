@@ -30,7 +30,7 @@ internal object YDBottomSheetDefaults {
         @Composable get() = PaddingValues(top = spacings.large)
 
     val Shape: Shape
-        @Composable get() = shapes.extraLarge.copy(
+        @Composable get() = shapes.large.copy(
             bottomEnd = CornerSize(size = 0.dp),
             bottomStart = CornerSize(size = 0.dp)
         )

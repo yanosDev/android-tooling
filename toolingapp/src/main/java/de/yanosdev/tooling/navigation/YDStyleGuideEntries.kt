@@ -12,6 +12,8 @@ import de.yanosdev.tooling.ui.dialog.DialogScreen
 import de.yanosdev.tooling.ui.dialog.DialogViewModelImpl
 import de.yanosdev.tooling.ui.home.HomeScreen
 import de.yanosdev.tooling.ui.home.viewmodel.HomeViewModelImpl
+import de.yanosdev.tooling.ui.icon.IconScreen
+import de.yanosdev.tooling.ui.icon.IconViewModelImpl
 import de.yanosdev.tooling.ui.picker.PickerScreen
 import de.yanosdev.tooling.ui.picker.PickerViewModelImpl
 import de.yanosdev.tooling.ui.typographies.TypographiesScreen
@@ -43,6 +45,13 @@ internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navig
         ButtonScreen(
             navBack = navigator.navigationIcon,
             viewModel = ButtonViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.Icon> {
+        IconScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = IconViewModelImpl()
         )
     }
 
