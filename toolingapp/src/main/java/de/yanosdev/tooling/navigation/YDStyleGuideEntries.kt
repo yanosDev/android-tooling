@@ -14,6 +14,8 @@ import de.yanosdev.tooling.ui.colors.ColorsScreen
 import de.yanosdev.tooling.ui.colors.ColorsViewModelImpl
 import de.yanosdev.tooling.ui.dialog.DialogScreen
 import de.yanosdev.tooling.ui.dialog.DialogViewModelImpl
+import de.yanosdev.tooling.ui.dropdown.DropdownScreen
+import de.yanosdev.tooling.ui.dropdown.DropdownViewModelImpl
 import de.yanosdev.tooling.ui.fab.FabScreen
 import de.yanosdev.tooling.ui.fab.FabViewModelImpl
 import de.yanosdev.tooling.ui.home.HomeScreen
@@ -22,8 +24,14 @@ import de.yanosdev.tooling.ui.icon.IconScreen
 import de.yanosdev.tooling.ui.icon.IconViewModelImpl
 import de.yanosdev.tooling.ui.picker.PickerScreen
 import de.yanosdev.tooling.ui.picker.PickerViewModelImpl
+import de.yanosdev.tooling.ui.searchbar.SearchBarScreen
+import de.yanosdev.tooling.ui.searchbar.SearchBarViewModelImpl
 import de.yanosdev.tooling.ui.selection.SelectionScreen
 import de.yanosdev.tooling.ui.selection.SelectionViewModelImpl
+import de.yanosdev.tooling.ui.slider.SliderScreen
+import de.yanosdev.tooling.ui.slider.SliderViewModelImpl
+import de.yanosdev.tooling.ui.snackbar.SnackbarScreen
+import de.yanosdev.tooling.ui.snackbar.SnackbarViewModelImpl
 import de.yanosdev.tooling.ui.typographies.TypographiesScreen
 import de.yanosdev.tooling.ui.typographies.TypographiesViewModelImpl
 
@@ -102,6 +110,34 @@ internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navig
         FabScreen(
             navBack = navigator.navigationIcon,
             viewModel = FabViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.Dropdown> {
+        DropdownScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = DropdownViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.SearchBar> {
+        SearchBarScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = SearchBarViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.Slider> {
+        SliderScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = SliderViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.Snackbar> {
+        SnackbarScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = SnackbarViewModelImpl()
         )
     }
 

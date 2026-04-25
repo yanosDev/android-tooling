@@ -12,13 +12,17 @@ internal data class HomeScreenData(
         StyleGuideItems.Atoms.Icon,
         StyleGuideItems.Atoms.IconButton,
         StyleGuideItems.Atoms.Selection,
+        StyleGuideItems.Atoms.Slider,
         StyleGuideItems.Atoms.Surface,
         StyleGuideItems.Atoms.Scaffold,
         StyleGuideItems.Molecules.Button,
         StyleGuideItems.Molecules.Card,
         StyleGuideItems.Molecules.Chip,
         StyleGuideItems.Molecules.Dialog,
+        StyleGuideItems.Molecules.Dropdown,
         StyleGuideItems.Molecules.Fab,
         StyleGuideItems.Molecules.Picker,
+        StyleGuideItems.Molecules.SearchBar,
+        StyleGuideItems.Molecules.Snackbar,
     )
 )

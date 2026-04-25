@@ -55,4 +55,16 @@ internal sealed interface YDStyleGuideNavKey : NavKey {
 
     @Serializable
     data object Fab : YDStyleGuideNavKey
+
+    @Serializable
+    data object Dropdown : YDStyleGuideNavKey
+
+    @Serializable
+    data object SearchBar : YDStyleGuideNavKey
+
+    @Serializable
+    data object Slider : YDStyleGuideNavKey
+
+    @Serializable
+    data object Snackbar : YDStyleGuideNavKey
 }

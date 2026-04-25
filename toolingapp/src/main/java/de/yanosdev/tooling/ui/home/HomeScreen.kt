@@ -46,14 +46,18 @@ internal fun HomeScreen(
                         StyleGuideItems.Atoms.Icon -> YDStyleGuideNavKey.Icon
                         StyleGuideItems.Atoms.IconButton -> YDStyleGuideNavKey.IconButton
                         StyleGuideItems.Atoms.Selection -> YDStyleGuideNavKey.Selection
+                        StyleGuideItems.Atoms.Slider -> YDStyleGuideNavKey.Slider
                         StyleGuideItems.Atoms.Surface -> YDStyleGuideNavKey.Surface
                         StyleGuideItems.Atoms.Scaffold -> YDStyleGuideNavKey.Scaffold
                         StyleGuideItems.Molecules.Button -> YDStyleGuideNavKey.Button
                         StyleGuideItems.Molecules.Card -> YDStyleGuideNavKey.Card
                         StyleGuideItems.Molecules.Chip -> YDStyleGuideNavKey.Chip
                         StyleGuideItems.Molecules.Dialog -> YDStyleGuideNavKey.Dialog
+                        StyleGuideItems.Molecules.Dropdown -> YDStyleGuideNavKey.Dropdown
                         StyleGuideItems.Molecules.Fab -> YDStyleGuideNavKey.Fab
                         StyleGuideItems.Molecules.Picker -> YDStyleGuideNavKey.Picker
+                        StyleGuideItems.Molecules.SearchBar -> YDStyleGuideNavKey.SearchBar
+                        StyleGuideItems.Molecules.Snackbar -> YDStyleGuideNavKey.Snackbar
                     }
                 )
 
