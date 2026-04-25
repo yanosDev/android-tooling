@@ -25,6 +25,7 @@ sealed interface StyleGuideItems {
         data object Card : Molecules
         data object Chip : Molecules
         data object Dialog : Molecules
+        data object Fab : Molecules
         data object Picker : Molecules
     }
 

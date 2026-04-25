@@ -14,6 +14,8 @@ import de.yanosdev.tooling.ui.colors.ColorsScreen
 import de.yanosdev.tooling.ui.colors.ColorsViewModelImpl
 import de.yanosdev.tooling.ui.dialog.DialogScreen
 import de.yanosdev.tooling.ui.dialog.DialogViewModelImpl
+import de.yanosdev.tooling.ui.fab.FabScreen
+import de.yanosdev.tooling.ui.fab.FabViewModelImpl
 import de.yanosdev.tooling.ui.home.HomeScreen
 import de.yanosdev.tooling.ui.home.viewmodel.HomeViewModelImpl
 import de.yanosdev.tooling.ui.icon.IconScreen
@@ -93,6 +95,13 @@ internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navig
         ChipScreen(
             navBack = navigator.navigationIcon,
             viewModel = ChipViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.Fab> {
+        FabScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = FabViewModelImpl()
         )
     }
 

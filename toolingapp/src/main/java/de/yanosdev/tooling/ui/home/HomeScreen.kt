@@ -52,6 +52,7 @@ internal fun HomeScreen(
                         StyleGuideItems.Molecules.Card -> YDStyleGuideNavKey.Card
                         StyleGuideItems.Molecules.Chip -> YDStyleGuideNavKey.Chip
                         StyleGuideItems.Molecules.Dialog -> YDStyleGuideNavKey.Dialog
+                        StyleGuideItems.Molecules.Fab -> YDStyleGuideNavKey.Fab
                         StyleGuideItems.Molecules.Picker -> YDStyleGuideNavKey.Picker
                     }
                 )

@@ -52,4 +52,7 @@ internal sealed interface YDStyleGuideNavKey : NavKey {
 
     @Serializable
     data object Chip : YDStyleGuideNavKey
+
+    @Serializable
+    data object Fab : YDStyleGuideNavKey
 }

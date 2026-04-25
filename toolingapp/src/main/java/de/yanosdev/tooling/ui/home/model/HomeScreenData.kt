@@ -18,6 +18,7 @@ internal data class HomeScreenData(
         StyleGuideItems.Molecules.Card,
         StyleGuideItems.Molecules.Chip,
         StyleGuideItems.Molecules.Dialog,
+        StyleGuideItems.Molecules.Fab,
         StyleGuideItems.Molecules.Picker,
     )
 )
