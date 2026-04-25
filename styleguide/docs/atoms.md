@@ -214,3 +214,27 @@ YDLinearProgressIndicator(
     progress = 0.4f,
 )
 ```
+
+---
+
+## YDCheckbox / YDRadioButton / YDSwitch
+
+Selection controls that share a single `YDSelectionColors` class. Colors are created via
+`YDSelectionDefaults.selectionColors()` and default to `primary`/`onPrimary`/`line` tokens.
+
+```kotlin
+// Checkbox
+var checked by remember { mutableStateOf(false) }
+YDCheckbox(checked = checked, onCheckedChange = { checked = it })
+
+// Radio button — caller owns group state
+var selected by remember { mutableStateOf(0) }
+YDRadioButton(selected = selected == 0, onClick = { selected = 0 })
+YDRadioButton(selected = selected == 1, onClick = { selected = 1 })
+
+// Switch
+var on by remember { mutableStateOf(false) }
+YDSwitch(checked = on, onCheckedChange = { on = it })
+```
+
+All three accept `enabled = false` for the disabled state and an optional `interactionSource`.

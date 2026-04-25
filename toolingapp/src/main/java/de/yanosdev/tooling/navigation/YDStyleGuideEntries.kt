@@ -18,6 +18,8 @@ import de.yanosdev.tooling.ui.icon.IconScreen
 import de.yanosdev.tooling.ui.icon.IconViewModelImpl
 import de.yanosdev.tooling.ui.picker.PickerScreen
 import de.yanosdev.tooling.ui.picker.PickerViewModelImpl
+import de.yanosdev.tooling.ui.selection.SelectionScreen
+import de.yanosdev.tooling.ui.selection.SelectionViewModelImpl
 import de.yanosdev.tooling.ui.typographies.TypographiesScreen
 import de.yanosdev.tooling.ui.typographies.TypographiesViewModelImpl
 
@@ -75,6 +77,13 @@ internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navig
         CardScreen(
             navBack = navigator.navigationIcon,
             viewModel = CardViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.Selection> {
+        SelectionScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = SelectionViewModelImpl()
         )
     }
 

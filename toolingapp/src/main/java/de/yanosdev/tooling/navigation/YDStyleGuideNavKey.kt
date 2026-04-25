@@ -46,4 +46,7 @@ internal sealed interface YDStyleGuideNavKey : NavKey {
 
     @Serializable
     data object Card : YDStyleGuideNavKey
+
+    @Serializable
+    data object Selection : YDStyleGuideNavKey
 }

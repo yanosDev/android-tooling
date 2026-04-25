@@ -45,6 +45,7 @@ internal fun HomeScreen(
                         StyleGuideItems.SubAtoms.Typographies -> YDStyleGuideNavKey.Typographies
                         StyleGuideItems.Atoms.Icon -> YDStyleGuideNavKey.Icon
                         StyleGuideItems.Atoms.IconButton -> YDStyleGuideNavKey.IconButton
+                        StyleGuideItems.Atoms.Selection -> YDStyleGuideNavKey.Selection
                         StyleGuideItems.Atoms.Surface -> YDStyleGuideNavKey.Surface
                         StyleGuideItems.Atoms.Scaffold -> YDStyleGuideNavKey.Scaffold
                         StyleGuideItems.Molecules.Button -> YDStyleGuideNavKey.Button

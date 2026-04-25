@@ -11,6 +11,7 @@ internal data class HomeScreenData(
         StyleGuideItems.Atoms.Text,
         StyleGuideItems.Atoms.Icon,
         StyleGuideItems.Atoms.IconButton,
+        StyleGuideItems.Atoms.Selection,
         StyleGuideItems.Atoms.Surface,
         StyleGuideItems.Atoms.Scaffold,
         StyleGuideItems.Molecules.Button,
