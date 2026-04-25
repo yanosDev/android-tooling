@@ -9,9 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Check
-import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
@@ -19,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.components.atoms.icon.YDIcon
+import de.yanosdev.styleguide.theme.components.atoms.icon.YDIcons
 import de.yanosdev.styleguide.theme.components.atoms.text.YDText
 import de.yanosdev.styleguide.theme.components.molecules.button.YDPrimaryButton
 import de.yanosdev.styleguide.theme.components.molecules.button.YDSecondaryButton
@@ -116,9 +114,9 @@ internal fun YDUIContentScope<ButtonScreenData, ButtonAction>.Content(
                         YDPrimaryButton(
                             modifier = Modifier.fillMaxWidth(), onClick = { }
                         ) {
-                            YDIcon(imageVector = Icons.Rounded.Search, contentDescription = "")
+                            YDIcon(imageVector = YDIcons.Search, contentDescription = "")
                             YDText(text = "${entries[page]} Button icons")
-                            YDIcon(imageVector = Icons.Rounded.Check, contentDescription = "")
+                            YDIcon(imageVector = YDIcons.Check, contentDescription = "")
                         }
                     }
 
@@ -143,9 +141,9 @@ internal fun YDUIContentScope<ButtonScreenData, ButtonAction>.Content(
                         YDSecondaryButton(
                             modifier = Modifier.fillMaxWidth(), onClick = { }
                         ) {
-                            YDIcon(imageVector = Icons.Rounded.Search, contentDescription = "")
+                            YDIcon(imageVector = YDIcons.Search, contentDescription = "")
                             YDText(text = "${entries[page]} Button with icons")
-                            YDIcon(imageVector = Icons.Rounded.Check, contentDescription = "")
+                            YDIcon(imageVector = YDIcons.Check, contentDescription = "")
                         }
                     }
 
@@ -165,9 +163,9 @@ internal fun YDUIContentScope<ButtonScreenData, ButtonAction>.Content(
                             modifier = Modifier.fillMaxWidth(),
                             onClick = { }
                         ) {
-                            YDIcon(imageVector = Icons.Rounded.Search, contentDescription = "")
+                            YDIcon(imageVector = YDIcons.Search, contentDescription = "")
                             YDText(text = "${entries[page]} Button icons")
-                            YDIcon(imageVector = Icons.Rounded.Check, contentDescription = "")
+                            YDIcon(imageVector = YDIcons.Check, contentDescription = "")
                         }
                     }
                 }

@@ -20,7 +20,7 @@ YDPrimaryButton(
     onClick = { /* handle */ },
     loading = true,
 ) {
-    YDIcon(imageVector = Icons.Rounded.Check, contentDescription = null)
+    YDIcon(imageVector = YDIcons.Check, contentDescription = null)
     YDText(text = "Done")
 }
 ```
@@ -83,7 +83,7 @@ Minimum-touch-target icon button with optional custom colors.
 
 ```kotlin
 YDIconButton(onClick = { /* handle */ }) {
-    YDIcon(imageVector = Icons.Rounded.Search, contentDescription = "Search")
+    YDIcon(imageVector = YDIcons.Search, contentDescription = "Search")
 }
 ```
 
@@ -94,7 +94,7 @@ YDIconToggleButton(
     checked = isFavorite,
     onCheckedChange = { isFavorite = it },
 ) {
-    YDIcon(imageVector = Icons.Rounded.Favorite, contentDescription = "Favorite")
+    YDIcon(imageVector = YDIcons.Favorite, contentDescription = "Favorite")
 }
 ```
 
@@ -185,7 +185,7 @@ YDTopAppBar(
     title = "Detail",
     actions = {
         YDIconButton(onClick = onShare) {
-            YDIcon(imageVector = Icons.Rounded.Share, contentDescription = "Share")
+            YDIcon(imageVector = YDIcons.Share, contentDescription = "Share")
         }
     },
 )
@@ -259,7 +259,7 @@ Custom icon:
 ```kotlin
 YDAlertDialog(
     onDismissRequest = { showDialog = false },
-    icon = { YDIcon(imageVector = Icons.Rounded.Warning, contentDescription = null) },
+    icon = { YDIcon(imageVector = YDIcons.Warning, contentDescription = null) },
     title = { YDText(text = "Warning") },
     text = { YDText(text = "Something went wrong.") },
     confirmButton = { YDPrimaryButton(text = "OK", onClick = { showDialog = false }) },

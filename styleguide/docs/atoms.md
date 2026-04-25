@@ -130,7 +130,7 @@ Icon that animates a strike-through line when `toggledOn = false`.
 
 ```kotlin
 YDToggleableIcon(
-    imageVector = Icons.Rounded.Notifications,
+    imageVector = YDIcons.Notifications,
     contentDescription = "Notifications",
     toggledOn = isEnabled,
 )
