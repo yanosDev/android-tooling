@@ -70,6 +70,40 @@ YDToggleableCard(
 
 ---
 
+## YDFilterChip / YDAssistChip / YDInputChip
+
+Pill-shaped chips for filtering, quick actions, and representing dismissible user input. Colors are
+created via `YDChipDefaults`; the `YDChipColors` constructor is internal.
+
+```kotlin
+// Filter chip — toggleable, animated check icon appears when selected
+var selected by remember { mutableStateOf(false) }
+YDFilterChip(
+    selected = selected,
+    text = "Technology",
+    onSelectedChange = { selected = it },
+)
+
+// Assist chip — non-toggleable, triggers onClick, optional leading icon
+YDAssistChip(
+    text = "Add filter",
+    onClick = { /* handle */ },
+    leadingIcon = { YDIcon(imageVector = YDIcons.Filter, contentDescription = null) },
+)
+
+// Input chip — represents a user's selection, has a trailing × dismiss button
+YDInputChip(
+    text = "Kotlin",
+    onDismiss = { /* remove this chip */ },
+    leadingIcon = { YDIcon(imageVector = YDIcons.Code, contentDescription = null) },
+    onClick = { /* edit the value */ },
+)
+```
+
+All three accept `enabled = false` for the disabled state and an optional `colors` parameter.
+
+---
+
 ## YDPrimaryButton
 
 Filled primary-color button. The most prominent call-to-action.

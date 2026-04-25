@@ -8,6 +8,8 @@ import de.yanosdev.tooling.ui.button.ButtonScreen
 import de.yanosdev.tooling.ui.button.ButtonViewModelImpl
 import de.yanosdev.tooling.ui.card.CardScreen
 import de.yanosdev.tooling.ui.card.CardViewModelImpl
+import de.yanosdev.tooling.ui.chip.ChipScreen
+import de.yanosdev.tooling.ui.chip.ChipViewModelImpl
 import de.yanosdev.tooling.ui.colors.ColorsScreen
 import de.yanosdev.tooling.ui.colors.ColorsViewModelImpl
 import de.yanosdev.tooling.ui.dialog.DialogScreen
@@ -84,6 +86,13 @@ internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navig
         SelectionScreen(
             navBack = navigator.navigationIcon,
             viewModel = SelectionViewModelImpl()
+        )
+    }
+
+    entry<YDStyleGuideNavKey.Chip> {
+        ChipScreen(
+            navBack = navigator.navigationIcon,
+            viewModel = ChipViewModelImpl()
         )
     }
 
