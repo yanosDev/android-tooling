@@ -51,6 +51,14 @@ fun logInfo(tag: String, message: () -> String) =
 fun logWarning(tag: String, message: () -> String, throwable: Throwable? = null) =
     YDLog.dispatch(level = YDLogLevel.Warning, tag = tag, message = message, throwable = throwable)
 
+/** Logs a warning-level exception. Uses [throwable].toString() as the message. */
+fun logWarning(tag: String, throwable: Throwable) =
+    YDLog.dispatch(level = YDLogLevel.Warning, tag = tag, message = { throwable.toString() }, throwable = throwable)
+
 /** Logs an error-level message. [message] is evaluated lazily — not called if no logger is installed. */
-fun logError(tag: String, message: () -> String, throwable: Throwable? = null) =
-    YDLog.dispatch(level = YDLogLevel.Error, tag = tag, message = message, throwable = throwable)
+fun logError(tag: String, message: () -> String) =
+    YDLog.dispatch(level = YDLogLevel.Error, tag = tag, message = message)
+
+/** Logs an error-level exception. Uses [throwable].toString() as the message. */
+fun logError(tag: String, throwable: Throwable) =
+    YDLog.dispatch(level = YDLogLevel.Error, tag = tag, message = { throwable.toString() }, throwable = throwable)

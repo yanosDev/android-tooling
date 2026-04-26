@@ -19,7 +19,7 @@ import kotlin.math.roundToInt
 internal fun Modifier.ydMinTouchTargetSize(): Modifier = composed {
     if (LocalYDMinTouchTargetEnforcement.current) {
         // We're using 44x44 instead of ViewConfiguration's 48x48 default to match our design system
-        MinimumTouchTargetModifier(YDMinTouchTargetSize)
+        MinimumTouchTargetModifier(size = YDMinTouchTargetSize)
     } else {
         Modifier
     }

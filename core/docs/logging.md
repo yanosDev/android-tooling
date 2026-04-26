@@ -78,7 +78,12 @@ logInfo(tag = "Auth") { "user signed in: ${user.id}" }
 
 logWarning(tag = "Cache") { "cache miss for key $key" }
 
-logError(tag = "Sync", throwable = e) { "sync failed after ${retries} retries" }
+// With a custom message + exception
+logError(tag = "Sync", throwable = e) { "sync failed after $retries retries" }
+
+// Exception only — throwable.toString() is used as the message automatically
+logWarning(tag = "Context.openUri", throwable = e)
+logError(tag = "Network", throwable = e)
 ```
 
 Message lambdas are **lazy** — the string is only evaluated if a logger is installed. No
