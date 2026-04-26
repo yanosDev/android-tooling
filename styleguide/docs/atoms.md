@@ -124,20 +124,6 @@ YDIcon(
 
 ---
 
-## YDToggleableIcon
-
-Icon that animates a strike-through line when `toggledOn = false`.
-
-```kotlin
-YDToggleableIcon(
-    imageVector = YDIcons.Notifications,
-    contentDescription = "Notifications",
-    toggledOn = isEnabled,
-)
-```
-
----
-
 ## YDDivider / YDVerticalDivider
 
 Full-width horizontal (or full-height vertical) line using `colorScheme.line`.
@@ -238,3 +224,29 @@ YDSwitch(checked = on, onCheckedChange = { on = it })
 ```
 
 All three accept `enabled = false` for the disabled state and an optional `interactionSource`.
+
+---
+
+## YDSlider
+
+Horizontal slider for selecting a value within a `valueRange`. Custom Canvas-drawn thumb and track.
+When `steps > 0` the slider is discrete: the thumb snaps to `steps + 2` evenly spaced positions
+and tick marks are drawn along the track.
+
+```kotlin
+// Continuous
+var volume by remember { mutableStateOf(0.5f) }
+YDSlider(value = volume, onValueChange = { volume = it })
+
+// Discrete — 4 steps gives 6 snap positions (0, 0.2, 0.4, 0.6, 0.8, 1.0)
+var rating by remember { mutableStateOf(0f) }
+YDSlider(
+    value = rating,
+    onValueChange = { rating = it },
+    steps = 4,
+    valueRange = 0f..5f,
+)
+
+// Disabled
+YDSlider(value = 0.6f, onValueChange = {}, enabled = false)
+```

@@ -434,3 +434,247 @@ YDMonthYearPickerDialog(
     yearRange = 2024..2040,
 )
 ```
+
+---
+
+## YDFab / YDSmallFab
+
+Circular floating action buttons. `YDFab` is 56 × 56 dp (primary action); `YDSmallFab` is 40 × 40 dp
+(secondary/contextual action). The `content` slot is centered — typically a single `YDIcon`.
+
+```kotlin
+YDFab(onClick = { /* handle */ }) {
+    YDIcon(imageVector = YDIcons.Add, contentDescription = "Add")
+}
+
+YDSmallFab(onClick = { /* handle */ }) {
+    YDIcon(imageVector = YDIcons.Edit, contentDescription = "Edit")
+}
+```
+
+---
+
+## YDExtendedFab
+
+Extended FAB with a label and optional leading icon. When `expanded = false` the label animates
+out horizontally, leaving only the icon — ideal for collapsing while the user scrolls.
+
+```kotlin
+var expanded by remember { mutableStateOf(true) }
+
+YDExtendedFab(
+    text = "New entry",
+    onClick = { /* handle */ },
+    expanded = expanded,
+    icon = { YDIcon(imageVector = YDIcons.Add, contentDescription = null) },
+)
+```
+
+---
+
+## YDDropdownMenu / YDDropdownMenuItem
+
+Context menu anchored to a `Box` trigger. Wrap the anchor and menu in a `Box`; the menu anchors
+to the bottom-start corner of that `Box`.
+
+```kotlin
+var expanded by remember { mutableStateOf(false) }
+
+Box {
+    YDIconButton(onClick = { expanded = true }) {
+        YDIcon(imageVector = YDIcons.Menu, contentDescription = "More")
+    }
+    YDDropdownMenu(
+        expanded = expanded,
+        onDismissRequest = { expanded = false },
+    ) {
+        YDDropdownMenuItem(text = "Edit", onClick = { expanded = false })
+        YDDropdownMenuItem(
+            text = "Share",
+            onClick = { expanded = false },
+            leadingIcon = { YDIcon(imageVector = YDIcons.Share, contentDescription = null) },
+        )
+        YDDropdownMenuDivider()
+        YDDropdownMenuItem(
+            text = "Delete",
+            onClick = { expanded = false },
+            leadingIcon = { YDIcon(imageVector = YDIcons.Trash, contentDescription = null) },
+        )
+    }
+}
+```
+
+---
+
+## YDSearchBar
+
+Pill-shaped search input with a leading search icon and auto-appearing trailing clear button.
+Caller controls `query` state. `onSearch` fires when the user presses the IME search action.
+
+```kotlin
+var query by remember { mutableStateOf("") }
+
+YDSearchBar(
+    query = query,
+    onQueryChange = { query = it },
+    placeholder = "Search watches…",
+    onSearch = { performSearch(it) },
+)
+```
+
+---
+
+## YDSnackbar / YDSnackbarHost / YDSnackbarHostState
+
+`YDSnackbarHostState` queues messages and serialises display. Call `showSnackbar` from a coroutine;
+it suspends until the snackbar is dismissed. Place `YDSnackbarHost` in the `snackbarHost` slot of
+`YDScaffold` (or `YDDefaultScreen`).
+
+```kotlin
+val snackbarState = remember { YDSnackbarHostState() }
+val scope = rememberCoroutineScope()
+
+YDScaffold(
+    snackbarHost = { YDSnackbarHost(hostState = snackbarState) },
+) { contentPadding ->
+    // screen content
+}
+
+// Trigger a snackbar:
+scope.launch { snackbarState.showSnackbar(message = "Saved") }
+
+// With action:
+scope.launch {
+    val result = snackbarState.showSnackbar(
+        message = "Item deleted",
+        actionLabel = "Undo",
+    )
+    if (result == YDSnackbarResult.ActionPerformed) undoDelete()
+}
+```
+
+---
+
+## YDNavigationBar / YDNavigationBarItem
+
+Bottom navigation bar for compact-width screens. One item should be selected at a time; caller
+owns state. Bottom system-bar insets are consumed automatically.
+
+```kotlin
+var selected by remember { mutableIntStateOf(0) }
+
+YDNavigationBar {
+    YDNavigationBarItem(
+        selected = selected == 0,
+        onClick = { selected = 0 },
+        label = { YDText(text = "Home", style = typography.xsRegular) },
+    ) {
+        YDIcon(imageVector = YDIcons.Home, contentDescription = "Home")
+    }
+    YDNavigationBarItem(
+        selected = selected == 1,
+        onClick = { selected = 1 },
+        label = { YDText(text = "Search", style = typography.xsRegular) },
+    ) {
+        YDIcon(imageVector = YDIcons.Search, contentDescription = "Search")
+    }
+}
+```
+
+---
+
+## YDNavigationRail / YDNavigationRailItem
+
+Vertical navigation rail for medium-width screens. Mirrors `YDNavigationBar` semantics but runs
+along the left edge. Accepts an optional `header` slot above the items.
+
+```kotlin
+YDNavigationRail(header = { YDIcon(imageVector = YDIcons.Bolt, contentDescription = null) }) {
+    YDNavigationRailItem(
+        selected = selected == 0,
+        onClick = { selected = 0 },
+        label = { YDText(text = "Home", style = typography.xsRegular) },
+    ) {
+        YDIcon(imageVector = YDIcons.Home, contentDescription = "Home")
+    }
+}
+```
+
+---
+
+## YDNavigationDrawer / YDNavigationDrawerItem
+
+Persistent navigation drawer for expanded-width screens (tablets/desktops). Accepts an optional
+`header` slot. Items are rendered as rows with icon + label.
+
+```kotlin
+YDNavigationDrawer(header = { AppLogo() }) {
+    YDNavigationDrawerItem(
+        label = "Home",
+        selected = selected == 0,
+        onClick = { selected = 0 },
+        icon = { YDIcon(imageVector = YDIcons.Home, contentDescription = null) },
+    )
+    YDNavigationDrawerItem(
+        label = "Settings",
+        selected = selected == 1,
+        onClick = { selected = 1 },
+        icon = { YDIcon(imageVector = YDIcons.Settings, contentDescription = null) },
+    )
+}
+```
+
+---
+
+## YDBottomAppBar
+
+Bottom app bar for screen-level actions. The `content` slot holds icon buttons at the start;
+the optional `floatingActionButton` slot places a FAB at the end. Not for navigation — use
+`YDNavigationBar` for navigation destinations.
+
+```kotlin
+YDBottomAppBar(
+    floatingActionButton = {
+        YDFab(onClick = { /* primary action */ }) {
+            YDIcon(imageVector = YDIcons.Add, contentDescription = "Add")
+        }
+    },
+) {
+    YDIconButton(onClick = { /* menu */ }) {
+        YDIcon(imageVector = YDIcons.Menu, contentDescription = "Menu")
+    }
+    YDIconButton(onClick = { /* search */ }) {
+        YDIcon(imageVector = YDIcons.Search, contentDescription = "Search")
+    }
+}
+```
+
+---
+
+## YDBottomSheet / YDBottomSheetDialog
+
+Modal bottom sheet with predictive-back support, scroll integration, and anchor-draggable gesture
+handling. Use `rememberYDSheetState()` to control expand/collapse state. `YDBottomSheetDialog`
+is the full-screen dialog host; `YDBottomSheet` renders the sheet surface inside it.
+
+```kotlin
+val sheetState = rememberYDSheetState()
+val scope = rememberCoroutineScope()
+
+if (showSheet) {
+    YDBottomSheetDialog(
+        sheetState = sheetState,
+        onDismissRequest = { showSheet = false },
+    ) {
+        YDBottomSheet(sheetState = sheetState) {
+            Column(modifier = Modifier.padding(all = YDTheme.spacings.large)) {
+                YDText(text = "Sheet content")
+                YDPrimaryButton(
+                    text = "Close",
+                    onClick = { scope.launch { sheetState.hide() } },
+                )
+            }
+        }
+    }
+}
+```

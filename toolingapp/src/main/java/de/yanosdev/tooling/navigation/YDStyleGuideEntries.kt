@@ -141,48 +141,4 @@ internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navig
         )
     }
 
-    /*
-
-            entry<YDStyleGuideNavKey.Shadows> {
-                ShadowsScreen(
-                    navBack = navigator.navigationIcon
-                )
-            }
-
-
-            entry<YDStyleGuideNavKey.TextButtons> {
-                TextButtonsScreen(
-                    navBack = navigator.navigationIcon
-                )
-            }
-
-            entry<YDStyleGuideNavKey.Text> {
-                TextScreen(
-                    navBack = navigator.navigationIcon
-                )
-            }
-
-            entry<YDStyleGuideNavKey.Icon> {
-                IconScreen(
-                    navBack = navigator.navigationIcon
-                )
-            }
-
-            entry<YDStyleGuideNavKey.IconButton> {
-                IconButtonScreen(
-                    navBack = navigator.navigationIcon
-                )
-            }
-
-            entry<YDStyleGuideNavKey.Surface> {
-                SurfaceScreen(
-                    navBack = navigator.navigationIcon
-                )
-            }
-
-            entry<YDStyleGuideNavKey.Scaffold> {
-                ScaffoldScreen(
-                    navBack = navigator.navigationIcon
-                )
-            }*/
 }

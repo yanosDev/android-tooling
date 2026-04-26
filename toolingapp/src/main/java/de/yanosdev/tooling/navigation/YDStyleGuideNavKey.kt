@@ -12,28 +12,13 @@ internal sealed interface YDStyleGuideNavKey : NavKey {
     data object Home : YDStyleGuideNavKey
 
     @Serializable
-    data object TextButtons : YDStyleGuideNavKey
-
-    @Serializable
     data object Colors : YDStyleGuideNavKey
 
     @Serializable
     data object Typographies : YDStyleGuideNavKey
 
     @Serializable
-    data object Text : YDStyleGuideNavKey
-
-    @Serializable
     data object Icon : YDStyleGuideNavKey
-
-    @Serializable
-    data object IconButton : YDStyleGuideNavKey
-
-    @Serializable
-    data object Surface : YDStyleGuideNavKey
-
-    @Serializable
-    data object Scaffold : YDStyleGuideNavKey
 
     @Serializable
     data object Button : YDStyleGuideNavKey

@@ -75,14 +75,10 @@ internal fun HomeScreen(
                 is HomeAction.NavToStyleItem -> navToItem(
                     when (navAction.item) {
                         StyleGuideItems.SubAtoms.Colors -> YDStyleGuideNavKey.Colors
-                        StyleGuideItems.Atoms.Text -> YDStyleGuideNavKey.Text
                         StyleGuideItems.SubAtoms.Typographies -> YDStyleGuideNavKey.Typographies
                         StyleGuideItems.Atoms.Icon -> YDStyleGuideNavKey.Icon
-                        StyleGuideItems.Atoms.IconButton -> YDStyleGuideNavKey.IconButton
                         StyleGuideItems.Atoms.Selection -> YDStyleGuideNavKey.Selection
                         StyleGuideItems.Atoms.Slider -> YDStyleGuideNavKey.Slider
-                        StyleGuideItems.Atoms.Surface -> YDStyleGuideNavKey.Surface
-                        StyleGuideItems.Atoms.Scaffold -> YDStyleGuideNavKey.Scaffold
                         StyleGuideItems.Molecules.Button -> YDStyleGuideNavKey.Button
                         StyleGuideItems.Molecules.Card -> YDStyleGuideNavKey.Card
                         StyleGuideItems.Molecules.Chip -> YDStyleGuideNavKey.Chip
