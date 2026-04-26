@@ -176,6 +176,22 @@ Never use a different root package (e.g. `com.chrono24.*`) for files in this mod
 
 ---
 
+## Documentation requirements — applies to every module
+
+Every public API addition or change must be reflected in the module's `docs/` folder.
+
+- Each module has a `docs/README.md` that serves as the entry point: a quick-reference table of
+  all public declarations and links to per-topic pages.
+- Non-trivial features (a subsystem, a pattern, an integration point) get their own page, e.g.
+  `docs/logging.md`, `docs/navigation.md`.
+- Documentation format per entry: one-line description + at least one realistic usage snippet.
+- Update the docs in the same commit as the code change — never leave them out of sync.
+- Existing doc locations by module:
+  - `styleguide/docs/` — atoms, molecules, organisms (README + per-tier pages)
+  - `core/docs/` — utilities, navigation, logging (README + per-topic pages)
+
+---
+
 ## When creating new styleguide components
 
 1. Place atoms in `components/atoms/<group>/`, molecules in `components/molecules/<group>/`, organisms in
@@ -186,5 +202,5 @@ Never use a different root package (e.g. `com.chrono24.*`) for files in this mod
 5. Use `YDPreview { }` as the preview wrapper.
 6. Never import `androidx.compose.material3` theme tokens directly; always go through `YDTheme.*`.
 7. Add an entry to `styleguide/docs/atoms.md`, `molecules.md`, or `organisms.md` for every new public
-   component. Each entry must include: a one-line description and at least one usage snippet. Update the
-   entry whenever the public API changes.
+   component (see general documentation requirements above). Each entry must include: a one-line
+   description and at least one usage snippet. Update the entry whenever the public API changes.
