@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.core.logging.logError
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalAbsoluteYDTonal
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalTonalYDColors
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDColors
@@ -31,11 +32,9 @@ internal fun ProvideTonalElevation(
         val elevatedColorScheme = LocalTonalYDColors.current.getOrElse(
             index = absoluteTonalElevation.value
         ) {
-            // TODO: Add logs implementation with util package than activate this.
-            /*logError(
-                tag = LogTag.TonalElevation,
-                cause = IllegalStateException("Tonal elevation of $absoluteTonalElevation is not supported"),
-            )*/
+            logError(tag = YDStyleGuideLogs.COMPOSITION_LOCAL) {
+                "Tonal elevation of $absoluteTonalElevation is not supported"
+            }
             LocalTonalYDColors.current.last()
         }
 

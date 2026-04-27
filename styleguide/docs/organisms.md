@@ -30,7 +30,7 @@ YDDefaultScreen(
     title = "My Screen",
     actions = {
         YDIconButton(onClick = onShare) {
-            YDIcon(imageVector = Icons.Rounded.Share, contentDescription = "Share")
+            YDIcon(imageVector = YDIcons.Share, contentDescription = "Share")
         }
     },
 ) { contentPadding ->

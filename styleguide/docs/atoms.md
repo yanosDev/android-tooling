@@ -66,7 +66,7 @@ YDButton(
     colors = YDButtonDefaults.buttonColors(),
     onClick = { /* handle */ },
 ) {
-    YDIcon(imageVector = Icons.Rounded.Check, contentDescription = null)
+    YDIcon(imageVector = YDIcons.Check, contentDescription = null)
     YDText(text = "Done")
 }
 ```
@@ -86,28 +86,39 @@ val colors = YDButtonDefaults.buttonColors(
 
 ---
 
+## YDIcons
+
+Geometric monoline icon set with a sharp, technical aesthetic. All icons share a 24×24 dp canvas,
+1.5 dp round-capped strokes, and miter joins — producing a circuit-board / terminal visual language.
+Use directly with `YDIcon`.
+
+**Navigation:** `ArrowLeft`, `ArrowRight`, `ArrowUp`, `ArrowDown`, `Home`, `Close`, `Menu`
+
+**Actions:** `Add`, `Minus`, `Check`, `Search`, `Edit`, `Trash`, `Copy`, `Share`, `Download`,
+`Upload`, `Refresh`, `Filter`, `ExternalLink`, `Eye`
+
+**Status:** `Info`, `Warning`, `Bell`
+
+**Content:** `User`, `Star`, `Heart`, `Lock`, `Calendar`, `Clock`, `Settings`
+
+**Techie:** `Terminal`, `Code`, `Layers`, `Bolt`, `Database`
+
+```kotlin
+YDIcon(imageVector = YDIcons.Search, contentDescription = "Search")
+YDIcon(imageVector = YDIcons.Terminal, contentDescription = "Open terminal")
+YDIcon(imageVector = YDIcons.Bolt, contentDescription = "Performance")
+```
+
+---
+
 ## YDIcon
 
 Renders a tinted icon from an `ImageVector`, `Painter`, or `ImageBitmap`. Defaults to `LocalYDContentColor`.
 
 ```kotlin
 YDIcon(
-    imageVector = Icons.Rounded.Search,
+    imageVector = YDIcons.Search,
     contentDescription = "Search",
-)
-```
-
----
-
-## YDToggleableIcon
-
-Icon that animates a strike-through line when `toggledOn = false`.
-
-```kotlin
-YDToggleableIcon(
-    imageVector = Icons.Rounded.Notifications,
-    contentDescription = "Notifications",
-    toggledOn = isEnabled,
 )
 ```
 
@@ -188,4 +199,54 @@ Horizontal progress bar. Always determinate; pass `progress` in `0f..1f`.
 YDLinearProgressIndicator(
     progress = 0.4f,
 )
+```
+
+---
+
+## YDCheckbox / YDRadioButton / YDSwitch
+
+Selection controls that share a single `YDSelectionColors` class. Colors are created via
+`YDSelectionDefaults.selectionColors()` and default to `primary`/`onPrimary`/`line` tokens.
+
+```kotlin
+// Checkbox
+var checked by remember { mutableStateOf(false) }
+YDCheckbox(checked = checked, onCheckedChange = { checked = it })
+
+// Radio button — caller owns group state
+var selected by remember { mutableStateOf(0) }
+YDRadioButton(selected = selected == 0, onClick = { selected = 0 })
+YDRadioButton(selected = selected == 1, onClick = { selected = 1 })
+
+// Switch
+var on by remember { mutableStateOf(false) }
+YDSwitch(checked = on, onCheckedChange = { on = it })
+```
+
+All three accept `enabled = false` for the disabled state and an optional `interactionSource`.
+
+---
+
+## YDSlider
+
+Horizontal slider for selecting a value within a `valueRange`. Custom Canvas-drawn thumb and track.
+When `steps > 0` the slider is discrete: the thumb snaps to `steps + 2` evenly spaced positions
+and tick marks are drawn along the track.
+
+```kotlin
+// Continuous
+var volume by remember { mutableStateOf(0.5f) }
+YDSlider(value = volume, onValueChange = { volume = it })
+
+// Discrete — 4 steps gives 6 snap positions (0, 0.2, 0.4, 0.6, 0.8, 1.0)
+var rating by remember { mutableStateOf(0f) }
+YDSlider(
+    value = rating,
+    onValueChange = { rating = it },
+    steps = 4,
+    valueRange = 0f..5f,
+)
+
+// Disabled
+YDSlider(value = 0.6f, onValueChange = {}, enabled = false)
 ```

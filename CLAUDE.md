@@ -120,13 +120,18 @@ Never use a different root package (e.g. `com.chrono24.*`) for files in this mod
 - **Remove** comments that describe *what* the code does — well-named identifiers do that.
 - **Keep** comments that explain *why*: hidden constraints, workarounds, non-obvious math, suppressed lint with reason.
 - **Keep** `// TODO:` comments as-is.
-- **Keep** KDoc (`/** */`) on public API where it adds information beyond the signature.
+- **Write KDoc** (`/** */`) on every public `@Composable`, `class`, `data class`, and top-level `fun`. At
+  minimum document: non-obvious parameter semantics, state ownership (internal vs. caller-controlled),
+  and callback contracts (when it is called, what it receives). Omit KDoc only when every parameter is
+  fully self-explanatory from its name and type alone.
 - **Remove** region markers (`//region`, `//endregion`) and section-label comments (`// Tab specifications`,
   `// Indeterminate circular indicator transition specs`, etc.).
 
 ### Visibility modifiers
 
-- Default to the most restrictive visibility that works.
+- Default to the most restrictive visibility that works. When creating new files, default every declaration to `private`
+  or `internal` unless there is a concrete reason it must be public (e.g. it is in a public function's parameter type
+  position, or it is a UI composable intended for consumers).
 - Internal implementation details (scaffold slots, defaults objects used only within the module, etc.) should be
   `internal`.
 - Prefer `private` over `internal` for things used only within a single file.
@@ -140,6 +145,11 @@ Never use a different root package (e.g. `com.chrono24.*`) for files in this mod
 - Token objects: internal, suffix `Tokens` (e.g. `YDColorTokens`, `YDShadowTokens`).
 - Defaults objects: suffix `Defaults` (e.g. `YDButtonDefaults`). Public if consumed externally, `internal` if only used
   inside the module.
+
+### File structure
+
+- One top-level class, interface, object, or enum per file. Private/internal helpers closely tied to that declaration
+  may live in the same file, but avoid placing two independently-meaningful types in one file.
 
 ### Kotlin style
 
@@ -166,6 +176,22 @@ Never use a different root package (e.g. `com.chrono24.*`) for files in this mod
 
 ---
 
+## Documentation requirements — applies to every module
+
+Every public API addition or change must be reflected in the module's `docs/` folder.
+
+- Each module has a `docs/README.md` that serves as the entry point: a quick-reference table of
+  all public declarations and links to per-topic pages.
+- Non-trivial features (a subsystem, a pattern, an integration point) get their own page, e.g.
+  `docs/logging.md`, `docs/navigation.md`.
+- Documentation format per entry: one-line description + at least one realistic usage snippet.
+- Update the docs in the same commit as the code change — never leave them out of sync.
+- Existing doc locations by module:
+  - `styleguide/docs/` — atoms, molecules, organisms (README + per-tier pages)
+  - `core/docs/` — utilities, navigation, logging (README + per-topic pages)
+
+---
+
 ## When creating new styleguide components
 
 1. Place atoms in `components/atoms/<group>/`, molecules in `components/molecules/<group>/`, organisms in
@@ -175,3 +201,6 @@ Never use a different root package (e.g. `com.chrono24.*`) for files in this mod
 4. Add a `@PhonePreview` + `@Composable private fun Preview()` at the bottom of each component file.
 5. Use `YDPreview { }` as the preview wrapper.
 6. Never import `androidx.compose.material3` theme tokens directly; always go through `YDTheme.*`.
+7. Add an entry to `styleguide/docs/atoms.md`, `molecules.md`, or `organisms.md` for every new public
+   component (see general documentation requirements above). Each entry must include: a one-line
+   description and at least one usage snippet. Update the entry whenever the public API changes.

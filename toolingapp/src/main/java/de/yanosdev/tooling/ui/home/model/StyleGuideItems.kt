@@ -12,15 +12,21 @@ sealed interface StyleGuideItems {
     }
 
     sealed interface Atoms : StyleGuideItems {
-        data object Text : Atoms
         data object Icon : Atoms
-        data object IconButton : Atoms
-        data object Surface : Atoms
-        data object Scaffold : Atoms
+        data object Selection : Atoms
+        data object Slider : Atoms
     }
 
     sealed interface Molecules : StyleGuideItems {
         data object Button : Molecules
+        data object Card : Molecules
+        data object Chip : Molecules
+        data object Dialog : Molecules
+        data object Dropdown : Molecules
+        data object Fab : Molecules
+        data object Picker : Molecules
+        data object SearchBar : Molecules
+        data object Snackbar : Molecules
     }
 
 }

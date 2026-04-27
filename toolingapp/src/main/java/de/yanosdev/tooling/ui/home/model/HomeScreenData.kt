@@ -8,11 +8,17 @@ internal data class HomeScreenData(
     val items: List<StyleGuideItems> = listOf(
         StyleGuideItems.SubAtoms.Colors,
         StyleGuideItems.SubAtoms.Typographies,
-        StyleGuideItems.Atoms.Text,
         StyleGuideItems.Atoms.Icon,
-        StyleGuideItems.Atoms.IconButton,
-        StyleGuideItems.Atoms.Surface,
-        StyleGuideItems.Atoms.Scaffold,
+        StyleGuideItems.Atoms.Selection,
+        StyleGuideItems.Atoms.Slider,
         StyleGuideItems.Molecules.Button,
+        StyleGuideItems.Molecules.Card,
+        StyleGuideItems.Molecules.Chip,
+        StyleGuideItems.Molecules.Dialog,
+        StyleGuideItems.Molecules.Dropdown,
+        StyleGuideItems.Molecules.Fab,
+        StyleGuideItems.Molecules.Picker,
+        StyleGuideItems.Molecules.SearchBar,
+        StyleGuideItems.Molecules.Snackbar,
     )
 )

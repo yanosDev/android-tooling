@@ -8,9 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Check
-import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -23,6 +20,7 @@ import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.components.atoms.button.YDButton
 import de.yanosdev.styleguide.theme.components.atoms.button.YDButtonDefaults
 import de.yanosdev.styleguide.theme.components.atoms.icon.YDIcon
+import de.yanosdev.styleguide.theme.components.atoms.icon.YDIcons
 import de.yanosdev.styleguide.theme.components.atoms.text.YDText
 import de.yanosdev.styleguide.theme.foundations.semantics.LocalYDContentColor
 import de.yanosdev.styleguide.theme.foundations.semantics.ProvideMergedYDTextStyle
@@ -161,9 +159,9 @@ private fun Preview() = YDPreview {
         YDTextButton(text = "Disabled", onClick = {}, enabled = false)
 
         YDTextButton(onClick = { }) {
-            YDIcon(imageVector = Icons.Rounded.Search, contentDescription = "")
+            YDIcon(imageVector = YDIcons.Search, contentDescription = "")
             YDText("With icons")
-            YDIcon(imageVector = Icons.Rounded.Check, contentDescription = "")
+            YDIcon(imageVector = YDIcons.Check, contentDescription = "")
         }
     }
 }
@@ -180,9 +178,9 @@ private fun SlimPreview() = YDPreview(modifier = Modifier.width(200.dp)) {
         YDSlimTextButton(text = "Disabled", onClick = {}, enabled = false)
 
         YDSlimTextButton(onClick = { }) {
-            YDIcon(imageVector = Icons.Rounded.Search, contentDescription = "")
+            YDIcon(imageVector = YDIcons.Search, contentDescription = "")
             YDText("With icons")
-            YDIcon(imageVector = Icons.Rounded.Check, contentDescription = "")
+            YDIcon(imageVector = YDIcons.Check, contentDescription = "")
         }
     }
 }

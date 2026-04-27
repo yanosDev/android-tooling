@@ -11,6 +11,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.getSystemService
 import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.core.logging.logWarning
 
 /**
  * Opens any Uri.
@@ -20,8 +21,7 @@ fun Context.openUri(uri: Uri) {
         val normalizedUri = uri.normalizeScheme()
         startActivity(Intent(Intent.ACTION_VIEW, normalizedUri))
     } catch (e: ActivityNotFoundException) {
-        e
-        // TODO: Implement logger
+        logWarning(tag = "Context.openUri", throwable = e)
     }
 }
 

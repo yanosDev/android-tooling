@@ -5,13 +5,11 @@ package de.yanosdev.styleguide.theme.components.organisms.navigation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.rounded.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.styleguide.theme.components.atoms.icon.YDIcon
+import de.yanosdev.styleguide.theme.components.atoms.icon.YDIcons
 import de.yanosdev.styleguide.theme.components.molecules.button.icon.YDIconButton
 import de.yanosdev.styleguide.theme.themes.YDTheme.spacings
 import de.yanosdev.styleguide.theme.util.PhonePreview
@@ -23,7 +21,7 @@ fun YDNavigationCloseIcon(
     modifier: Modifier = Modifier
 ) = YDIconButton(onClick = navUp, modifier = modifier) {
     YDIcon(
-        imageVector = Icons.Rounded.Close,
+        imageVector = YDIcons.Close,
         contentDescription = null
     )
 }
@@ -34,7 +32,7 @@ fun YDNavigationUpIcon(
     modifier: Modifier = Modifier
 ) = YDIconButton(onClick = navUp, modifier = modifier) {
     YDIcon(
-        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+        imageVector = YDIcons.ArrowLeft,
         contentDescription = null
     )
 }
