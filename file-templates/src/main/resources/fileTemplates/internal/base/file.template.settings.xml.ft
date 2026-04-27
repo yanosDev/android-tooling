@@ -11,6 +11,9 @@
         <template name="Screen.kt.child.3.kt" file-name="${NAME.toLowerCase()}/model/${NAME}ScreenData" reformat="true" live-template-enabled="false" />
       </template>
       <template name="Section.kt" file-name="section/${PACKAGE_NAME.substring($PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 1, $PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 2).toUpperCase()}${PACKAGE_NAME.substring($PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 2)}${SECTION}Section" reformat="true" live-template-enabled="false" />
+      <template name="CompactContent.kt" file-name="content/${PACKAGE_NAME.substring($PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 1, $PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 2).toUpperCase()}${PACKAGE_NAME.substring($PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 2)}CompactContent" reformat="true" live-template-enabled="false" />
+      <template name="MediumContent.kt" file-name="content/${PACKAGE_NAME.substring($PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 1, $PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 2).toUpperCase()}${PACKAGE_NAME.substring($PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 2)}MediumContent" reformat="true" live-template-enabled="false" />
+      <template name="ExpandedContent.kt" file-name="content/${PACKAGE_NAME.substring($PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 1, $PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 2).toUpperCase()}${PACKAGE_NAME.substring($PACKAGE_NAME.lastIndexOf(&quot;.&quot;) + 2)}ExpandedContent" reformat="true" live-template-enabled="false" />
     </default_templates>
   </component>
 </project>

@@ -2,5 +2,8 @@ includes/Action.kt.ft
 includes/Data.kt.ft
 includes/Screen.kt.ft
 includes/Section.kt.ft
+includes/CompactContent.kt.ft
+includes/MediumContent.kt.ft
+includes/ExpandedContent.kt.ft
 includes/ViewModel.kt.ft
 includes/ViewModelImpl.kt.ft

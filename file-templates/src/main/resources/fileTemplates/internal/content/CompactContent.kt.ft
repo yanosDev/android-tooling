@@ -1,0 +1,4 @@
+#set($lastSegment = $PACKAGE_NAME.substring($PACKAGE_NAME.lastIndexOf(".") + 1))
+#set($SCREEN = $lastSegment.substring(0,1).toUpperCase() + $lastSegment.substring(1))
+
+#parse("CompactContent.kt")

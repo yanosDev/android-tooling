@@ -1,0 +1,27 @@
+@file:YDRevisionIn(implementedAt = "${YEAR}-${MONTH}-${DAY}", revisionAfterInDays = 365)
+
+package ${PACKAGE_NAME}.content
+
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import de.yanosdev.annotation.YDRevisionIn
+import de.yanosdev.styleguide.theme.components.organisms.screen.YDUIContentScope
+import de.yanosdev.styleguide.theme.util.PhonePreview
+import de.yanosdev.styleguide.theme.util.YDContentPreview
+import ${PACKAGE_NAME}.model.${SCREEN}Action
+import ${PACKAGE_NAME}.model.${SCREEN}ScreenData
+
+#parse("File Header.java")
+@Composable
+internal fun YDUIContentScope<${SCREEN}ScreenData, ${SCREEN}Action>.MediumContent(
+    contentPadding: PaddingValues,
+    modifier: Modifier = Modifier,
+) {
+}
+
+@PhonePreview
+@Composable
+private fun MediumPreview() = YDContentPreview(data = ${SCREEN}ScreenData()) {
+    MediumContent(contentPadding = PaddingValues())
+}

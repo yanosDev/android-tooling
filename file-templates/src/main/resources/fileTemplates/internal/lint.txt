@@ -4,5 +4,8 @@ screen/Screen.kt.child.1.kt.ft
 screen/Screen.kt.child.2.kt.ft
 screen/Screen.kt.child.3.kt.ft
 section/Section.kt.ft
+content/CompactContent.kt.ft
+content/MediumContent.kt.ft
+content/ExpandedContent.kt.ft
 detector/CodeStyleDetector.kt.ft
 detector/RevisionDetector.kt.ft

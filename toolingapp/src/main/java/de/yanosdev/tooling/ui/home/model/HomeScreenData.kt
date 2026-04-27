@@ -2,8 +2,10 @@
 
 package de.yanosdev.tooling.ui.home.model
 
+import androidx.compose.runtime.Immutable
 import de.yanosdev.annotation.YDRevisionIn
 
+@Immutable
 internal data class HomeScreenData(
     val items: List<StyleGuideItems> = listOf(
         StyleGuideItems.SubAtoms.Colors,
