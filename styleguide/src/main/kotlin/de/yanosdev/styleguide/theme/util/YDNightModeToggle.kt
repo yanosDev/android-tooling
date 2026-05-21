@@ -22,7 +22,7 @@ fun YDNightModeToggle() {
     YDIconToggleButton(
         checked = darkModeEnabled,
         colors = YDIconButtonDefaults.iconToggleButtonColors(checkedContentColor = YDColorTokens.Orange80),
-        onCheckedChange = { checked -> context.setNightMode(if (checked) NightMode.No else NightMode.Yes) },
+        onCheckedChange = { checked -> context.setNightMode(mode = if (checked) NightMode.No else NightMode.Yes) },
     ) {
         YDIcon(
             imageVector = YDIcons.Bolt,

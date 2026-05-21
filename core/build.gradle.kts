@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":lint-annotation"))
     lintChecks(project(":lint"))
 
+    implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)

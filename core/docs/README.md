@@ -11,6 +11,7 @@ All declarations live under `de.yanosdev.core.*`.
 ## Contents
 
 - [Logging](logging.md)
+- [Preferences](preferences.md)
 
 ---
 
@@ -30,6 +31,13 @@ All declarations live under `de.yanosdev.core.*`.
 | Declaration | Package                 | Description                                                                             |
 |-------------|-------------------------|-----------------------------------------------------------------------------------------|
 | `NavAction` | `core.navigation.model` | Base interface for one-shot navigation events; includes `Close` and `Success` built-ins |
+
+### Preferences
+
+| Declaration        | Package            | Description                                                                       |
+|--------------------|--------------------|-----------------------------------------------------------------------------------|
+| `YDPreferences`    | `core.preferences` | Abstract base — extend and declare `preference` / `nullablePreference` properties |
+| `YDPreferenceItem` | `core.preferences` | Property delegate; exposes `.flow` for reactive observation and `.clear()`        |
 
 ### Utilities
 

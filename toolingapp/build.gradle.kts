@@ -21,6 +21,12 @@ android {
     }
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(libs.versions.yd.java.get())
+    }
+}
+
 dependencies {
     implementation(project(":core"))
     implementation(project(":lint-annotation"))
@@ -28,6 +34,7 @@ dependencies {
     implementation(project(":styleguide"))
 
     // AndroidX
+    implementation(libs.androidx.datastore.preferences)
     implementation(libs.bundles.androidx.app)
     implementation(libs.bundles.androidx.navigation3)
 
