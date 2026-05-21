@@ -7,5 +7,11 @@ import de.yanosdev.styleguide.theme.components.organisms.screen.YDViewModel
 import de.yanosdev.styleguide.theme.components.organisms.screen.model.UIState
 import de.yanosdev.tooling.ui.home.model.HomeAction
 import de.yanosdev.tooling.ui.home.model.HomeScreenData
+import de.yanosdev.tooling.ui.home.model.HomeSection
+import kotlinx.coroutines.flow.StateFlow
 
-internal interface HomeViewModel : YDViewModel<UIState<HomeScreenData>, HomeAction>
+internal interface HomeViewModel : YDViewModel<UIState<HomeScreenData>, HomeAction> {
+    val selectedSection: StateFlow<HomeSection>
+
+    fun onSectionSelected(section: HomeSection)
+}

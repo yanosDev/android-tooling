@@ -10,12 +10,10 @@ import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.core.util.findActivity
 import de.yanosdev.styleguide.theme.components.atoms.icon.YDIcon
@@ -50,7 +48,7 @@ internal fun HomeScreen(
     viewModel: HomeViewModel,
     modifier: Modifier = Modifier,
 ) {
-    var selectedSection by rememberSaveable { mutableStateOf(value = HomeSection.SubAtoms) }
+    val selectedSection by viewModel.selectedSection.collectAsStateWithLifecycle()
     val widthSizeClass = calculateWindowSizeClass(LocalContext.current.findActivity()).widthSizeClass
 
     YDStatusBarColorManager(statusBarColor = colorScheme.primary)
@@ -90,7 +88,7 @@ internal fun HomeScreen(
                     HomeSection.entries.forEach { section ->
                         YDNavigationBarItem(
                             selected = selectedSection == section,
-                            onClick = { selectedSection = section },
+                            onClick = { viewModel.onSectionSelected(section = section) },
                             label = { YDText(text = section.label, style = typography.xsRegular) },
                         ) {
                             YDIcon(imageVector = section.icon(), contentDescription = section.label)
@@ -109,7 +107,7 @@ internal fun HomeScreen(
                 MediumContent(
                     contentPadding = contentPadding,
                     selectedSection = selectedSection,
-                    onSectionChange = { selectedSection = it },
+                    onSectionChange = viewModel::onSectionSelected,
                 )
             }
         }
@@ -119,7 +117,7 @@ internal fun HomeScreen(
                 ExpandedContent(
                     contentPadding = contentPadding,
                     selectedSection = selectedSection,
-                    onSectionChange = { selectedSection = it },
+                    onSectionChange = viewModel::onSectionSelected,
                 )
             }
         }
