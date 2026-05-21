@@ -109,7 +109,6 @@ util/          — preview helpers, window size utilities, touch target enforcem
 ```
 
 Package for all new styleguide code: `de.yanosdev.styleguide.theme.*`  
-Never use a different root package (e.g. `com.chrono24.*`) for files in this module.
 
 ---
 

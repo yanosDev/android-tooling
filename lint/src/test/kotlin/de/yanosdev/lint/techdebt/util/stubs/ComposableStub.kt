@@ -1,4 +1,4 @@
-package com.chrono24.mobile.lint.util.stubs
+package de.yanosdev.lint.techdebt.util.stubs
 
 import com.android.tools.lint.checks.infrastructure.TestFiles.kotlin
 
