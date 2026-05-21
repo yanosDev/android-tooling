@@ -36,6 +36,7 @@ dependencies {
     // AndroidX
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.bundles.androidx.app)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.bundles.androidx.navigation3)
 
     // Compose

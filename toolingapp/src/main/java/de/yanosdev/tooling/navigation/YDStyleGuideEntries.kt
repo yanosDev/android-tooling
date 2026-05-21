@@ -2,6 +2,7 @@
 
 package de.yanosdev.tooling.navigation
 
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation3.runtime.EntryProviderScope
 import de.yanosdev.annotation.YDRevisionIn
 import de.yanosdev.tooling.ui.button.ButtonScreen
@@ -38,7 +39,7 @@ import de.yanosdev.tooling.ui.typographies.TypographiesViewModelImpl
 internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navigator: YDStyleGuideNavigator) {
     entry<YDStyleGuideNavKey.Home> {
         HomeScreen(
-            viewModel = HomeViewModelImpl(),
+            viewModel = viewModel<HomeViewModelImpl>(),
             navToItem = navigator::navigate,
             navBack = navigator.navigationIcon
         )
@@ -46,98 +47,98 @@ internal fun EntryProviderScope<YDStyleGuideNavKey>.ydStyleGuideNavEntries(navig
     entry<YDStyleGuideNavKey.Colors> {
         ColorsScreen(
             navBack = navigator.navigationIcon,
-            viewModel = ColorsViewModelImpl()
+            viewModel = viewModel<ColorsViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Typographies> {
         TypographiesScreen(
             navBack = navigator.navigationIcon,
-            viewModel = TypographiesViewModelImpl()
+            viewModel = viewModel<TypographiesViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Button> {
         ButtonScreen(
             navBack = navigator.navigationIcon,
-            viewModel = ButtonViewModelImpl()
+            viewModel = viewModel<ButtonViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Icon> {
         IconScreen(
             navBack = navigator.navigationIcon,
-            viewModel = IconViewModelImpl()
+            viewModel = viewModel<IconViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Dialog> {
         DialogScreen(
             navBack = navigator.navigationIcon,
-            viewModel = DialogViewModelImpl()
+            viewModel = viewModel<DialogViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Picker> {
         PickerScreen(
             navBack = navigator.navigationIcon,
-            viewModel = PickerViewModelImpl()
+            viewModel = viewModel<PickerViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Card> {
         CardScreen(
             navBack = navigator.navigationIcon,
-            viewModel = CardViewModelImpl()
+            viewModel = viewModel<CardViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Selection> {
         SelectionScreen(
             navBack = navigator.navigationIcon,
-            viewModel = SelectionViewModelImpl()
+            viewModel = viewModel<SelectionViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Chip> {
         ChipScreen(
             navBack = navigator.navigationIcon,
-            viewModel = ChipViewModelImpl()
+            viewModel = viewModel<ChipViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Fab> {
         FabScreen(
             navBack = navigator.navigationIcon,
-            viewModel = FabViewModelImpl()
+            viewModel = viewModel<FabViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Dropdown> {
         DropdownScreen(
             navBack = navigator.navigationIcon,
-            viewModel = DropdownViewModelImpl()
+            viewModel = viewModel<DropdownViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.SearchBar> {
         SearchBarScreen(
             navBack = navigator.navigationIcon,
-            viewModel = SearchBarViewModelImpl()
+            viewModel = viewModel<SearchBarViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Slider> {
         SliderScreen(
             navBack = navigator.navigationIcon,
-            viewModel = SliderViewModelImpl()
+            viewModel = viewModel<SliderViewModelImpl>()
         )
     }
 
     entry<YDStyleGuideNavKey.Snackbar> {
         SnackbarScreen(
             navBack = navigator.navigationIcon,
-            viewModel = SnackbarViewModelImpl()
+            viewModel = viewModel<SnackbarViewModelImpl>()
         )
     }
 

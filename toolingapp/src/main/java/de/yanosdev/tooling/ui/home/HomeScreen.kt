@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -50,7 +50,7 @@ internal fun HomeScreen(
     viewModel: HomeViewModel,
     modifier: Modifier = Modifier,
 ) {
-    var selectedSection by remember { mutableStateOf(value = HomeSection.SubAtoms) }
+    var selectedSection by rememberSaveable { mutableStateOf(value = HomeSection.SubAtoms) }
     val widthSizeClass = calculateWindowSizeClass(LocalContext.current.findActivity()).widthSizeClass
 
     YDStatusBarColorManager(statusBarColor = colorScheme.primary)
